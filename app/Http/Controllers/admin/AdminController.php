@@ -14,7 +14,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.admins.index');
+        return view('admin.admins.index', ['title'=>'管理员列表']);
     }
 
     /**

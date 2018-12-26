@@ -7,8 +7,6 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<!-- VENDOR CSS -->
-	<link rel="stylesheet" href="/admin/assets/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/admin/assets/vendor/font-awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/admin/assets/vendor/linearicons/style.css">
 	<link rel="stylesheet" href="/admin/assets/vendor/chartist/css/chartist-custom.css">
 	<!-- MAIN CSS -->
@@ -106,7 +104,7 @@
 			<div class="sidebar-scroll">
 				<nav>
 					<ul class="nav">
-						<li><a href="/admin/admins" 		class="active"><i class="lnr lnr-user"></i> <span>管理员</span></a></li>
+						<li><a href="/admin/admins" 		class=""><i class="lnr lnr-user"></i> <span>管理员</span></a></li>
 						<li><a href="/admin/users" 		class=""><i class="lnr lnr-users"></i> <span>用户管理</span></a></li>
 						<li><a href="/admin/cates" 		class=""><i class="lnr lnr-text-align-left"></i> <span>类别管理</span></a></li>
 						<li><a href="/admin/goods" 		class=""><i class="lnr lnr-cart"></i> <span>商品管理</span></a></li>
@@ -128,9 +126,19 @@
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
-		
-                   
-	<!-- END WRAPPER -->
+		<!-- MAIN START -->
+        <div id="page-wrapper"> 
+        	 <div class="row">
+        		<div class="col-lg-12" style="margin-top:60px;">
+        		
+		                    <h2 class="page-header text-center">{{ $title or '' }}</h2>
+		                
+		        </div>
+        	@section('main')
+
+			@show
+        </div>  
+	<!-- END MAIN -->
 	<!-- Javascript -->
 	<script src="/admin/assets/vendor/jquery/jquery.min.js"></script>
 	<script src="/admin/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -270,9 +278,7 @@
 
 	});
 	</script>
-	@section('main')
-
-	@show
+	
 </body>
 
 </html>

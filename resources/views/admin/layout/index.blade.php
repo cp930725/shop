@@ -138,7 +138,6 @@
 	<script src="/admin/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="/admin/assets/vendor/chartist/js/chartist.min.js"></script>
 	<script src="/admin/assets/scripts/klorofil-common.js"></script>
-	<script src="/admin/table/vendor/jquery/jquery.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="/admin/table/vendor/bootstrap/js/bootstrap.min.js"></script>

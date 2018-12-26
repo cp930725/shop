@@ -20,6 +20,22 @@
 	<!-- ICONS -->
 	<link rel="apple-touch-icon" sizes="76x76" href="/admin/assets/img/apple-icon.png">
 	<link rel="icon" type="image/png" sizes="96x96" href="/admin/assets/img/favicon.png">
+	<link href="/admin/table/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/admin/table/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/admin/table/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/admin/table/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/admin/table/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/admin/table/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>

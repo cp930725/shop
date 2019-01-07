@@ -37,22 +37,22 @@ Route::post('admin/pwd/reset', 'admin\LoginController@postReset')->middleware('a
 // 后台 用户	
 Route::resource('admin/users', 'admin\UserController')->middleware('admin');
 // 后台 类别
- 
-
-
-
+Route::resource('admin/cates', 'admin\CateController');
+Route::get('/admin/getcates', 'admin\CateController@getcates');
+Route::get('/admin/createcates/{id}', 'admin\CateController@createcates');
+Route::post('/admin/cates/insert', 'admin\CateController@insert');
 
 
 
 
 
 // 后台 商品
-
-
-
-
-
-
+Route::resource('admin/goods', 'admin\GoodsController');
+Route::resource('admin/goodsinfo', 'admin\GoodsInfoController');
+Route::resource('admin/goodsimage', 'admin\GoodsImageController');
+Route::get('/admin/goodsinfo/create/{id}', 'admin\GoodsInfoController@create');
+Route::get('/admin/goodsimage/delete/{id}', 'admin\GoodsImageController@destroy');
+Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert');
 
 
 

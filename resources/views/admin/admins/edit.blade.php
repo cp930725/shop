@@ -1,69 +1,28 @@
 @extends('admin.layout.index')
 
-
 @section('main')
+
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title text-center">添加管理员</h3>
+        <h3 class="panel-title text-center">修改管理员</h3>
     </div>
     <div class="panel-body row">
-	    <form action="/admin/admins" method="post" enctype="multipart/form-data">
+	    <form role="form" action="/admin/admins/{{ $admin->id }}" method="post" enctype="multipart/form-data">
 	    	{{ csrf_field() }}
+	    	{{ method_field('PUT') }}
 	  	    <div class="input-group col-xs-6" >
 	            <span class="input-group-addon">账号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="admin" placeholder="账号">
-	            <span class="input-group-addon">
-	            	 @if ($errors->has('admin'))
-           				{{ $errors->first('admin') }}
-        			@endif
-	            </span>
-	            
-	        </div>
-
-	        <br>
-	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon">密码&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="password" class="form-control" name="pwd" placeholder="密码">
-	            <span class="input-group-addon">
-	            	 @if ($errors->has('pwd'))
-           				{{ $errors->first('pwd') }}
-        			@endif
-	            </span>
-	        </div>
-	        <br>
-	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon"> 确认密码 </span>
-	            <input type="password" class="form-control" name="repwd" placeholder="确认密码">
-	            <span class="input-group-addon">
-	            	 @if ($errors->has('repwd'))
-           				{{ $errors->first('repwd') }}
-        			@endif
-	            </span>
+	            <input type="text" class="form-control" name="admin" disabled value="{{ $admin->admin }}" placeholder="账号" >
 	        </div>
 	        <br>
 	        <div class="input-group col-xs-6">
 	            <span class="input-group-addon">手机号&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="phone" class="form-control" name="phone" placeholder="手机号">
-	            <span class="input-group-addon">
-	            	 @if ($errors->has('phone'))
-           				{{ $errors->first('phone') }}
-        			@endif
-	            </span>
+	            <input type="phone" class="form-control" value="{{ $admin->phone }}" name="phone" placeholder="手机号">
 	        </div>
 	        <br>
 	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="email" placeholder="邮箱">
-	            <span class="input-group-addon">
-	            	 @if ($errors->has('email'))
-           				{{ $errors->first('email') }}
-        			@endif
-	            </span>
-	        </div>
-	        <br>
-	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon">姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="name" placeholder="姓名">
+	            <span class="input-group-addon">姓名&nbsp;&nbsp;&nbsp;&nbsp;;&nbsp;&nbsp;</span>
+	            <input type="text" class="form-control" name="name" value="{{ $admin->adminInfo->name }}" placeholder="姓名">
 	            <span class="input-group-addon">
 	            	 @if ($errors->has('name'))
            				{{ $errors->first('name') }}
@@ -73,7 +32,7 @@
 	        <br>
 	        <div class="input-group col-xs-6">
 	            <span class="input-group-addon">编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="service" placeholder="编号">
+	            <input type="text" class="form-control" name="service" value="{{ $admin->adminInfo->service }}" placeholder="编号">
 	            <span class="input-group-addon">
 	            	 @if ($errors->has('service'))
            				{{ $errors->first('service') }}
@@ -87,19 +46,19 @@
 			            <span style="vertical-align: inherit;">性别</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="sex" id="optionsRadiosInline1" value="0" checked="">
+			        <input type="radio" name="sex" id="optionsRadiosInline1" value="0" @if($admin->adminInfo->sex == 0) checked @endif>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">男</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="sex" id="optionsRadiosInline2" value="1">
+			        <input type="radio" name="sex" id="optionsRadiosInline2" value="1" @if($admin->adminInfo->sex == 1) checked @endif>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">女</span></span>
 			    </label>
 			</div>
 	        <br>
-	        <br>
 	        <div class="input-group col-xs-6">
+	        	<img src="/uploads/{{ $admin->adminInfo->face }}">
 	            <span class="input-group-addon">头像&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 	            <input type="file"  name="face"> 
 	            <span class="input-group-addon">
@@ -111,7 +70,7 @@
 	        <br>
 	        <div class="input-group col-xs-6">
 	            <span class="input-group-addon">住址&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="city" placeholder="住址">
+	            <input type="text" class="form-control" name="city" value="{{ $admin->adminInfo->city }}" placeholder="住址">
 	            <span class="input-group-addon">
 	            	
 	            </span>
@@ -123,24 +82,41 @@
 			            <span style="vertical-align: inherit;">权限</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline1" value="0" checked="">
+			        <input type="radio" name="auth" id="optionsRadiosInline1" value="0" @if($admin->auth == 0) checked @endif>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">超级管理员</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline2" value="1">
+			        <input type="radio" name="auth" id="optionsRadiosInline2" value="1" @if($admin->auth == 1) checked @endif>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">普通管理员</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline3" value="2">
+			        <input type="radio" name="auth" id="optionsRadiosInline3" value="2" @if($admin->auth == 2) checked @endif>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">客服</span></span>
 			    </label>
 			</div>
 	        <br>
+	        <div class="form-group input-group">
+			    <label>
+			        <span style="vertical-align: inherit;">
+			            <span style="vertical-align: inherit;">状态</span></span>
+			    </label>
+			    <label class="radio-inline">
+			        <input type="radio" name="status" id="optionsRadiosInline1" value="0" @if($admin->status == 0) checked @endif>
+			        <span style="vertical-align: inherit;">
+			            <span style="vertical-align: inherit;">正常</span></span>
+			    </label>
+			    <label class="radio-inline">
+			        <input type="radio" name="status" id="optionsRadiosInline2" value="1" @if($admin->status == 1) checked @endif>
+			        <span style="vertical-align: inherit;">
+			            <span style="vertical-align: inherit;">禁用</span></span>
+			    </label>
+			</div>
+	        <br>
 	         <div class="input-group col-xs-4">	
-	            	<input type="submit" class="btn btn-info form-control" value="添加">
+	            	<input type="submit" class="btn btn-info form-control" value="修改" >
 	        	</span>
 	        </div>
 	    </form>  

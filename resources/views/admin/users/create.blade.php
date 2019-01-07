@@ -4,17 +4,17 @@
 @section('main')
 <div class="panel">
     <div class="panel-heading">
-        <h3 class="panel-title text-center">添加管理员</h3>
+        <h3 class="panel-title text-center">添加用户</h3>
     </div>
     <div class="panel-body row">
-	    <form action="/admin/admins" method="post" enctype="multipart/form-data">
+	    <form action="/admin/users" method="post" enctype="multipart/form-data">
 	    	{{ csrf_field() }}
 	  	    <div class="input-group col-xs-6" >
 	            <span class="input-group-addon">账号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="admin" placeholder="账号">
+	            <input type="text" class="form-control" name="name" placeholder="账号">
 	            <span class="input-group-addon">
-	            	 @if ($errors->has('admin'))
-           				{{ $errors->first('admin') }}
+	            	 @if ($errors->has('name'))
+           				{{ $errors->first('name') }}
         			@endif
 	            </span>
 	            
@@ -53,7 +53,7 @@
 	        <br>
 	        <div class="input-group col-xs-6">
 	            <span class="input-group-addon">邮箱&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="email" placeholder="邮箱">
+	            <input type="email" class="form-control" name="email" placeholder="邮箱">
 	            <span class="input-group-addon">
 	            	 @if ($errors->has('email'))
            				{{ $errors->first('email') }}
@@ -62,21 +62,21 @@
 	        </div>
 	        <br>
 	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon">姓名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="name" placeholder="姓名">
+	            <span class="input-group-addon">昵称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	            <input type="text" class="form-control" name="nickname" placeholder="昵称">
 	            <span class="input-group-addon">
-	            	 @if ($errors->has('name'))
-           				{{ $errors->first('name') }}
+	            	 @if ($errors->has('nickname'))
+           				{{ $errors->first('nickname') }}
         			@endif
 	            </span>
 	        </div>
 	        <br>
 	        <div class="input-group col-xs-6">
-	            <span class="input-group-addon">编号&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-	            <input type="text" class="form-control" name="service" placeholder="编号">
+	            <span class="input-group-addon">生日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	            <input type="text" class="form-control" name="btd" placeholder="生日">
 	            <span class="input-group-addon">
-	            	 @if ($errors->has('service'))
-           				{{ $errors->first('service') }}
+	            	 @if ($errors->has('btd'))
+           				{{ $errors->first('btd') }}
         			@endif
 	            </span>
 	        </div>
@@ -87,7 +87,7 @@
 			            <span style="vertical-align: inherit;">性别</span></span>
 			    </label>
 			    <label class="radio-inline">
-			        <input type="radio" name="sex" id="optionsRadiosInline1" value="0" checked="">
+			        <input type="radio" name="sex" id="optionsRadiosInline1" value="0" checked>
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">男</span></span>
 			    </label>
@@ -95,6 +95,11 @@
 			        <input type="radio" name="sex" id="optionsRadiosInline2" value="1">
 			        <span style="vertical-align: inherit;">
 			            <span style="vertical-align: inherit;">女</span></span>
+			    </label>
+			    <label class="radio-inline">
+			        <input type="radio" name="sex" id="optionsRadiosInline2" value="2">
+			        <span style="vertical-align: inherit;">
+			            <span style="vertical-align: inherit;">保密</span></span>
 			    </label>
 			</div>
 	        <br>
@@ -116,28 +121,6 @@
 	            	
 	            </span>
 	        </div>
-	        <br>
-	        <div class="form-group input-group">
-			    <label>
-			        <span style="vertical-align: inherit;">
-			            <span style="vertical-align: inherit;">权限</span></span>
-			    </label>
-			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline1" value="0" checked="">
-			        <span style="vertical-align: inherit;">
-			            <span style="vertical-align: inherit;">超级管理员</span></span>
-			    </label>
-			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline2" value="1">
-			        <span style="vertical-align: inherit;">
-			            <span style="vertical-align: inherit;">普通管理员</span></span>
-			    </label>
-			    <label class="radio-inline">
-			        <input type="radio" name="auth" id="optionsRadiosInline3" value="2">
-			        <span style="vertical-align: inherit;">
-			            <span style="vertical-align: inherit;">客服</span></span>
-			    </label>
-			</div>
 	        <br>
 	         <div class="input-group col-xs-4">	
 	            	<input type="submit" class="btn btn-info form-control" value="添加">

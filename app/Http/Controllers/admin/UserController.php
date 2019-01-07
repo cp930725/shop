@@ -4,24 +4,23 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreAdminPost;
+use App\Http\Requests\StoreUserPost;
 use Illuminate\Support\Facades\Hash;
-use App\models\Admin;
-use App\models\AdminInfo;
+use App\models\User;
+use App\models\UserInfo;
 use DB;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $data = $request->input('key', '');
-        $admins = Admin::where('admin', 'like', "%{$data}%")->orWhere('phone', 'like', "%{$data}%")->paginate(10);
-        return view('admin.admins.index', ['title'=>'管理员列表', 'admins'=>$admins]);
+        $users = User::all();
+        return view('admin.users.index', ['title' => '用户列表', 'users' => $users]);
     }
 
     /**
@@ -31,7 +30,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin.admins.create');
+        return view('admin.users.create');
     }
 
     /**
@@ -40,30 +39,31 @@ class AdminController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreAdminPost $request)
+    public function store(Request $request)
     {
         DB::beginTransaction();
-        $data = $request->only(['admin', 'pwd', 'status', 'email', 'phone', 'auth']);
+        $data = $request->only(['name', 'pwd', 'email', 'phone']);
 
-        $admin = new Admin;
+        $user = new User;
         foreach ($data as $key => $value) {
-            $admin[$key] = $value;
+            $user[$key] = $value;
         }
         
-        $admin['pwd'] = Hash::make($data['pwd']);
+        $user['pwd'] = Hash::make($data['pwd']);
 
-        $res = $admin->save();
+        $res = $user->save();
 
-       if($request->hasFile('face')){
+       
+        if($request->hasFile('face')){
             $face = $request->file('face');
             $path = $face->store('images');
             $data['face'] = $path;
         }
 
-        $data = $request->only(['service', 'name', 'sex', 'city']);
-        $data['admins_id'] = $admin->id;
+        $data = $request->only(['btd', 'nickname', 'sex', 'city']);
+        $data['users_id'] = $user->id;
 
-        $info = new AdminInfo;
+        $info = new UserInfo;
         foreach ($data as $key => $value) {
             $info[$key] = $value;
         }
@@ -72,12 +72,11 @@ class AdminController extends Controller
 
         if ($res && $res2) { 
             DB::commit();
-            return redirect('/admin/admins')->with('success', '添加成功');
+            return redirect('/admin/users')->with('success', '添加成功');
         } else {
             DB::rollBack();
             return back()->with('error', '添加失败');
         }
-
     }
 
     /**
@@ -87,9 +86,9 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-        $admin = AdminInfo::where('admins_id', $id)->first();
-        return view('admin.admins.show', ['title'=>'详细信息', 'admin'=>$admin]);
+    {
+        $user = UserInfo::where('users_id', $id)->first();
+        return view('admin.users.show', ['title'=>'详细信息', 'user'=>$user]);
     }
 
     /**
@@ -100,8 +99,8 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        $admin = Admin::find($id);
-        return view('admin.admins.edit', ['admin'=>$admin]);
+        $user = User::find($id);
+        return view('admin.users.edit', ['user'=>$user]);
     }
 
     /**
@@ -111,18 +110,17 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAdminPost $request, $id)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
-        $data = $request->only(['admin', 'email', 'status', 'phone', 'auth']);
+        $data = $request->only(['name', 'email', 'phone']);
 
-        $admin = Admin::find($id);
+        $user = User::find($id);
         foreach ($data as $key => $value) {
-            $admin[$key] = $value;
+            $user[$key] = $value;
         }
-
-        $res = $admin->save();
-
+        
+        $res = $user->save();
        
         if($request->hasFile('face')){
             $face = $request->file('face');
@@ -130,9 +128,10 @@ class AdminController extends Controller
             $data['face'] = $path;
         }
 
-        $data = $request->only(['service', 'name', 'sex', 'city']);
+        $data = $request->only(['btd', 'nickname', 'sex', 'city']);
+        $data['users_id'] = $user->id;
 
-        $info = AdminInfo::where('admins_id', $id)->first();
+        $info = UserInfo::where('users_id', $id)->first();
         foreach ($data as $key => $value) {
             $info[$key] = $value;
         }
@@ -141,7 +140,7 @@ class AdminController extends Controller
 
         if ($res && $res2) { 
             DB::commit();
-            return redirect('/admin/admins')->with('success', '修改成功');
+            return redirect('/admin/users')->with('success', '修改成功');
         } else {
             DB::rollBack();
             return back()->with('error', '修改失败');
@@ -158,8 +157,8 @@ class AdminController extends Controller
     {
         DB::beginTransaction();
         
-        $res2 = AdminInfo::where('admins_id', $id)->delete();
-        $res = Admin::destroy($id);
+        $res2 = UserInfo::where('users_id', $id)->delete();
+        $res = User::destroy($id);
         
         if ($res && $res2) {
             echo 'success';
@@ -168,22 +167,5 @@ class AdminController extends Controller
             echo 'error';
             DB::rollBack();
         }
-    }
-
-    /**
-     * 个人中心
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function info($id)
-    {
-        $admin = Admin::find(1);
-        return view('admin.admins.info', ['title'=>'个人中心', 'admin'=>$admin]);
-    }
-
-    public function log()
-    {
-        return view('admin.admins.log');
     }
 }

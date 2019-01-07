@@ -14,28 +14,28 @@
 // 后台首页
 Route::get('admin/index', function () {
     return view('admin.layout.index');
-});
+})->middleware('admin');
 
 // 后台 管理员
-Route::resource('admin/admins', 'admin\AdminController');
+Route::resource('admin/admins', 'admin\AdminController')->middleware('admin');
+// 管理员操作日志
+Route::get('admin/logs', 'admin\LogController');
 
+// 管理员个人信息
+Route::get('admin/admins/info/{id}', 'admin\AdminController@info')->middleware('admin');
 
+// 后台 登录
+Route::resource('admin/login', 'admin\LoginController');
 
+// 后台退出
+Route::get('admin/logout', 'admin\LoginController@logout');
 
+// 后台 修改密码
+Route::get('admin/pwd/reset', 'admin\LoginController@getReset')->middleware('admin');
+Route::post('admin/pwd/reset', 'admin\LoginController@postReset')->middleware('admin');
 
-
-
-
-// 后台 用户
-
-
-
-
-
-
-
-
-
+// 后台 用户	
+Route::resource('admin/users', 'admin\UserController')->middleware('admin');
 // 后台 类别
  
 
@@ -190,3 +190,4 @@ Route::resource('admin/admins', 'admin\AdminController');
 Route::get('/', function () {
     return view('home.layout.index');
 });
+

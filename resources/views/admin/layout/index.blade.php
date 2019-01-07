@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	<title>Dashboard | Klorofil - Free Bootstrap Dashboard Template</title>
+	<title>myshop</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -55,7 +55,7 @@
 					</div>
 				</form>
 				<div class="navbar-btn navbar-btn-right">
-					<a class="btn btn-success update-pro" href="/admin/admin/resetpwd" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>修改密码</span></a>
+					<a class="btn btn-success update-pro" href="/admin/pwd/reset" title="Upgrade to Pro" target="_blank"><i class="fa fa-rocket"></i> <span>修改密码</span></a>
 				</div>
 				<div id="navbar-menu">
 					<ul class="nav navbar-nav navbar-right">
@@ -84,11 +84,11 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="/admin/assets/img/user.png" class="img-circle" alt="Avatar"> <span>{{ $title or 'admin' }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+							<a href="/admin/adminInfo" class="dropdown-toggle" data-toggle="dropdown"><img src="" class="img-circle" alt="Avatar"> <span></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 							<ul class="dropdown-menu">
-								<li><a href="/admin/admininfo"><i class="lnr lnr-user"></i> <span>我的简历</span></a></li>
-								<li><a href="/admin/admininfo/{{ 10 }}/edit"><i class="lnr lnr-envelope"></i> <span>修改信息</span></a></li>
-								<li><a href="/admin/log"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
+								<li><a href="/admin/admins/info/{{ 1 }}"><i class="lnr lnr-user"></i> <span>我的简历</span></a></li>
+								<li><a href="/admin/admins/{{ 1 }}/edit"><i class="lnr lnr-envelope"></i> <span>修改信息</span></a></li>
+								<li><a href="/admin/logout"><i class="lnr lnr-exit"></i> <span>退出</span></a></li>
 							</ul>
 						</li>
 						<!-- <li>
@@ -126,22 +126,9 @@
 			</div>
 		</div>
 		<!-- END LEFT SIDEBAR -->
-		<!-- MAIN START -->
-        <div id="page-wrapper"> 
-        	 <div class="row">
-        		<div class="col-lg-12" style="margin-top:60px;">
-        		
-		                    <h2 class="page-header text-center">{{ $title or '' }}</h2>
-		                
-		        </div>
-        	@section('main')
-
-			@show
-        </div>  
-	<!-- END MAIN -->
+		
 	<!-- Javascript -->
-	<script src="/admin/assets/vendor/jquery/jquery.min.js"></script>
-	<script src="/admin/assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/admin/table/vendor/jquery/jquery.min.js"></script>
 	<script src="/admin/assets/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 	<script src="/admin/assets/vendor/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
 	<script src="/admin/assets/vendor/chartist/js/chartist.min.js"></script>
@@ -278,7 +265,24 @@
 
 	});
 	</script>
-	
+	<!-- MAIN START -->
+	<div class="main">
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <div class="container-fluid">
+            <h3 class="page-title text-center">
+                <span style="vertical-align: inherit;">
+                    <span style="vertical-align: inherit;">{{ $title or '' }}</span></span>
+            </h3>
+            @section('main')
+
+            @show
+            
+
+        </div>
+    </div>
+    <!-- END MAIN CONTENT --></div>
+	<!-- END MAIN -->
 </body>
 
 </html>

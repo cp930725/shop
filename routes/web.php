@@ -82,13 +82,13 @@ Route::resource('admin/admins', 'admin\AdminController');
 
 
 
-
+ 
 
 
 
 // 后台 订单
-
-
+Route::resource('admin/orders',     'admin\OrderController');
+Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 
 
 
@@ -107,9 +107,9 @@ Route::resource('admin/admins', 'admin\AdminController');
 
 
 // 后台 售后
-
-
-
+Route::resource('admin/returns',     'admin\ReturnController');
+Route::resource('admin/checks',      'admin\CheckController');
+Route::resource('admin/barters',      'admin\BarterController');
 
 
 

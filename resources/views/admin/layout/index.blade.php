@@ -112,6 +112,7 @@
 						<li><a href="/admin/events" 	class=""><i class="lnr lnr-hourglass"></i> <span>活动管理</span></a></li>
 						<li><a href="/admin/discounts" 	class=""><i class="lnr lnr-magic-wand"></i> <span>优惠券管理</span></a></li>
 						<li><a href="/admin/orders" 	class=""><i class="lnr lnr-chart-bars"></i> <span>订单管理</span></a></li>
+
 						<li><a href="/admin/comments" 	class=""><i class="lnr lnr-bubble"></i> <span>评论管理</span></a></li>
 						<li><a href="/admin/returns" 	class=""><i class="lnr lnr-database"></i> <span>售后管理</span></a></li>
 						<li><a href="/admin/waters" 	class=""><i class="lnr lnr-layers"></i> <span>账单管理管理</span></a></li>

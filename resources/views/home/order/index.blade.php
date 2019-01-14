@@ -175,32 +175,21 @@
 			</div>
 			<!-- //end Logo -->
 
+
 			<!-- Search -->
 			<div id="sosearchpro" class="col-sm-7 search-pro">
-				<form method="GET" action="index.html">
+				<form method="GET" action="/home/orders">
 					<div id="search0" class="search input-group">
 						<div class="select_category filter_type icon-select">
-							<select class="no-border" name="category_id">
-								<option value="0">All Categories</option>
-								<option value="78">Apparel</option>
-								<option value="77">Cables &amp; Connectors</option>
-								<option value="82">Cameras &amp; Photo</option>
-								<option value="80">Flashlights &amp; Lamps</option>
-								<option value="81">Mobile Accessories</option>
-								<option value="79">Video Games</option>
-								<option value="20">Jewelry &amp; Watches</option>
-								<option value="76">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Earings</option>
-								<option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wedding Rings</option>
-								<option value="27">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Men Watches</option>
-							</select>
+							All Categories
 						</div>
 
-						<input class="autosearch-input form-control" type="text" value="" size="50" autocomplete="off" placeholder="Search" name="search">
+						<input class="autosearch-input form-control" type="text" name="name" value="{{ $name }}" size="50" autocomplete="off" placeholder="商品名称">
 						<span class="input-group-btn">
-						<button type="submit" class="button-search btn btn-primary" name="submit_search"><i class="fa fa-search"></i></button>
+						<button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
 						</span>
 					</div>
-					<input type="hidden" name="route" value="product/search" />
+
 				</form>
 			</div>
 			<!-- //end Search -->
@@ -312,8 +301,7 @@
 													<span></span>
 													<span></span>
 												</div>
-												All Categories							
-												<i class="fa pull-right arrow-circle fa-chevron-circle-up"></i>
+												我的订单							
 											</div>
 										</div>
 									</div>
@@ -323,401 +311,6 @@
 										
 									</button>
 									All Categories		
-								</div>
-								<div class="vertical-wrapper" >
-									<span id="remove-verticalmenu" class="fa fa-times"></span>
-									<div class="megamenu-pattern">
-										<div class="container">
-											<ul class="megamenu">
-												<li class="item-vertical style1 with-sub-menu hover">
-													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
-														<img src="/home/image/theme/icons/9.png" alt="icon">
-														<span>Automotive &amp; Motocrycle</span>
-														<b class="caret"></b>
-													</a>
-													<div class="sub-menu" data-subwidth="100" >
-														<div class="content" >
-															<div class="row">
-																<div class="col-sm-12">
-																	<div class="row">
-																		<div class="col-md-4 static-menu">
-																			<div class="menu">
-																				<ul>
-																					<li>
-																						<a href="#"  class="main-menu">Apparel</a>
-																						<ul>
-																							<li><a href="#" >Accessories for Tablet PC</a></li>
-																							<li><a href="#" >Accessories for i Pad</a></li>
-																							<li><a  href="#" >Accessories for iPhone</a></li>
-																							<li><a href="#" >Bags, Holiday Supplies</a></li>
-																							<li><a href="#" >Car Alarms and Security</a></li>
-																							<li><a href="#" >Car Audio &amp; Speakers</a></li>
-																						</ul>
-																					</li>
-																					<li>
-																						<a href="#"  class="main-menu">Cables &amp; Connectors</a>
-																						<ul>
-																							<li><a href="#" >Cameras &amp; Photo</a></li>
-																							<li><a href="#" >Electronics</a></li>
-																							<li><a href="#" >Outdoor &amp; Traveling</a></li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</div>
-																		</div>
-																		<div class="col-md-4 static-menu">
-																			<div class="menu">
-																				<ul>
-																					<li>
-																						<a href="#"  class="main-menu">Camping &amp; Hiking</a>
-																						<ul>
-																							<li><a href="#" >Earings</a></li>
-																							<li><a href="#" >Shaving &amp; Hair Removal</a></li>
-																							<li><a href="#" >Salon &amp; Spa Equipment</a></li>
-																						</ul>
-																					</li>
-																					<li>
-																						<a href="#" class="main-menu">Smartphone &amp; Tablets</a>
-																						<ul>
-																							<li><a href="#" >Sports &amp; Outdoors</a></li>
-																							<li><a href="#" >Bath &amp; Body</a></li>
-																							<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</div>
-																		</div>
-																		<div class="col-md-4 static-menu">
-																			<div class="menu">
-																				<ul>
-																					<li>
-																						<a href="#"  class="main-menu">Bags, Holiday Supplies</a>
-																						<ul>
-																							<li><a href="#" onclick="window.location = '18_46';">Battereries &amp; Chargers</a></li>
-																							<li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-																							<li><a href="#" onclick="window.location = '18_45';">Headphones, Headsets</a></li>
-																							<li><a href="#" onclick="window.location = '18_30';">Home Audio</a></li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</div>
-												</li>
-												<li class="item-vertical">
-													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
-														<img src="/home/image/theme/icons/10.png" alt="icon">
-														<span>Electronic</span>
-														
-													</a>
-												</li>
-												<li class="item-vertical with-sub-menu hover">
-													<p class="close-menu"></p>
-													<a href="#" class="clearfix">
-														<span class="label"></span>
-														<img src="/home/image/theme/icons/3.png" alt="icon">
-														<span>Sports &amp; Outdoors</span>
-														<b class="caret"></b>
-													</a>
-													<div class="sub-menu" data-subwidth="60" >
-														<div class="content">
-															<div class="row">
-																<div class="col-md-6">
-																	<div class="row">
-																		<div class="col-md-12 static-menu">
-																			<div class="menu">
-																				<ul>
-																					<li>
-																						<a href="#" onclick="window.location = '81';" class="main-menu">Mobile Accessories</a>
-																						<ul>
-																							<li><a href="#" onclick="window.location = '33_63';">Gadgets &amp; Auto Parts</a></li>
-																							<li><a href="#" onclick="window.location = '24_64';">Bath &amp; Body</a></li>
-																							<li><a href="#" onclick="window.location = '17';">Bags, Holiday Supplies</a></li>
-																						</ul>
-																					</li>
-																					<li>
-																						<a href="#" onclick="window.location = '18_46';" class="main-menu">Battereries &amp; Chargers</a>
-																						<ul>
-																							<li><a href="#" onclick="window.location = '25_28';">Outdoor &amp; Traveling</a></li>
-																							<li><a href="#" onclick="window.location = '80';">Flashlights &amp; Lamps</a></li>
-																							<li><a href="#" onclick="window.location = '24_66';">Fragrances</a></li>
-																						</ul>
-																					</li>
-																					<li>
-																						<a href="#" onclick="window.location = '25_31';" class="main-menu">Fishing</a>
-																						<ul>
-																							<li><a href="#" onclick="window.location = '57_73';">FPV System &amp; Parts</a></li>
-																							<li><a href="#" onclick="window.location = '18';">Electronics</a></li>
-																							<li><a href="#" onclick="window.location = '20_76';">Earings</a></li>
-																							<li><a href="#" onclick="window.location = '33_60';">More Car Accessories</a></li>
-																						</ul>
-																					</li>
-																				</ul>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-																<div class="col-md-6">
-																	<div class="row banner">
-																		<a href="#">
-																			<img src="/home/image/demo/cms/menu_bg2.jpg" alt="banner1">
-																			</a>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="item-vertical with-sub-menu hover">
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/2.png" alt="icon">
-															<span>Health &amp; Beauty</span>
-															<b class="caret"></b>
-														</a>
-														<div class="sub-menu" data-subwidth="100" >
-															<div class="content" >
-																<div class="row">
-																	<div class="col-md-12">
-																		<div class="row">
-																			<div class="col-md-4 static-menu">
-																				<div class="menu">
-																					<ul>
-																						<li>
-																							<a href="#" class="main-menu">Car Alarms and Security</a>
-																							<ul>
-																								<li><a href="#" >Car Audio &amp; Speakers</a></li>
-																								<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-																								<li><a href="#" >Gadgets &amp; Auto Parts</a></li>
-																								<li><a href="#" >Headphones, Headsets</a></li>
-																							</ul>
-																						</li>
-																						<li>
-																							<a href="" onclick="window.location = '24';" class="main-menu">Health &amp; Beauty</a>
-																							<ul>
-																								<li>
-																									<a href="#" >Home Audio</a>
-																								</li>
-																								<li>
-																									<a href="#" >Helicopters &amp; Parts</a>
-																								</li>
-																								<li>
-																									<a href="#" >Outdoor &amp; Traveling</a>
-																								</li>
-																								<li>
-																									<a href="#">Toys &amp; Hobbies</a>
-																								</li>
-																							</ul>
-																						</li>
-																					</ul>
-																				</div>
-																			</div>
-																			<div class="col-md-4 static-menu">
-																				<div class="menu">
-																					<ul>
-																						<li>
-																							<a href="#"  class="main-menu">Electronics</a>
-																							<ul>
-																								<li>
-																									<a href="#">Earings</a>
-																								</li>
-																								<li>
-																									<a href="#" >Salon &amp; Spa Equipment</a>
-																								</li>
-																								<li>
-																									<a href="#" >Shaving &amp; Hair Removal</a>
-																								</li>
-																								<li>
-																									<a href="#">Smartphone &amp; Tablets</a>
-																								</li>
-																							</ul>
-																						</li>
-																						<li>
-																							<a href="#"  class="main-menu">Sports &amp; Outdoors</a>
-																							<ul>
-																								<li>
-																									<a href="#" >Flashlights &amp; Lamps</a>
-																								</li>
-																								<li>
-																									<a href="#" >Fragrances</a>
-																								</li>
-																								<li>
-																									<a href="#" >Fishing</a>
-																								</li>
-																								<li>
-																									<a href="#" >FPV System &amp; Parts</a>
-																								</li>
-																							</ul>
-																						</li>
-																					</ul>
-																				</div>
-																			</div>
-																			<div class="col-md-4 static-menu">
-																				<div class="menu">
-																					<ul>
-																						<li>
-																							<a href="#" class="main-menu">More Car Accessories</a>
-																							<ul>
-																								<li>
-																									<a href="#" >Lighter &amp; Cigar Supplies</a>
-																								</li>
-																								<li>
-																									<a href="#" >Mp3 Players &amp; Accessories</a>
-																								</li>
-																								<li>
-																									<a href="#" >Men Watches</a>
-																								</li>
-																								<li>
-																									<a href="#" >Mobile Accessories</a>
-																								</li>
-																							</ul>
-																						</li>
-																						<li>
-																							<a href="#" class="main-menu">Gadgets &amp; Auto Parts</a>
-																							<ul>
-																								<li>
-																									<a href="#" >Gift &amp; Lifestyle Gadgets</a>
-																								</li>
-																								<li>
-																									<a href="#" >Gift for Man</a>
-																								</li>
-																								<li>
-																									<a href="#" >Gift for Woman</a>
-																								</li>
-																								<li>
-																									<a href="#" >Gift for Woman</a>
-																								</li>
-																							</ul>
-																						</li>
-																					</ul>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="item-vertical css-menu with-sub-menu hover">
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															
-															<img src="/home/image/theme/icons/2.png" alt="icon">
-															<span>Smartphone &amp; Tablets</span>
-															<b class="caret"></b>
-														</a>
-														<div class="sub-menu" data-subwidth="30" style="width: 270px; display: none; right: 0px;">
-															<div class="content" style="display: none;">
-																<div class="row">
-																	<div class="col-sm-12">
-																		<div class="row">
-																			<div class="col-sm-12 hover-menu">
-																				<div class="menu">
-																					<ul>
-																						<li>
-																							<a href="#" class="main-menu">Headphones, Headsets</a>
-																						</li>
-																						<li>
-																							<a href="#" class="main-menu">Home Audio</a>
-																						</li>
-																						<li>
-																							<a href="#" class="main-menu">Health &amp; Beauty</a>
-																						</li>
-																						<li>
-																							<a href="#" class="main-menu">Helicopters &amp; Parts</a>
-																						</li>
-																						<li>
-																							<a href="#" class="main-menu">Helicopters &amp; Parts</a>
-																						</li>
-																					</ul>
-																				</div>
-																			</div>
-																		</div>
-																	</div>
-																</div>
-															</div>
-														</div>
-													</li>
-													<li class="item-vertical">
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/11.png" alt="icon">
-															<span>Flashlights &amp; Lamps</span>
-															
-														</a>
-													</li>
-													<li class="item-vertical">
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/4.png" alt="icon">
-															<span>Camera &amp; Photo</span>
-														</a>
-													</li>
-													<li class="item-vertical">
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/5.png" alt="icon">
-															<span>Smartphone &amp; Tablets</span>
-														</a>
-													</li>
-													<li class="item-vertical" >
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/7.png" alt="icon">
-															<span>Outdoor &amp; Traveling Supplies</span>
-														</a>
-													</li>
-													<li class="item-vertical" style="display: none;">
-														<p class="close-menu"></p>
-														
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/6.png" alt="icon">
-															<span>Health &amp; Beauty</span>
-														</a>
-													</li>
-													<li class="item-vertical" >
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/8.png" alt="icon">
-															<span>Toys &amp; Hobbies </span>
-														</a>
-													</li>
-													<li class="item-vertical" >
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/12.png" alt="icon">
-															<span>Jewelry &amp; Watches</span>
-														</a>
-													</li>
-													<li class="item-vertical" >
-														<p class="close-menu"></p>
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/13.png" alt="icon">
-															<span>Bags, Holiday Supplies</span>
-														</a>
-													</li>
-													<li class="item-vertical" >
-														<p class="close-menu"></p>
-														
-														<a href="#" class="clearfix">
-															<img src="/home/image/theme/icons/13.png" alt="icon">
-															<span>More Car Accessories</span>
-														</a>
-													</li>
-													<li class="loadmore">
-														<i class="fa fa-plus-square-o"></i>
-														<span class="more-view">More Categories</span>
-													</li>
-												</ul>
-											</div>
-										</div>
-									</div>
 								</div>
 							</nav>
 					</div>
@@ -744,249 +337,25 @@
 				<div class="megamenu-pattern">
 					<div class="container">
 						<ul class="megamenu " data-transition="slide" data-animationtime="250">
-							<li class="home hover">
-								
-								<a href="index.html">Home <b class="caret"></b></a>
-								<div class="sub-menu" style="width:100%;" >
-									<div class="content" >
-										<div class="row">
-											<div class="col-md-3">
-												<a href="index.html" class="image-link"> 
-													<span class="thumbnail">
-														<img class="img-responsive img-border" src="/home/image/demo/feature/home-1.jpg" alt="">
-														<span class="btn btn-default">Read More</span>
-													</span> 
-													<h3 class="figcaption">Home page - (Default)</h3> 
-												</a> 
-												
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="image-link"> 
-													<span class="thumbnail">
-														<img class="img-responsive img-border" src="/home/image/demo/feature/home-2.jpg" alt="">
-														<span class="btn btn-default">Read More</span>
-													</span> 
-													<h3 class="figcaption">Home page - Layout 2</h3> 
-												</a> 
-												
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="image-link"> 
-													<span class="thumbnail">
-														<img class="img-responsive img-border" src="/home/image/demo/feature/home-3.jpg" alt="">
-														<span class="btn btn-default">Read More</span>
-													</span> 
-													<h3 class="figcaption">Home page - Layout 3</h3> 
-												</a> 
-												
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="image-link"> 
-													<span class="thumbnail">
-														<img class="img-responsive img-border" src="/home/image/demo/feature/home-4.jpg" alt="">
-														<span class="btn btn-default">Read More</span>
-													</span> 
-													<h3 class="figcaption">Home page - Layout 4</h3> 
-												</a> 
-												
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="with-sub-menu hover">
+							
+							<li class="">
 								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
-									<strong>Features</strong>
-									<span class="label"> Hot</span>
-									<b class="caret"></b>
-								</a>
-								<div class="sub-menu" style="width: 100%; right: auto;">
-									<div class="content" >
-										<div class="row">
-											<div class="col-md-3">
-												<div class="column">
-													<a href="#" class="title-submenu">Listing pages</a>
-													<div>
-														<ul class="row-list">
-															<li><a href="category.html">Category Page 1 </a></li>
-															<li><a href="#">Category Page 2</a></li>
-															<li><a href="#">Category Page 3</a></li>
-														</ul>
-														
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="column">
-													<a href="#" class="title-submenu">Product pages</a>
-													<div>
-														<ul class="row-list">
-															<li><a href="product.html">Image size - big</a></li>
-															<li><a href="#">Image size - medium</a></li>
-															<li><a href="#">Image size - small</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="column">
-													<a href="#" class="title-submenu">Shopping pages</a>
-													<div>
-														<ul class="row-list">
-															<li><a href="#">Shopping Cart Page</a></li>
-															<li><a href="#">Checkout Page</a></li>
-															<li><a href="#">Compare Page</a></li>
-															<li><a href="#">Wishlist Page</a></li>
-														
-														</ul>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<div class="column">
-													<a href="#" class="title-submenu">My Account pages</a>
-													<div>
-														<ul class="row-list">
-															<li><a href="login.html">Login Page</a></li>
-															<li><a href="register.html">Register Page</a></li>
-															<li><a href="#">My Account</a></li>
-															<li><a href="#">Order History</a></li>
-															<li><a href="#">Order Information</a></li>
-															<li><a href="#">Product Returns</a></li>
-															<li><a href="#">Gift Voucher</a></li>
-														</ul>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="with-sub-menu hover">
-								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
-									<strong>Pages</strong>
-									<span class="label"> Hot</span>
-									<b class="caret"></b>
-								</a>
-								<div class="sub-menu" style="width: 40%; ">
-									<div class="content" >
-										<div class="row">
-											<div class="col-md-6">
-												<ul class="row-list">
-													<li><a class="subcategory_item" href="#">FAQ</a></li>
-													<li><a class="subcategory_item" href="#">Typography</a></li>
-													<li><a class="subcategory_item" href="#">Site Map</a></li>
-													<li><a class="subcategory_item" href="#">Contact us</a></li>
-													<li><a class="subcategory_item" href="#">Banner Effect</a></li>
-												</ul>
-											</div>
-											<div class="col-md-6">
-												<ul class="row-list">
-													<li><a class="subcategory_item" href="#">About Us 1</a></li>
-													<li><a class="subcategory_item" href="#">About Us 2</a></li>
-													<li><a class="subcategory_item" href="#">About Us 3</a></li>
-													<li><a class="subcategory_item" href="#">About Us 4</a></li>
-												</ul>
-											</div>
-										</div>
-									</div>
-								</div>
-							</li>
-							<li class="with-sub-menu hover">
-								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
-									<strong>Categories</strong>
+								<a href="/home/index" class="clearfix">
+									<strong>首页</strong>
 									<span class="label"></span>
-									<b class="caret"></b>
 								</a>
-								<div class="sub-menu" style="width: 100%; display: none;">
-									<div class="content">
-										<div class="row">
-											<div class="col-sm-12">
-												<div class="row">
-													<div class="col-md-3 img img1">
-														<a href="#"><img src="/home/image/demo/cms/img1.jpg" alt="banner1"></a>
-													</div>
-													<div class="col-md-3 img img2">
-														<a href="#"><img src="/home/image/demo/cms/img2.jpg" alt="banner2"></a>
-													</div>
-													<div class="col-md-3 img img3">
-														<a href="#"><img src="/home/image/demo/cms/img3.jpg" alt="banner3"></a>
-													</div>
-													<div class="col-md-3 img img4">
-														<a href="#"><img src="/home/image/demo/cms/img4.jpg" alt="banner4"></a>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-3">
-												<a href="#" class="title-submenu">Automotive</a>
-												<div class="row">
-													<div class="col-md-12 hover-menu">
-														<div class="menu">
-															<ul>
-																<li><a href="#"  class="main-menu">Car Alarms and Security</a></li>
-																<li><a href="#"  class="main-menu">Car Audio &amp; Speakers</a></li>
-																<li><a href="#"  class="main-menu">Gadgets &amp; Auto Parts</a></li>
-																<li><a href="#"  class="main-menu">More Car Accessories</a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="title-submenu">Electronics</a>
-												<div class="row">
-													<div class="col-md-12 hover-menu">
-														<div class="menu">
-															<ul>
-																<li><a href="#"  class="main-menu">Battereries &amp; Chargers</a></li>
-																<li><a href="#"  class="main-menu">Headphones, Headsets</a></li>
-																<li><a href="#"  class="main-menu">Home Audio</a></li>
-																<li><a href="#"  class="main-menu">Mp3 Players &amp; Accessories</a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="title-submenu">Jewelry &amp; Watches</a>
-												<div class="row">
-													<div class="col-md-12 hover-menu">
-														<div class="menu">
-															<ul>
-																<li><a href="#"  class="main-menu">Earings</a></li>
-																<li><a href="#"  class="main-menu">Wedding Rings</a></li>
-																<li><a href="#"  class="main-menu">Men Watches</a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="col-md-3">
-												<a href="#" class="title-submenu">Bags, Holiday Supplies</a>
-												<div class="row">
-													<div class="col-md-12 hover-menu">
-														<div class="menu">
-															<ul>
-																<li><a href="#"  class="main-menu">Gift &amp; Lifestyle Gadgets</a></li>
-																<li><a href="#"  class="main-menu">Gift for Man</a></li>
-																<li><a href="#"  class="main-menu">Gift for Woman</a></li>
-																<li><a href="#"  class="main-menu">Lighter &amp; Cigar Supplies</a></li>
-															</ul>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
 							</li>
 							
-							<li class="with-sub-menu hover">
+							<li class="hidden-md">
+								<p class="close-menu"></p>
+								<a href="#" class="clearfix">
+									<strong>个人信息</strong>
+									
+								</a>
+							</li>
+
+
+							<li class="with-sub-menu hover hidden">
 								<p class="close-menu"></p>
 								<a href="#" class="clearfix">
 									<strong>Accessories</strong>
@@ -1111,21 +480,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="">
-								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
-									<strong>Blog</strong>
-									<span class="label"></span>
-								</a>
-							</li>
 							
-							<li class="hidden-md">
-								<p class="close-menu"></p>
-								<a href="#" class="clearfix">
-									<strong>Buy Theme!</strong>
-									
-								</a>
-							</li>
 						</ul>
 						
 					</div>
@@ -1145,9 +500,69 @@
 <!-- Navbar switcher -->
 <!-- //end Navbar switcher -->
 	</header>
-	@section('main')
-	@show
-			
+
+
+     <!-- shop area end-->
+        <div class="shopping_cart">
+            <div class="container">
+                <div class="row">
+                    <div class="all_wis_frm">
+                        <div class="col-md-12">
+                            <div class="wishlist-content wishlist-content-2">
+                            
+                                <form action="#">
+                                @foreach($data as $k => $v)
+                                    <div class="wishlist-table wishlist-table-2 table-responsive">
+                                    	<div>
+											<span>订单编号:123456789</span><span style="margin-left: 20px;">下单时间: {{ $v->created_at }} </span>
+                                    	</div>
+                                        <table class="table text-center table-striped table-bordered table-hover dataTable no-footer dtr-inline">
+                                            <thead>
+                                            
+                                                <tr>
+                                                    <th><span>商品图片</span></th>
+                                                    <th><span>商品名称</span></th>
+                                                    <th><span>商品单价</span></th>
+                                                    <th><span>商品个数</span></th>
+                                                    <th><span>商品总价</span></th>                                                  
+                                                    <th><span>操作</span></th>                                                   
+                                                </tr>
+                                            </thead>
+                                            @foreach($v->ordersInfo as $kk=>$vv)
+                                            <tbody>
+                                                <tr>
+                                                	<td >
+	                                                    <div style="height: 100px;">
+															<img src="/Update/goods/{{ $vv->pic }}" alt="商品图片" style="height: 100px;">
+														</div>
+                                                    </td>
+                                                    <td>{{ $vv->name }}</td>
+                                                    <td>￥{{ $vv->price }}</td>
+                                                    <td>{{ $vv->cnt }}</td>
+                                                    <td>￥{{ $vv->price * $vv->cnt }}</td>
+                                                    <td>
+														<a href="" style="margin-bottom: 5px;" class="btn btn-xs btn-info">确认收货</a>
+														<a href="" style="margin-bottom: 5px;" class="btn btn-xs btn-warning">申请退/换货</a>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                            @endforeach
+                                        </table> 
+                                        <div class="coupon pull-right clearfix" style="margin-right: 100px;">
+                                            <label for="coupon_code"></label>
+                                            <span style="margin-right: 20px; font-size: 20px; background-color: red; padding: 3px 5px;">小计:￥{{ $v->sum }}</span>
+                                            <a href="" style="margin-bottom: 5px;" class="btn btn-sm btn-primary">订单详情</a>				
+                                        </div>                                       
+                                    </div>
+                                @endforeach    
+                                </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 			
 		</div>
 		

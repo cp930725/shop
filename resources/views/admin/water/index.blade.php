@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="dataTables_length" id="dataTables-example_length">
-                                    <form action="/admin/returns" method="get">
+                                    <form action="/admin/waters" method="get">
                                     <label>
                                         <span style="vertical-align: inherit;">
                                             <span style="vertical-align: inherit;">订单</span></span>
@@ -47,7 +47,7 @@
                                     <span style="vertical-align: inherit;">
                                     <span style="vertical-align: inherit;">搜索</span></span>
                                     <div class="form-group input-group">
-                                        <form action="/admin/returns" method="get">
+                                        <form action="/admin/waters" method="get">
                                             <input type="search" name="keyword" class="form-control" placeholder="关键字" value="{{ $keyword }}" style="margin-left: 0px;">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default"><i class="fa fa-search"></i>
@@ -62,18 +62,17 @@
                                 <table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline text-center" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
                                     <thead>
                                         <tr role="row">
-                                        
-                                            <th class=" " tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 200px;">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 200px;">
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">订单编号</span></span>
                                             </th>
-                                            <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 150px;">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 150px;">
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">下单时间</span></span>
                                             </th>
-                                            <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 120px;">
+                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 120px;">
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">退货商品</span></span>
+                                                    <span style="vertical-align: inherit;">商品名称</span></span>
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 120px;">
                                                 <span style="vertical-align: inherit;">
@@ -85,16 +84,9 @@
                                             </th>
                                             <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 150px;">
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">退货方式</span></span>
+                                                    <span style="vertical-align: inherit;">出入账状态</span></span>
                                             </th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 150px;">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">订单状态</span></span>
-                                            </th>
-                                            <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">退货原因</span></span>
-                                            </th>
+
                                             <th style="width: 80px;">
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">操作</span></span>
@@ -104,7 +96,6 @@
                                     <tbody>
                                         @foreach($data as $k=>$v)
                                         <tr class="gradeA odd" role="row">
-                                        
                                             <td>
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">{{ $v->oid }}</span></span>
@@ -115,7 +106,7 @@
                                             </td>
                                             <td>
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">{{ $v->orderInfo->name }}</span></span>
+                                                    <span style="vertical-align: inherit;">{{ $v->name }}</span></span>
                                             </td>
                                             <td>
                                                 <span style="vertical-align: inherit;">
@@ -124,36 +115,21 @@
                                             
                                             <td class="center">
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">{{ $v->orderInfo->price * $v->cnt }}</span></span>
+                                                    <span style="vertical-align: inherit;">{{ $v->sum }}</span></span>
                                             </td>
+                                          
                                             <td class="center">
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">
-                                                        @if($v->type == 0) 仅退款
-                                                        @elseif($v->type == 1) 退货
-                                                        @elseif($v->type == 2) 换货
+                                                        @if($v->tally == 0) 入账
+                                                        @elseif($v->tally == 1) 出帐
                                                         @endif
                                                     </span>
                                                 </span>
-                                            </td>
-                                            <td class="center">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">
-                                                        @if($v->status == 0) 待审中
-                                                        @elseif($v->status == 1) 审核通过
-                                                        @elseif($v->status == 2) 审核失败
-                                                        @elseif($v->status == 3) 取消申请
-                                                        @elseif($v->status == 4) 完成
-                                                        @endif
-                                                    </span>
-                                                </span>
-                                            </td>
-                                            <td class="center">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">{{ $v->reason }}</span></span>
                                             </td>
                                             <td>
-                                                <a href="/admin/checks/{{ $v->id }}/edit" class="btn btn-warning">审核</a>
+                                                <a href="/admin/water/{{ $v->id }}" class="btn btn-info">详情</a><br>
+                                                <a href="/admin/water/{{ $v->id }}/edit" class="btn btn-warning">修改</a>
                                             </td>
 
                                         </tr>
@@ -165,7 +141,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                                     {{ $data->appends(['paginate' => $num, 'keyword'=>$keyword])->links() }}
+                                    {{ $data->appends(['paginate' => $num, 'keyword'=>$keyword])->links() }}
                                 </div>
                             </div>
                         </div>     

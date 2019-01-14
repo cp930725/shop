@@ -1,7 +1,7 @@
-<?php
+                                                                               <?php
 
 /*
-|--------------------------------------------------------------------------
+|--------------------------------------------------------------------------                                               
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -19,7 +19,7 @@ Route::get('admin/index', function () {
 // 后台 管理员
 Route::resource('admin/admins', 'admin\AdminController')->middleware('admin');
 // 管理员操作日志
-Route::get('admin/logs', 'admin\LogController');
+Route::resource('admin/logs', 'admin\LogController');
 
 // 管理员个人信息
 Route::get('admin/admins/info/{id}', 'admin\AdminController@info')->middleware('admin');
@@ -109,15 +109,15 @@ Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 // 后台 售后
 Route::resource('admin/returns',     'admin\ReturnController');
 Route::resource('admin/checks',      'admin\CheckController');
-Route::resource('admin/barters',      'admin\BarterController');
-
+Route::resource('admin/barters',     'admin\BarterController');
+Route::get('admin/zhuangtai',     'admin\OrderInfoController@zhuangtai');
 
 
 
 
 
 // 后台 账单
-
+Route::resource('admin/waters',     'admin\WaterController');
 
 
 
@@ -190,4 +190,69 @@ Route::resource('admin/barters',      'admin\BarterController');
 Route::get('/', function () {
     return view('home.layout.index');
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//前台订单
+Route::resource('home/orders',     'home\OrderController');
+Route::resource('home/orderinfo',  'home\OrderInfoController');
+Route::get('home/createaddr',     'home\OrderController@createaddr');
+
+
+
+
+
 

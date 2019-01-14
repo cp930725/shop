@@ -181,20 +181,32 @@
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">{{ $v->intro }}</font></font>
                         </td>
-                        <td class="sorting_1">
+                        <td class="sorting_1 text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->status }}</font></font>
+                                <font style="vertical-align: inherit;">
+                                    @if($v->status == 1)
+                                    <a class="btn btn-success shift" href="">已上架</a>
+                                    @else
+                                    <a class="btn btn-warning shift" href="">已下架</a>
+                                    @endif
+                                </font></font>
                         </td>
+
+                        <script type="text/javascript">
+                            
+                        </script>
+
                         <td class="center text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                 	<a class="btn btn-primary" href="/admin/goods/{{ $v->id }}/edit">修改</a>
-                                	<a class="btn btn-warning" href="/admin/goods/{{ $v->id }}">版本</a>
+                                	<a class="btn btn-info" href="/admin/goods/{{ $v->id }}">版本</a>
                                     <form action="/admin/goods/{{ $v->id }}" method="post" style="display:inline-block;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                 	   <input type="submit" class="btn btn-danger sub1" value="删除">
                                     </form>
+                                    
                                 </font></font>
                         </td>
                     </tr>

@@ -30,7 +30,7 @@ class StoreAdminPost extends FormRequest
             'phone'     => 'required|digits:11',
             'email'     => 'required|email',
             'service'   => 'required|digits:4',
-            'face'      => 'present|file',
+            'face'      => 'file',
 
         ];
     }

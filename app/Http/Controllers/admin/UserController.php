@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserPost;
+use App\Http\Requests\StoreUserUpdatePost;
 use Illuminate\Support\Facades\Hash;
 use App\models\User;
 use App\models\UserInfo;
@@ -17,10 +18,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
-        return view('admin.users.index', ['title' => '用户列表', 'users' => $users]);
+        $paginate = $request->input('paginate', 10);
+        $key = $request->input('key', '');
+        $order = $request->input('order', 'id');
+        $data = $request->input('data', 'asc');
+        
+        $users = User::where('phone', 'like', "%{$key}%")->orWhere('email', 'like', "%{$key}%")->orWhere('name', 'like', "%{$key}%")->orderBy($order, $data)->paginate($paginate);;
+        return view('admin.users.index', ['title' => '用户列表', 'key'=>$key, 'paginate'=>$paginate, 'order'=>$order, 'data'=>$data, 'users' => $users]);
     }
 
     /**
@@ -39,7 +45,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserPost $request)
     {
         DB::beginTransaction();
         $data = $request->only(['name', 'pwd', 'email', 'phone']);
@@ -110,7 +116,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreUserUpdatePost $request, $id)
     {
         DB::beginTransaction();
         $data = $request->only(['name', 'email', 'phone']);

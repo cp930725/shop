@@ -19,7 +19,7 @@ Route::get('admin/index', function () {
 // 后台 管理员
 Route::resource('admin/admins', 'admin\AdminController')->middleware('admin');
 // 管理员操作日志
-Route::get('admin/logs', 'admin\LogController');
+Route::resource('admin/logs', 'admin\LogController');
 
 // 管理员个人信息
 Route::get('admin/admins/info/{id}', 'admin\AdminController@info')->middleware('admin');
@@ -89,6 +89,7 @@ Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert'
 // 后台 订单
 Route::resource('admin/orders',     'admin\OrderController');
 Route::resource('admin/orderinfo',  'admin\OrderInfoController');
+
 
 
 
@@ -191,3 +192,24 @@ Route::get('/', function () {
     return view('home.layout.index');
 });
 
+
+
+
+
+
+ // 前台 商品
+Route::resource('home/goods', 'home\GoodsController');
+Route::get('home/goods/like/{id}', 'home\GoodsController@like');
+Route::get('home/goods/dislike/{id}', 'home\GoodsController@dislike');
+
+// 前台 商品详情
+Route::resource('home/goodsinfo', 'home\GoodsInfoController');
+Route::get('/home/getgoodsinfo', 'home\GoodsInfoController@getGoodsInfo');
+
+// 前台 关注
+Route::get('/home/usersgoods', 'home\UsersGoodsController@index');
+
+// 前台 购物车
+Route::resource('/home/carts', 'home\CartController');
+Route::get('/home/cart/insert', 'home\CartController@insert');
+Route::get('/home/delcarts', 'home\CartController@delete');

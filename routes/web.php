@@ -246,6 +246,55 @@ Route::resource('home/users', 'home\UserController');
 
 
 
+//前台订单
+Route::resource('home/orders',     'home\OrderController');
+Route::resource('home/orderinfo',  'home\OrderInfoController');
+Route::get('home/createaddr',      'home\OrderController@createaddr');
+Route::get('home/ordersdata',      'home\OrderController@ordersdata');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 前台 商品
+Route::resource('home/goods', 'home\GoodsController');
+Route::get('home/goods/like/{id}', 'home\GoodsController@like');
+Route::get('home/goods/dislike/{id}', 'home\GoodsController@dislike');
+
+// 前台 商品详情
+Route::resource('home/goodsinfo', 'home\GoodsInfoController');
+Route::get('/home/getgoodsinfo', 'home\GoodsInfoController@getGoodsInfo');
+
+// 前台 关注
+Route::get('/home/usersgoods', 'home\UsersGoodsController@index');
+
+// 前台 购物车
+Route::resource('/home/carts', 'home\CartController');
+Route::get('/home/cart/insert', 'home\CartController@insert');
+Route::get('/home/delcarts', 'home\CartController@delete');
+Route::get('/asdasd', 'home\CartController@index');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

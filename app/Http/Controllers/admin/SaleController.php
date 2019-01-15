@@ -86,7 +86,8 @@ class SaleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sale = Sale::find($id);
+        return view('admin.sales.edit', ['sale'=>$sale, 'title'=>'修改活动信息']);
     }
 
     /**
@@ -96,9 +97,22 @@ class SaleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreSalePost $request, $id)
     {
-        //
+        $sale = Sale::find($id);
+        $sale->title = $request->input('title');
+        $sale->discount = $request->input('discount');
+        $res = $sale->save();
+
+        if ($res) {
+
+            return redirect('/admin/sales')->with('success', '修改活动信息成功');
+
+        } else {
+
+            return back()->with('error', '修改失败');
+
+        }
     }
 
     /**
@@ -109,6 +123,17 @@ class SaleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sale = Sale::find($id);
+        $res = $sale->delete();
+
+        if ($res) {
+
+            return redirect('/admin/sales')->with('success', '删除成功');
+
+        } else {
+
+            return back()->with('error1', '删除失败');
+
+        }
     }
 }

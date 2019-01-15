@@ -187,9 +187,9 @@
                         <td class="center text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                	<a class="btn btn-primary" href="/admin/goods//edit">修改</a>
+                                	<a class="btn btn-primary" href="/admin/sales/{{ $v->id }}/edit">修改</a>
                                 	
-                                    <form action="/admin/goods/" method="post" style="display:inline-block;">
+                                    <form action="/admin/sales/{{ $v->id }}" method="post" style="display:inline-block;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                 	   <input type="submit" class="btn btn-danger sub1" value="删除">

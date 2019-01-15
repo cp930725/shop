@@ -21,9 +21,9 @@
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                     <a href="/admin/goods/create" class="btn btn-primary">
+                     <a href="/admin/sales/create" class="btn btn-primary">
                         <span style="vertical-align: inherit;">
-                            <span style="vertical-align: inherit;"><span class="lnr lnr-cart"></span>添加商品</span>
+                            <span style="vertical-align: inherit;"><span class="lnr lnr-cart"></span>添加活动商品</span>
                         </span>
                     </a>
                 </div>
@@ -39,19 +39,19 @@
                         <font style="vertical-align: inherit;">类别</font></font>
                     
                         <select name="paginate" aria-controls="dataTables-example" class="form-control input-sm">
-                            <option value="10" @if($num == 10) selected @endif>
+                            <option value="10" >
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">10</font></font>
                             </option>
-                            <option value="25" @if($num == 25) selected @endif>
+                            <option value="25" >
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">25</font></font>
                             </option>
-                            <option value="50" @if($num == 50) selected @endif>
+                            <option value="50" >
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">50</font></font>
                             </option>
-                            <option value="100" @if($num == 100) selected @endif>
+                            <option value="100" >
                                 <font style="vertical-align: inherit;">
                                     <font style="vertical-align: inherit;">100</font></font>
                             </option>
@@ -70,7 +70,7 @@
                                     <span style="vertical-align: inherit;">搜索&nbsp;:</span></span>
                                     <div class="form-group input-group">
                                         <form action="/admin/goods" method="get">
-                                            <input type="search" name="keyword" class="form-control" placeholder="关键字" style="margin-left: 0px" value="{{ $keyword }}">
+                                            <input type="search" name="keyword" class="form-control" placeholder="关键字" style="margin-left: 0px" value="">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default"><i class="fa fa-search"></i>
                                                 </button>
@@ -85,22 +85,26 @@
             <table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
                 <thead>
                     <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 20px;">
+                        
+                        <th class="text-center" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 200px;">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">ID</font>
-                            </font>
+                                <font style="vertical-align: inherit;">活动标题</font></font>
                         </th>
-                        <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 200px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">标题</font></font>
-                        </th>
-                        <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 100px;">
+                        <th class="text-center" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 200px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">商品名</font></font>
                         </th>
                         <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">价格</font></font>
+                                <font style="vertical-align: inherit;">原价</font></font>
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">促销价</font></font>
+                        </th>
+                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">折扣</font></font>
                         </th>
                         <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 100px;">
                             <font style="vertical-align: inherit;">
@@ -122,14 +126,8 @@
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">缩略图</font></font>
                         </th>
-                        <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 200px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">简介</font></font>
-                        </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 100px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">状态</font></font>
-                        </th>
+                       
+                        
                         <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">操作</font></font>
@@ -137,87 +135,61 @@
                     </tr>
                 </thead>
                 <tbody>
-                	@foreach($goods as $k=>$v)
+                	@foreach($sales as $k=>$v)
                     <tr class="gradeA odd" role="row">
-                        <td class="sorting_1">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->id }}</font></font>
-                        </td>
-                        <td>
+                        <td class="sorting_1 text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">{{ $v->title }}</font></font>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->name }}</font></font>
+                                <font style="vertical-align: inherit;">{{ $v->goods->name }}</font></font>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->price }}</font></font>
+                                <font style="vertical-align: inherit;">{{ $v->goods->price }}</font></font>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->brand }}</font></font>
+                                <font style="vertical-align: inherit;">{{ ($v->goods->price * $v->discount)/10 }}</font></font>
                         </td>
-                        <td>
+                        <td class="text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->addr }}</font></font>
+                                <font style="vertical-align: inherit;">{{ $v->discount }}折</font></font>
                         </td>
-                        <td class="center">
+                        <td class="text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->stock }}</font></font>
+                                <font style="vertical-align: inherit;">{{ $v->goods->brand }}</font></font>
                         </td>
-                        <td class="sorting_1">
+                        <td class="center text-center">
                             <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->sell }}</font></font>
+                                <font style="vertical-align: inherit;">{{ $v->goods->addr }}</font></font>
+                        </td>
+                        <td class="sorting_1 text-center">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;">{{ $v->goods->stock }}</font></font>
+                        </td>
+                        
+                        <td class="sorting_1 text-center">
+                            <font style="vertical-align: inherit;">
+                                <font style="vertical-align: inherit;"></font>{{ $v->goods->sell }}</font>
                         </td>
                         <td class="sorting_1 text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                	<img src="/uploads/goods/{{ $v->pic }}" width="100px" onerror="this.src='{{ $v->pic }}'">
+                                    <img src="/uploads/goods/{{ $v->goods->pic }}" width="100px" onerror="this.src='{{ $v->goods->pic }}'">
                                 </font></font>
                         </td>
-                        <td class="sorting_1">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">{{ $v->intro }}</font></font>
-                        </td>
-                        <td class="sorting_1 text-center">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">
-                                    @if($v->status == 1)
-                                    <a class="btn btn-success" href="javascript:;" gid="{{ $v->id }}" onclick="shift(this)">已上架</a>
-                                    @else
-                                    <a class="btn btn-warning" href="javascript:;" gid="{{ $v->id }}" onclick="shift(this)">已下架</a>
-                                    @endif
-                                </font></font>
-                        </td>
+                    
 
-                        <script type="text/javascript">
-                            function shift(obj) {
-                                var gid = $(obj).attr('gid');
-
-                                $.get('/home/goodsshift', {'gid':gid}, function(msg){
-                                    if(msg == 1) {
-                                        $(obj).html('已上架');
-                                        $(obj).removeClass('btn-warning');
-                                        $(obj).addClass('btn-success');
-                                    } else if(msg == 2) {
-                                        $(obj).html('已下架');
-                                        $(obj).addClass('btn-warning');
-                                        $(obj).removeClass('btn-success');
-                                    } else {
-                                        return;
-                                    }
-                                }, 'html');
-                            }
-                        </script>
+                        
 
                         <td class="center text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                	<a class="btn btn-primary" href="/admin/goods/{{ $v->id }}/edit">修改</a>
-                                	<a class="btn btn-info" href="/admin/goods/{{ $v->id }}">版本</a>
-                                    <form action="/admin/goods/{{ $v->id }}" method="post" style="display:inline-block;">
+                                	<a class="btn btn-primary" href="/admin/goods//edit">修改</a>
+                                	
+                                    <form action="/admin/goods/" method="post" style="display:inline-block;">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                 	   <input type="submit" class="btn btn-danger sub1" value="删除">
@@ -226,7 +198,7 @@
                                 </font></font>
                         </td>
                     </tr>
-                   @endforeach
+                    @endforeach
                     
                 </tbody>
             </table>
@@ -235,7 +207,7 @@
     <div class="row">
         <div class="col-sm-6 pull-right">
             <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-              {{ $goods->appends(['paginate' => $num, 'keyword'=>$keyword])->links() }}
+             
                 
             </div>
         </div>

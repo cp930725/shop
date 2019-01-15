@@ -69,7 +69,7 @@ class GoodsController extends Controller
 
         
             
-        $goods = Goods::whereIn('cates_id', $arr)->paginate(9);
+        $goods = Goods::where('status', 1)->whereIn('cates_id', $arr)->paginate(9);
         
         return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
         

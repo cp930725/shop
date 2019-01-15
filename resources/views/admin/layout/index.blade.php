@@ -109,7 +109,7 @@
 						<li><a href="/admin/cates" 		class=""><i class="lnr lnr-text-align-left"></i> <span>类别管理</span></a></li>
 						<li><a href="/admin/goods" 		class=""><i class="lnr lnr-cart"></i> <span>商品管理</span></a></li>
 						<li><a href="/admin/concerns" 	class=""><i class="lnr lnr-heart"></i> <span>关注管理</span></a></li>
-						<li><a href="/admin/events" 	class=""><i class="lnr lnr-hourglass"></i> <span>活动管理</span></a></li>
+						<li><a href="/admin/sales" 	class=""><i class="lnr lnr-hourglass"></i> <span>活动管理</span></a></li>
 						<li><a href="/admin/discounts" 	class=""><i class="lnr lnr-magic-wand"></i> <span>优惠券管理</span></a></li>
 						<li><a href="/admin/orders" 	class=""><i class="lnr lnr-chart-bars"></i> <span>订单管理</span></a></li>
 

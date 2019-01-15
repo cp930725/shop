@@ -48,12 +48,12 @@ Route::post('/admin/cates/insert', 'admin\CateController@insert');
 
 // 后台 商品
 Route::resource('admin/goods', 'admin\GoodsController');
+Route::get('/home/goodsshift', 'admin\GoodsController@shift');
 Route::resource('admin/goodsinfo', 'admin\GoodsInfoController');
 Route::resource('admin/goodsimage', 'admin\GoodsImageController');
 Route::get('/admin/goodsinfo/create/{id}', 'admin\GoodsInfoController@create');
 Route::get('/admin/goodsimage/delete/{id}', 'admin\GoodsImageController@destroy');
 Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert');
-
 
 
 // 后台 关注
@@ -67,7 +67,7 @@ Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert'
 
 
 // 后台 活动
-
+Route::resource('/admin/sales', 'admin\SaleController');
 
 
 
@@ -227,7 +227,14 @@ Route::resource('home/users', 'home\UserController');
 
 
 
+
 //前台订单
 Route::resource('home/orders',     'home\OrderController');
 Route::resource('home/orderinfo',  'home\OrderInfoController');
 Route::get('home/createaddr',     'home\OrderController@createaddr');
+
+// 前台 购物车
+Route::resource('/home/carts', 'home\CartController');
+Route::get('/home/cart/insert', 'home\CartController@insert');
+Route::get('/home/delcarts', 'home\CartController@delete');
+

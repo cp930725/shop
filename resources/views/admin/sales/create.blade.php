@@ -126,10 +126,7 @@
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">简介</font></font>
                         </th>
-                        <th class="sorting" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 100px;">
-                            <font style="vertical-align: inherit;">
-                                <font style="vertical-align: inherit;">状态</font></font>
-                        </th>
+                        
                         <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">操作</font></font>
@@ -181,52 +178,14 @@
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">{{ $v->intro }}</font></font>
                         </td>
-                        <td class="sorting_1">
-                            <font style="vertical-align: inherit;">
+                        
 
-                                <font style="vertical-align: inherit;">{{ $v->status }}</font></font>
-                        </td>
-
-                                <font style="vertical-align: inherit;">
-                                    @if($v->status == 1)
-                                    <a class="btn btn-success" href="javascript:;" gid="{{ $v->id }}" onclick="shift(this)">已上架</a>
-                                    @else
-                                    <a class="btn btn-warning" href="javascript:;" gid="{{ $v->id }}" onclick="shift(this)">已下架</a>
-                                    @endif
-                                </font></font>
-                        </td>
-
-                        <script type="text/javascript">
-                            function shift(obj) {
-                                var gid = $(obj).attr('gid');
-
-                                $.get('/home/goodsshift', {'gid':gid}, function(msg){
-                                    if(msg == 1) {
-                                        $(obj).html('已上架');
-                                        $(obj).removeClass('btn-warning');
-                                        $(obj).addClass('btn-success');
-                                    } else if(msg == 2) {
-                                        $(obj).html('已下架');
-                                        $(obj).addClass('btn-warning');
-                                        $(obj).removeClass('btn-success');
-                                    } else {
-                                        return;
-                                    }
-                                }, 'html');
-                            }
-                        </script>
-
->>>>>>> origin/mabuyang
                         <td class="center text-center">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
-                                	<a class="btn btn-primary" href="/admin/goods/{{ $v->id }}/edit">修改</a>
-                                	<a class="btn btn-warning" href="/admin/goods/{{ $v->id }}">版本</a>
-                                    <form action="/admin/goods/{{ $v->id }}" method="post" style="display:inline-block;">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                	   <input type="submit" class="btn btn-danger sub1" value="删除">
-                                    </form>
+                                	<a class="btn btn-primary" href="/admin/sales/{{ $v->id }}">添加</a>
+                                	
+                                    
                                 </font></font>
                         </td>
                     </tr>

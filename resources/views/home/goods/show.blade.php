@@ -13,13 +13,13 @@
 			<!--Left Part Start -->
 			<aside class="col-sm-4 col-md-3" id="column-left">
 				
-				<div class="module latest-product titleLine">
-   <h3 class="modtitle">Latest Product</h3>
+				<div class="module latest-product titleLine" style="margin-top: 500px">
+   <h3 class="modtitle">最新产品</h3>
    <div class="modcontent ">
 		<div class="product-latest-item">
 			<div class="media">
 			   <div class="media-left">
-				  <a href="#"><img src="image/demo/shop/product/m1.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
+				  <a href="#"><img src="/home/image/demo/shop/product/m1.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
 			   </div>
 			   <div class="media-body">
 				  <div class="caption">
@@ -45,7 +45,7 @@
 		<div class="product-latest-item">
 			<div class="media">
 			   <div class="media-left">
-				  <a href="#"><img src="image/demo/shop/product/m2.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
+				  <a href="#"><img src="/home/image/demo/shop/product/m2.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
 			   </div>
 			   <div class="media-body">
 				  <div class="caption">
@@ -71,7 +71,7 @@
 		<div class="product-latest-item">
 			<div class="media">
 			   <div class="media-left">
-				  <a href="#"><img src="image/demo/shop/product/18.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
+				  <a href="#"><img src="/home/image/demo/shop/product/18.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height: 82px;"></a>
 			   </div>
 			   <div class="media-body">
 				  <div class="caption">
@@ -97,7 +97,7 @@
 		<div class="product-latest-item transition">
 			<div class="media">
 			   <div class="media-left">
-				  <a href="#"><img src="image/demo/shop/product/9.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height:82px;"></a>
+				  <a href="#"><img src="/home/image/demo/shop/product/9.jpg" alt="Cisi Chicken" title="Cisi Chicken" class="img-responsive" style="width: 100px; height:82px;"></a>
 			   </div>
 			   <div class="media-body">
 				  <div class="caption">
@@ -128,7 +128,7 @@
 					<div class="modcontent clearfix">
 						<div class="banners">
 							<div>
-								<a href="#"><img src="image/demo/cms/left-image-static.png" alt="left-image"></a>
+								<a href="#"><img src="/home/image/demo/cms/left-image-static.png" alt="left-image"></a>
 							</div>
 						</div>
 						
@@ -145,7 +145,7 @@
 							<div class="col-sm-12">
 								<div class="banners">
 									<div>
-										<a  href="#"><img src="image/demo/shop/category/electronic-cat.png" alt="Apple Cinema 30&quot;"><br></a>
+										
 									</div>
 								</div>
 							

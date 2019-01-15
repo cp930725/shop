@@ -182,7 +182,7 @@
 					<div id="search0" class="search input-group">
 						<div class="select_category filter_type icon-select">
 							<select class="no-border" name="category_id">
-								<option value="0">All Categories</option>
+								<option value="0">所有类别</option>
 								<option value="78">Apparel</option>
 								<option value="77">Cables &amp; Connectors</option>
 								<option value="82">Cameras &amp; Photo</option>
@@ -210,11 +210,11 @@
 			<div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
 				<!--cart-->
 				<div id="cart" class=" btn-group btn-shopping-cart">
-					<a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
+					<a class="top_cart dropdown-toggle" href="/home/carts">
 						<div class="shopcart">
 							<span class="handle pull-left"></span>
-							<span class="title">My cart</span>
-							<p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
+							<span class="title" style="line-height: 40px">我的购物车</span>
+							
 						</div>
 					</a>
 

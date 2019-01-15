@@ -192,4 +192,29 @@ class GoodsController extends Controller
         return back()->with('error1', '删除失败!');
        }
     }
+
+    public function shift(Request $request)
+    {
+        $goods = Goods::find($request->input('gid'));
+
+        if($goods->status == 1) {
+            $goods->status = 2;
+            $res = $goods->save();
+            if($res) {
+                echo 2; exit;
+            } else {
+                echo 'error'; exit;
+            }
+        }
+
+        if($goods->status == 2) {
+            $goods->status = 1;
+            $res = $goods->save();
+            if($res) {
+                echo 1; exit;
+            } else {
+                echo 'error'; exit;
+            }
+        }
+    }
 }

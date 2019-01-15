@@ -793,7 +793,6 @@
 <!-- //end Navbar switcher -->
 	</header>
 	@section('main')
-<<<<<<< HEAD
 
 <script type="text/javascript" src="/home/js/themejs/toppanel.js"></script>
 	<!-- Block Spotlight1  -->
@@ -2103,9 +2102,7 @@
 	</div>
 	<!-- //Main Container -->
 
-=======
 <script type="text/javascript" src="/home/js/themejs/toppanel.js"></script>
->>>>>>> origin/lsq
 	@show
 			
 			

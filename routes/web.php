@@ -186,6 +186,194 @@ Route::resource('admin/barters',      'admin\BarterController');
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 前台 首页
 Route::get('/', function () {
     return view('home.layout.index');
@@ -228,10 +416,7 @@ Route::resource('home/users', 'home\UserController');
 
 
 
-//前台订单
-Route::resource('home/orders',     'home\OrderController');
-Route::resource('home/orderinfo',  'home\OrderInfoController');
-Route::get('home/createaddr',     'home\OrderController@createaddr');
+
 
 // 前台 购物车
 Route::resource('/home/carts', 'home\CartController');
@@ -278,5 +463,4 @@ Route::get('home/ordersdata',      'home\OrderController@ordersdata');
 
 
 
->>>>>>> origin/lsq
 

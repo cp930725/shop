@@ -49,7 +49,10 @@ class OrderInfoController extends Controller
     public function show($id)
     {
         $data = OrderInfo::where('orders_id',$id)->get();
+
         $sum = Order::where('id',$id)->first();
+        
+
         return view('admin.orderinfo.index',['title'=>'订单详情表','data'=>$data,'sum'=>$sum]);
     }
 
@@ -86,4 +89,23 @@ class OrderInfoController extends Controller
     {
         //
     }
+    
+     public function zhuangtai(Request $request)
+    {
+        $id = $request->input('id');
+        $data = OrderInfo::where('id', $id)->first();
+        if ($data->status == '0') {
+            $data->status = '1';
+            $res = $data->save();
+            if ($res) {
+                echo 'success'; 
+                exit;
+            } else {
+                echo 'error';
+                exit;
+            } 
+        }
+        
+    }
+    
 }

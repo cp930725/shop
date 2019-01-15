@@ -84,7 +84,11 @@
 							</ul>
 						</li>
 						<li class="dropdown">
-							<a href="/admin/adminInfo" class="dropdown-toggle" data-toggle="dropdown"><img src="/uploads/{{ session('adminInfo')->face }}" class="img-circle" alt="Avatar"> <span>{{ session('adminInfo')->nickname or session('adminInfo')->name }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+<<<<<<< HEAD
+							<a href="/admin/adminInfo" class="dropdown-toggle" data-toggle="dropdown"> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+=======
+							<a href="/admin/adminInfo" class="dropdown-toggle" data-toggle="dropdown"><img src="" class="img-circle" alt="Avatar"> <span></span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
+>>>>>>> 8f41364496ad3d65c4a6e7536c5881dfa35c81b4
 							<ul class="dropdown-menu">
 								<li><a href="/admin/admins/info/{{ 1 }}"><i class="lnr lnr-user"></i> <span>我的简历</span></a></li>
 								<li><a href="/admin/admins/{{ 1 }}/edit"><i class="lnr lnr-envelope"></i> <span>修改信息</span></a></li>

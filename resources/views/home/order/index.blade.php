@@ -180,14 +180,7 @@
 			<div id="sosearchpro" class="col-sm-7 search-pro">
 				<form method="GET" action="/home/orders">
 					<div id="search0" class="search input-group">
-						<div class="select_category filter_type icon-select">
-							All Categories
-						</div>
-
-						<input class="autosearch-input form-control" type="text" name="name" value="{{ $name }}" size="50" autocomplete="off" placeholder="商品名称">
-						<span class="input-group-btn">
-						<button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
-						</span>
+						
 					</div>
 
 				</form>
@@ -533,7 +526,7 @@
                                                 <tr>
                                                 	<td >
 	                                                    <div style="height: 100px;">
-															<img src="/Update/goods/{{ $vv->pic }}" alt="商品图片" style="height: 100px;">
+															<img src="/uploads/goods/{{ $vv->pic }}" alt="商品图片" style="height: 100px;">
 														</div>
                                                     </td>
                                                     <td>{{ $vv->name }}</td>
@@ -550,7 +543,7 @@
                                         </table> 
                                         <div class="coupon pull-right clearfix" style="margin-right: 100px;">
                                             <label for="coupon_code"></label>
-                                            <span style="margin-right: 20px; font-size: 20px; background-color: red; padding: 3px 5px;">小计:￥{{ $v->sum }}</span>
+                                            <span style="margin-right: 20px; font-size: 16px; padding: 3px 5px; color: orange;">小计:￥{{ $v->sum }}</span>
                                             <a href="" style="margin-bottom: 5px;" class="btn btn-sm btn-primary">订单详情</a>				
                                         </div>                                       
                                     </div>

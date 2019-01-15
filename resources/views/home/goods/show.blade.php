@@ -314,7 +314,7 @@
 										
 										var gid = $(this).attr('value');
 										$.get('/home/goods/like/'+gid, {}, function(msg){
-
+											msg = msg.trim();
 											if(msg == 'success') {
 												that.next().css('display', '');
 												that.css('display', 'none');
@@ -333,7 +333,7 @@
 										
 										var gid = $(this).attr('value');
 										$.get('/home/goods/dislike/'+gid, {}, function(msg){
-
+											msg = msg.trim();
 											if(msg == 'success') {
 												that.prev().css('display', '');
 												that.css('display', 'none');

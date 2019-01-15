@@ -125,7 +125,7 @@
                                                 <span class="input-group-addon glyphicon glyphicon-user"></span>
                                                 <input type="text" name="name" value="{{ session('userName') }}" class="form-control" placeholder="账号/手机号/邮箱">
                                             </div>
-                                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="name" data-bv-result="NOT_VALIDATED" style="display: none;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">用户名不能为空</span></span></small>
+                                            <small class="help-block" data-bv-validator="notEmpty" data-bv-for="name" data-bv-result="NOT_VALIDATED" style="display: none;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名不能为空</font></font></small>
                                         </div>
                                         <div style="margin-bottom: 35px;"></div>
                                         <div id="pwd" class="form-group">
@@ -142,7 +142,7 @@
                                                 <small class="help-block" data-bv-validator="notEmpty" data-bv-for="captcha" data-bv-result="NOT_VALIDATED" style="display: none;"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">验证码不能为空</font></font></small>
                                             </div>
                                             <div class="col-md-4 has-success">
-                                                <img id="code" src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
+                                                <img src="{{captcha_src()}}" style="cursor: pointer" onclick="this.src='{{captcha_src()}}'+Math.random()">
                                             </div>
                                         </div>
                                         <div class="form-box checkbox">
@@ -162,9 +162,7 @@
                                     <script type="text/javascript">
                                         $('#form-login input[type="submit"]').click(function(){
                                             $(this).val('登录中...');
-                                            var src = $('#code').attr('src')+Math.random();
-                                            $('#code').attr('src', src);
-                                            
+
                                             var name = $('input[name="name"]').val();
                                             var pwd = $('input[name="pwd"]').val();
                                             var captcha = $('input[name="captcha"]').val();
@@ -176,17 +174,18 @@
                                                 data:{'name':name, 'pwd':pwd, 'captcha':captcha, '_token':_token},
                                                 dataType:'html',
                                                 success:function(data){
-                                                    if (data == 'success') {
-                                                        location.href = '/';
-                                                    } else {
+                                                    alert(data);
+                                                    if (data == 'error') {
                                                         $('#name').removeClass('has-success');
                                                         $('#name').addClass('has-error');
                                                         $('#name small').css('display', 'block');
                                                         $('#name small').text('账号密码错误');
-                                                        $('#form-login input[type="submit"]').val('登录');
+                                                    } else {
+                                                        location.href = '/';
                                                     }
                                                 },
                                                 error:function(msg){
+                                                    $('#form-login input[type="submit"]').val('登录');
                                                     var json=JSON.parse(msg.responseText);
                                                     console.log(json);
                                                     if (json.errors.captcha) {

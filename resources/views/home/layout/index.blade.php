@@ -302,7 +302,7 @@
 					<div class="so-vertical-menu no-gutter compact-hidden">
 						<nav class="navbar-default">	
 							
-							<div class="container-megamenu vertical">
+							<div class="container-megamenu vertical open">
 								<div id="menuHeading">
 									<div class="megamenuToogle-wrapper">
 										<div class="megamenuToogle-pattern">

@@ -213,4 +213,4 @@ Route::get('/home/usersgoods', 'home\UsersGoodsController@index');
 Route::resource('/home/carts', 'home\CartController');
 Route::get('/home/cart/insert', 'home\CartController@insert');
 Route::get('/home/delcarts', 'home\CartController@delete');
-
+Route::get('/asdasd', 'home\CartController@index');

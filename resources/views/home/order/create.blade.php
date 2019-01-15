@@ -556,7 +556,7 @@
 											<tr>
 												<td>
 												
-													<img src="jjask.jpg" alt="sdsd">
+													<img src="/uploads/goods/{{ $v->goods->pic }}" alt="sdsd" style="height: : 200px;">
 													
 													<span>
 														{{ $v->goods->name }}

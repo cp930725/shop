@@ -212,7 +212,7 @@
                                         
                                     </form><!-- /#form-login -->
                                     <script type="text/javascript">
-                                        $('input[type="submit"]').click(function(){
+                                        function register() {
                                             var name = $('input[name="name"]').val();
                                             var pwd = $('input[name="pwd"]').val();
                                             var pwd_confirmation = $('input[name="pwd_confirmation"]').val();
@@ -231,8 +231,19 @@
                                                     $('#error').css('display', 'block');
                                                 }
                                             }, 'html');
+                                        }
+                                        $('input[type="submit"]').click(function(){
+                                            register();
 
-                                        })
+                                        });
+                                        $(document).keypress(function(e) {  
+
+                                            if((e.keyCode || e.which)==13) {  
+                                                register();
+                                                return false;
+                                            }  
+
+                                        });
                                     </script>
                                     <script type="text/javascript">
                                         // 验证用户名是否存在

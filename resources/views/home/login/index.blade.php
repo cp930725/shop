@@ -150,7 +150,7 @@
                                             <label for="remember">记住账号</label>
                                         </div><!-- /.form-box -->
                                         <div class="form-box pull-left">
-                                            <input type="submit"  value="登录" onclick="return false" class="submit">
+                                            <input type="submit" onclick="return false;"  value="登录" class="submit">
 
                                         </div><!-- /.form-box -->
                                         <div class="form-box pull-right">
@@ -160,7 +160,7 @@
                                     </form><!-- /#form-login -->
 
                                     <script type="text/javascript">
-                                        $('#form-login input[type="submit"]').click(function(){
+                                        function login(){
                                             $(this).val('登录中...');
                                             var src = $('#code').attr('src')+Math.random();
                                             $('#code').attr('src', src);
@@ -211,6 +211,20 @@
                                                     }
                                                 }
                                             });
+                                        }
+                                        $(document).keypress(function(e) {  
+
+                                            if((e.keyCode || e.which)==13) {  
+                                                login();
+                                                return false;
+                                            }  
+
+                                        }); 
+
+                                        $('#form-login input[type="submit"]').click(function(){
+                                            login();
+                                        });
+ 
                                             $('#captcha input').focus(function(){
                                                 $('#captcha small').css('display', 'none');
                                                 $('#captcha small').text('验证码不能为空');
@@ -220,7 +234,7 @@
                                                 $('#name small').css('display', 'none');
                                                 $('#name small').text('用户名不能为空');
                                             });
-                                        })
+                                        
                                     </script>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="profile">
@@ -255,7 +269,7 @@
                                         </div>
                                     </form><!-- /#form-login -->
                                     <script type="text/javascript">
-                                        $('#form-register input[type="submit"]').click(function(){
+                                        function phone() {
                                             $(this).val('登录中...');
                                             var phone = $('input[name="phone"]').val();
                                             var tel_code = $('input[name="tel_code"]').val();
@@ -270,7 +284,18 @@
                                                     $('#phone-error').css('display', 'block');
                                                 }
                                             }, 'html');
+                                        }
+                                        $('#form-register input[type="submit"]').click(function(){
+                                            phone();
                                         });
+                                        $(document).keypress(function(e) {  
+
+                                            if((e.keyCode || e.which)==13) {  
+                                                phone();
+                                                return false;
+                                            }  
+
+                                        });
 
                                         $('input[name="phone"]').keyup(function (){
 

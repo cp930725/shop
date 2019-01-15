@@ -224,3 +224,10 @@ Route::post('pwd/reset', 'home\PwdController@postReset');
 
 // 前台 用户
 Route::resource('home/users', 'home\UserController');
+
+
+
+//前台订单
+Route::resource('home/orders',     'home\OrderController');
+Route::resource('home/orderinfo',  'home\OrderInfoController');
+Route::get('home/createaddr',     'home\OrderController@createaddr');

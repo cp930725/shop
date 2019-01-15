@@ -103,13 +103,14 @@
 	<div class="item-list" style="border-top: 1px solid #f3f3f3">
 				<!--单品-->
 			<!-- 单品-->
+
 		@foreach( $carts as $k=>$v )	
 		<div class="item-single  item-item item-selected  " id="product_1832199" style="background: #f3f3f3;">
 		<div class="item-form">
 			<div class="cell p-checkbox">
 				<div class="cart-checkbox">
 					<!--单品-->
-						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
+						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" goods_info_id="{{ $v->goods_info_id }}" number="{{ $v->number }}" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
 										<label for="" class="checked">勾选商品</label>
 					<span class="line-circle"></span>
 				</div>
@@ -202,11 +203,13 @@
 					<div class="normal">
 						<div class="comm-right">
 							<div class="btn-area">
-								<a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn" data-bind="1" style="background: #F4A137">
+								<a href="javascript:void(0);"  clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn qujiesuan" data-bind="1" style="background: #F4A137">
 								去结算<b></b></a>
+
 								<!-- <a href="javascript:void(0);" class="submit-btn submit-btn-disabled">
 								去结算<b></b></a> -->
 							</div>
+
 							<div class="price-sum">
 								<div>
 									<span class="txt txt-new">总价：</span>
@@ -264,6 +267,22 @@
 </div>
 
 <script type="text/javascript">
+	$('.qujiesuan').click(function(){
+		var id = [];
+		var num = [];
+		$.each($('.goodsone:checked'),function(k, v){
+			id.push($(this).attr('goods_info_id'));
+			num.push($(this).attr('number'));
+		});
+		$.get('/home/orders/ordersdata',{'goods_info_id':id, 'cnt':num},function(msg){
+			msg = msg.trim();
+			if (msg == 'success') {
+				location.href = '/home/orders/create';
+			} else {
+				alert('订单提交失败');
+			}
+		},'html');	
+	});
  	
  	function add(obj) {
 

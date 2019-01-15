@@ -25,7 +25,7 @@ class OrderController extends Controller
         $keyword = $req->input('keyword', '');
 
         $order = Order::where('oid', 'like', '%'.$keyword.'%')->orderBy('oid','desc')->paginate($num);
-
+        
         return view('admin.orders.index', ['order'=>$order, 'title'=>'订单列表', 'num'=>$num, 'keyword'=>$keyword]);
     }
 
@@ -70,6 +70,7 @@ class OrderController extends Controller
     public function edit($id)
     {
         $data = Order::where('id', $id)->first();
+
         return view('admin.orders.edit',['title'=>'修改订单','data'=>$data]);
     }
 

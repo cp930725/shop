@@ -139,7 +139,7 @@
                                                         <span style="vertical-align: inherit;">
                                                             @if($v->status==0) 待付款
                                                             @elseif($v->status==1) 待发货
-                                                            @elseif($v->status==1) 订单完成
+                                                            @elseif($v->status==2) 订单完成
                                                             @endif
                                                         </span>
                                                     </span>

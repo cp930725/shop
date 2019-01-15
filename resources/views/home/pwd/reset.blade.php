@@ -123,13 +123,12 @@
                               <!-- Tab panes -->
                               <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="home">
-                                    <form action="/pwd/reset" method="post" id="form-register" accept-charset="utf-8">
+                                    <form action="/register" method="post" id="form-register" accept-charset="utf-8">
                                         {{ csrf_field() }}
                                         <div id="name" class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon glyphicon glyphicon-user"></span>
                                                 <input type="text" name="oldPwd" class="form-control" placeholder="旧密码">
-                                            </div>
                                                 <small class="help-block" id="error"  style="display: none;"><span style="vertical-align: inherit;"><span style="vertical-align: inherit;">修改失败</span></span></small>
                                             </div>
                                         <div style="margin-bottom: 35px;"></div>

@@ -238,3 +238,45 @@ Route::resource('/home/carts', 'home\CartController');
 Route::get('/home/cart/insert', 'home\CartController@insert');
 Route::get('/home/delcarts', 'home\CartController@delete');
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//前台订单
+Route::resource('home/orders',     'home\OrderController');
+Route::resource('home/orderinfo',  'home\OrderInfoController');
+Route::get('home/createaddr',      'home\OrderController@createaddr');
+Route::get('home/ordersdata',      'home\OrderController@ordersdata');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> origin/lsq
+

@@ -100,9 +100,7 @@ class GoodsImageController extends Controller
     }
 
     public function insert(Request $request, $id)
-    {   
-
-        
+    {
         if($request->hasFile('imgs1')) {
 
             $profile = $request->file('imgs1');
@@ -114,11 +112,9 @@ class GoodsImageController extends Controller
                $data2['goods_info_id'] = $id;
                $msg = DB::table('goods_image')->insert($data2);
                if(!$msg) {
-                return back()->with('error', '选项卡图添加失败!');
+                return back()->with('error', '选项卡图添加失败');
                }
            }
-
-           return back()->with('success', '添加成功!');
             
         }  
 
@@ -133,15 +129,11 @@ class GoodsImageController extends Controller
                $data2['goods_info_id'] = $id;
                $msg = DB::table('goods_image')->insert($data2);
                if(!$msg) {
-                return back()->with('error', '配图添加失败!');
+                return back()->with('error', '配图添加失败');
                }
            }
-
-           return back()->with('success', '添加成功!');
             
         } 
-
-        return back()->with('error', '请选择至少一张图片!');
-        
+        return back()->with('success', '添加成功');
     }
 }

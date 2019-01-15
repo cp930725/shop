@@ -77,7 +77,7 @@
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">小计</span></span>
                                             </th>
-                                            <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 160px;">
+                                            <th class="" tabindex="0" aria-controls="dataTables-example" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending" style="width: 80px;">
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">操作</span></span>
                                             </th>
@@ -106,9 +106,9 @@
                                             <td>
                                                 <span style="vertical-align: inherit;">
                                                     <span style="vertical-align: inherit;">
-                                                        @if($v->type==0) 正常
-                                                        @elseif($v->type==1) 退货
-                                                        @elseif($v->type==2) 换货
+                                                        @if($v->status==0) 正常
+                                                        @elseif($v->status==1) 退货
+                                                        @elseif($v->status==1) 换货
                                                         @endif
                                                     </span>
                                                 </span>
@@ -119,28 +119,7 @@
                                             </td>
                                            <td>
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">
-                                                    <a href="/admin/orders" class="btn btn-warning">返回</a>
-                                                    <a href="javascript:;"  class="btn btn-warning" onclick="fahuo(this)" oid="{{ $v->id }}">
-                                                        @if($v->status==0)发货
-                                                        @elseif($v->status==1)已发货
-                                                        @elseif($v->status==2)完成
-                                                        @endif
-                                                    </a></span></span>
-                                                    <script>
-                                                    
-                                                        function fahuo(obj){
-                                                            var id = $(obj).attr('oid');
-
-                                                               $.get('/admin/zhuangtai',{'id':id},function(msg){
-                                                                    var data = msg.trim();
-                                                                    if (data == 'success') {
-                                                                        $(obj).text('已发货');  
-                                                                    }
-                                                                },'html'); 
-                                                           } 
-   
-                                                    </script>
+                                                    <span style="vertical-align: inherit;"><a href="/admin/orders" class="btn btn-warning">返回</a></span></span>
                                             </td>
                                         </tr>
                                         @endforeach

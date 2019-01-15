@@ -4,6 +4,7 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use App\models\User;
 
 class PwdController extends Controller
@@ -34,9 +35,9 @@ class PwdController extends Controller
         }
 
         if (empty($res)) { 
-            return 'success';
-        } else {
             return 'error';
+        } else {
+            return 'success';
         }
     }
 

@@ -1,7 +1,7 @@
-                                                                               <?php
+<?php
 
 /*
-|--------------------------------------------------------------------------                                               
+|--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
 |
@@ -96,7 +96,6 @@ Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 
 
 
-
 // 后台 评论
 
 
@@ -110,15 +109,15 @@ Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 // 后台 售后
 Route::resource('admin/returns',     'admin\ReturnController');
 Route::resource('admin/checks',      'admin\CheckController');
-Route::resource('admin/barters',     'admin\BarterController');
-Route::get('admin/zhuangtai',     'admin\OrderInfoController@zhuangtai');
+Route::resource('admin/barters',      'admin\BarterController');
+
 
 
 
 
 
 // 后台 账单
-Route::resource('admin/waters',     'admin\WaterController');
+
 
 
 
@@ -192,76 +191,6 @@ Route::get('/', function () {
     return view('home.layout.index');
 });
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//前台订单
-Route::resource('home/orders',     'home\OrderController');
-Route::resource('home/orderinfo',  'home\OrderInfoController');
-Route::get('home/createaddr',     'home\OrderController@createaddr');
-
-
-
-
-
-
-=======
-=======
->>>>>>> 8f41364496ad3d65c4a6e7536c5881dfa35c81b4
 // 前台 登录
 Route::resource('login', 'home\LoginController');
 
@@ -295,30 +224,3 @@ Route::post('pwd/reset', 'home\PwdController@postReset');
 
 // 前台 用户
 Route::resource('home/users', 'home\UserController');
-<<<<<<< HEAD
->>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
-=======
-=======
-
-
-
-
-
- // 前台 商品
-Route::resource('home/goods', 'home\GoodsController');
-Route::get('home/goods/like/{id}', 'home\GoodsController@like');
-Route::get('home/goods/dislike/{id}', 'home\GoodsController@dislike');
-
-// 前台 商品详情
-Route::resource('home/goodsinfo', 'home\GoodsInfoController');
-Route::get('/home/getgoodsinfo', 'home\GoodsInfoController@getGoodsInfo');
-
-// 前台 关注
-Route::get('/home/usersgoods', 'home\UsersGoodsController@index');
-
-// 前台 购物车
-Route::resource('/home/carts', 'home\CartController');
-Route::get('/home/cart/insert', 'home\CartController@insert');
-Route::get('/home/delcarts', 'home\CartController@delete');
->>>>>>> origin/mabuyang
->>>>>>> 8f41364496ad3d65c4a6e7536c5881dfa35c81b4

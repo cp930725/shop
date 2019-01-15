@@ -8,12 +8,12 @@
                {{ method_field('PUT') }} 
             <div class="input-group col-xs-6" >
                 <span class="input-group-addon">订单编号&nbsp;&nbsp;&nbsp;</span>
-                <input type="text" class="form-control" readonly name="oid" placeholder="订单编号" value="{{ $data->oid }}">
+                <input type="text" class="form-control" readonly name="name" placeholder="订单编号" value="{{ $data->oid }}">
             </div>
             <br>
             <div class="input-group col-xs-6" >
                 <span class="input-group-addon">下单时间&nbsp;&nbsp;&nbsp;</span>
-                <input type="text" class="form-control" readonly name="order_create" placeholder="下单时间" value="{{ $data->orderInfo->created_at }}">
+                <input type="text" class="form-control" readonly name="name" placeholder="下单时间" value="{{ $data->created_at }}">
             </div>
             <br>
             <div class="input-group col-xs-6" >
@@ -23,13 +23,13 @@
              <br>
             <div class="input-group col-xs-6" >
                 <span class="input-group-addon">商品个数&nbsp;&nbsp;&nbsp;</span>
-                <input type="text" class="form-control" readonly name="cnt" placeholder="商品个数" value="{{ $data->cnt }}">
+                <input type="text" class="form-control" readonly name="name" placeholder="商品个数" value="{{ $data->cnt }}">
             </div>
            
             <br>
             <div class="input-group col-xs-6" >
                 <span class="input-group-addon">总&nbsp;&nbsp;金&nbsp;&nbsp;额&nbsp;&nbsp;&nbsp;</span>
-                <input type="text" class="form-control" readonly name="sum" placeholder="总金额" value="{{ $data->sum }}">
+                <input type="text" class="form-control" readonly name="name" placeholder="总金额" value="{{ $data->sum }}">
             </div>
             <br>
             <div class="input-group col-xs-6">
@@ -64,9 +64,7 @@
                     <option value="5" @if($data->check==5) selected @endif>原因六</option>
                 </select>
             </div>
-                <input type="hidden" name="order_info_id" value="{{ $data->order_info_id }}">
-                <input type="hidden" name="reason" value="{{ $data->reason }}">
-                <br>
+            <br>
              <div class="input-group col-xs-4"> 
                     <input type="submit" class="btn btn-info form-control" onclick="confirm('确认核定吗,已经核定无法返回')" value="确定审核">
                 </span>

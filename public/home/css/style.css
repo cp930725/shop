@@ -276,10 +276,7 @@ button.search-submit-form {
 select,
 textarea,
 input[type="text"],
-<<<<<<< HEAD
-=======
 input[type="phone"],
->>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 input[type="password"],
 input[type="datetime"],
 input[type="datetime-local"],
@@ -302,10 +299,6 @@ input[type="email"] {
 	color:#222222;
 	border:2px solid #e5e5e5;
 	height:48px;
-<<<<<<< HEAD
-	border-radius:30px;
-=======
->>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 	background-color:transparent;
 	-webkit-transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
@@ -334,10 +327,7 @@ input[type="email"] {
 
 textarea:focus,
 input[type="text"]:focus,
-<<<<<<< HEAD
-=======
 input[type="phone"]:focus,
->>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 input[type="password"]:focus,
 input[type="datetime"]:focus,
 input[type="datetime-local"]:focus,
@@ -392,10 +382,7 @@ input::-webkit-input-placeholder {
 select,
 textarea,
 input[type="text"],
-<<<<<<< HEAD
-=======
 input[type="phone"],
->>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 input[type="submit"],
 input[type="password"],
 input[type="datetime"],

@@ -15,9 +15,4 @@ class User extends Model
     {
     	return $this->hasOne('\App\models\UserInfo', 'users_id');
     }
-
-    public function usersGoods()
-	    {
-	        return $this->belongsToMany('App\models\Goods','users_goods','users_id','goods_id');
-	    }
 }

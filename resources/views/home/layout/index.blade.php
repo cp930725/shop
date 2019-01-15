@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,32 +72,32 @@
 						</ul>
 					</form>
 				</div>
-				@if(session('HomeLogin'))
+				@if(session('userFlag'))
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/userinfo" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-							<span class="icon icon-credit "></span> {{ session('UserName') }} <span class="fa fa-angle-down"></span>
+						<a href="/home/users" class="btn btn-xs">
+							<span class="icon icon-credit "></span> <span>{{ session('user')->nickname or session('user')->name }}</span>
 						</a>
 					</form>
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/logout" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-							<span class="icon icon-credit "></span>退出
+						<a href="/logout" class="btn btn-xs">
+							<span class="icon icon-credit "></span><span>退出</span>
 						</a>
 					</form>
 				</div>
 				@else
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/register" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/login" class="btn btn-xs">
 							<span class="icon icon-credit "></span>请登录
 						</a>
 					</form>
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/register" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/register" class="btn btn-xs">
 							<span class="icon icon-credit "></span>去注册
 						</a>
 					</form>
@@ -108,7 +107,7 @@
 			<div class="header-top-right form-inline text-right collapsed-block col-sm-6 col-xs-12 compact-hidden">
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/orders" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/home/orders" class="btn btn-xs">
 							<span class=""></span> 我的订单 
 						</a>
 						
@@ -129,7 +128,7 @@
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a class="btn btn-xs">
 							<span class="icon icon-credit "></span> 商城会员
 						</a>
 					</form>
@@ -302,7 +301,7 @@
 					<div class="so-vertical-menu no-gutter compact-hidden">
 						<nav class="navbar-default">	
 							
-							<div class="container-megamenu vertical open">
+							<div class="container-megamenu vertical">
 								<div id="menuHeading">
 									<div class="megamenuToogle-wrapper">
 										<div class="megamenuToogle-pattern">

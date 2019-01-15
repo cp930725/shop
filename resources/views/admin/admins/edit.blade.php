@@ -1,7 +1,6 @@
 @extends('admin.layout.index')
 
 @section('main')
-
 <div class="panel">
     <div class="panel-heading">
         <h3 class="panel-title text-center">修改管理员</h3>

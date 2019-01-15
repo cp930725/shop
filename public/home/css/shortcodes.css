@@ -5938,7 +5938,11 @@ table.product thead tr th:last-child {
 .form-login .title,
 .form-register .title {
 	text-align:center;
+<<<<<<< HEAD
 	margin-bottom:97px;
+=======
+	margin-bottom:50px;
+>>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 }
 
 .form-register .title {
@@ -5983,7 +5987,11 @@ table.product thead tr th:last-child {
 	font-size:13px;
 }
 
+<<<<<<< HEAD
 .form-login .form-box button {
+=======
+.form-login .form-box button, {
+>>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 	background-color:#f92400;
 	color:#fff;
 	font-size:16px;
@@ -5997,11 +6005,30 @@ table.product thead tr th:last-child {
 	letter-spacing:0.5px;
 }
 
+<<<<<<< HEAD
+=======
+.form-login .form-box .submit,
+.form-register .form-box .submit {
+	background-color:#f92400;
+	color:#fff;
+	font-size:16px;
+	height:40px;
+	line-height:40px;
+	padding:0 64px;
+	border-radius:20px;
+	margin-right:30px;
+	font-weight:600;
+	margin-left:-8px;
+	letter-spacing:0.5px;
+}
+
+>>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 .form-login .form-box a {
 	color:#aaaaaa;
 }
 
 .form-register .form-box button {
+<<<<<<< HEAD
 	color:#fff;
 	font-size:16px;
 	font-weight:600;
@@ -6013,6 +6040,19 @@ table.product thead tr th:last-child {
 	letter-spacing:0.5px;
 	margin-top:18px;
 	margin-left:2px;
+=======
+	background-color:#f92400;
+	color:#fff;
+	font-size:16px;
+	height:50px;
+	line-height:50px;
+	padding:0 64px;
+	border-radius:25px;
+	margin-right:30px;
+	font-weight:600;
+	margin-left:-8px;
+	letter-spacing:0.5px;
+>>>>>>> e34fabf517847df9a4e237005253f085d16b4c96
 }
 
 /* Flat Tracking

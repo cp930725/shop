@@ -65,12 +65,57 @@ class GoodsController extends Controller
         foreach($like as $k=>$v) {
             $goodsid[] = $v->goods_id;
         }
+    public function show(Request $request, $id)
+    {   
 
-        
+        if($id == 0) {
+            $search = $request->input('search');
+            $goods = Goods::where('status', 1)->where('title', 'like', "%$search%")->paginate(9);
             
-        $goods = Goods::where('status', 1)->whereIn('cates_id', $arr)->paginate(9);
+            if(session('user')) {
+
+            $like = UsersGoods::where('users_id', session('user')->id)->get();
+            $goodsid = [];
+            foreach($like as $k=>$v) {
+                $goodsid[] = $v->goods_id;
+                }
+            } else {
+                $goodsid = [];
+            }
+
+            return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
+
+        } else {
+            $arr_id = Cate::where('path', 'like', "%,$id,%")->get(['id']);
+            $arr = [];
+            
+            foreach($arr_id as $k=>$v) {
+                $arr[] = $v->id;
+            }
+            $arr[] = (int)$id;
+            
+            
+
+
+            if(session('user')) {
+
+                $like = UsersGoods::where('users_id', session('user')->id)->get();
+                $goodsid = [];
+                foreach($like as $k=>$v) {
+                    $goodsid[] = $v->goods_id;
+                }
+            } else {
+                $goodsid = [];
+            }
+
+            
+                
+            $goods = Goods::where('status', 1)->whereIn('cates_id', $arr)->paginate(9);
+            
+            return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
+            }
         
-        return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
+        
         
     }
 
@@ -125,6 +170,10 @@ class GoodsController extends Controller
     public function dislike($id)
     {
         $usersgoods = UsersGoods::where('goods_id', $id)->where('users_id', session('user')->id)->first();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/mabuyang
         $res = $usersgoods->delete();
 
         if($res) {

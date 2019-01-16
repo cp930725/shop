@@ -91,7 +91,7 @@
 								<div class="product-label form-group">
 									<div class="product_page_price price" itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
 										<span class="price-new" itemprop="price">￥{{ $goodsinfo[0]->price }}</span>
-										<span class="price-old">￥122.00</span>
+										
 									</div>
 									<div class="stock"><span>库存:</span> <span class="stock-new" style="color:skyblue">{{ $goodsinfo[0]->stock }}</span></div>
 
@@ -143,12 +143,31 @@
 												<div class="input-group quantity-control" unselectable="on" style="-webkit-user-select: none;">
 													<label>数量</label>
 													<input class="form-control number" type="text" name="cnt"
-													value="1" user_id="{{ session('user') }}" goodsinfo_id="{{ $goodsinfo[0]->id }}">
+													value="1" user_id="
+													@if(session('user'))
+													{{session('user')->id}}
+													@else
+													@endif
+													" goodsinfo_id="{{ $goodsinfo[0]->id }}" stock="{{ $goodsinfo[0]->stock }}">
 													<input type="hidden" name="product_id" value="50">
-													<span class="input-group-addon product_quantity_down" style="background-color: #aaa">−</span>
-													<span class="input-group-addon product_quantity_up" style="background-color: #aaa">+</span>
+													<span class="input-group-addon product_quantity_down" style="background-color: #aaa" onclick="add()">−</span>
+													<span class="input-group-addon product_quantity_up" style="background-color: #aaa" onclick="add()">+</span>
 												</div>
 											</div>
+											<script type="text/javascript">
+												$('.number').change(function(){
+													if(parseInt($(this).val()) > parseInt($(this).attr('stock'))){
+														alert('库存不足!');
+													}
+												});
+
+												function add() {
+													if(parseInt($('.number').val()) >= parseInt($('.number').attr('stock'))) {
+														alert('库存不足!');
+														return false;
+													}
+												}
+											</script>
 											<input type="hidden" class="goods_info_id" name="goods_info_id" value="{{ $goodsinfo[0]->id }}">
 											
 
@@ -705,6 +724,7 @@
 				$('.stock-new').html(data.goodsinfo.stock);
 				$('.model').html('<span>产品编号:</span>&nbsp;' + data.goodsinfo.num);
 				$('.number').attr('goodsinfo_id', data.goodsinfo.id);
+				$('.number').attr('stock', data.goodsinfo.stock);
 				
 				var str = '<p>'+data.goodsinfo.content+'</p>';
 				
@@ -715,6 +735,8 @@
 				$('#tab-1').html(str);
 
 			}, 'json');
+
+		
 
 			
 		

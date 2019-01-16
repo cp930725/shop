@@ -239,8 +239,8 @@
 														
 									<div class="price">
 										<span class="price-new">${{ $v->price }}</span> 
-										<span class="price-old">$122.00</span>		 
-										<span class="label label-percent">-40%</span> 
+												 
+										 
 										<div class="pull-right" style="margin-right:15px">
 											@if(in_array($v->id, $goodsid))
 												<span style="font-size: 10px; color:#999">已收藏&nbsp;:</span>

@@ -118,7 +118,7 @@
 			<div class="cell p-goods">
 				<div class="goods-item">
 					<div class="p-img">
-						<a href="/home/goodsinfo/{{$v->goodsinfo->goods->id}}" target="_blank" class="J_zyyhq_1832199"><img alt="{{ $v->goodsinfo->goods->name }}" clstag="clickcart|keycount|xincart|cart_sku_pic" src="/uploads/goods/{{ $v->goodsinfo->goods->pic }}" style="width:80px; height:80px;"></a>
+						<a href="/home/goodsinfo/{{$v->goodsinfo->goods->id}}" target="_blank" class="J_zyyhq_1832199"><img alt="{{ $v->goodsinfo->goods->name }}" clstag="clickcart|keycount|xincart|cart_sku_pic" src="/uploads/goods/{{ $v->goodsinfo->goods->pic }}" onerror="this.src='{{ $v->goodsinfo->goods->pic }}'" style="width:80px; height:80px;"></a>
 					</div>
 					<div class="item-msg">
 						<div class="p-name">
@@ -145,6 +145,8 @@
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement" id="decrement_8888_1832199_1_1" onclick="minus(this)">-</a>
 						<input autocomplete="off" type="text" class="itxt number-num" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)">+</a>
+						<input autocomplete="off" type="text" class="itxt" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
+						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)" stock="{{ $v->goodsinfo->stock }}">+</a>
 					</div>
 								<div class="ac ftx-03 quantity-txt" _stock="stock_1832199">有货</div>
 			</div>
@@ -289,6 +291,10 @@
  	function add(obj) {
 
  		var n = $(obj).prev().val();
+ 		if(parseInt(n) >= parseInt($(obj).attr('stock'))) {
+ 			alert('库存不足!');
+ 			return false;
+ 		}
 		n++;
 		$(obj).prev().val(n);
 

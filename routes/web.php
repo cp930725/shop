@@ -188,9 +188,7 @@ Route::resource('/admin/slids', 'admin\SlidController');
 
 
 // 前台 首页
-Route::get('/', function () {
-    return view('home.layout.index');
-});
+Route::resource('/', 'home\IndexController');
 
 // 前台 登录
 Route::resource('login', 'home\LoginController');
@@ -270,7 +268,7 @@ Route::resource('home/links',      'home\LinksController');
 Route::resource('home/goods', 'home\GoodsController');
 Route::get('home/goods/like/{id}', 'home\GoodsController@like');
 Route::get('home/goods/dislike/{id}', 'home\GoodsController@dislike');
-
+Route::get('home/search/{id}', 'home\GoodsController@show');
 // 前台 商品详情
 Route::resource('home/goodsinfo', 'home\GoodsInfoController');
 Route::get('/home/getgoodsinfo', 'home\GoodsInfoController@getGoodsInfo');
@@ -283,6 +281,7 @@ Route::resource('/home/carts', 'home\CartController');
 Route::get('/home/cart/insert', 'home\CartController@insert');
 Route::get('/home/delcarts', 'home\CartController@delete');
 Route::get('/asdasd', 'home\CartController@index');
+
 
 
 

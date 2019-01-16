@@ -57,7 +57,8 @@ class GoodsInfoController extends Controller
             return back();
         }
 
-        $goods = Goods::find($id);  
+        $goods = Goods::find($id);
+        $goodsname = $goods->name;  
         $goodsinfo = GoodsInfo::where('goods_id', $id)->get();     
         $goodsimage = [];
         foreach($goodsinfo[0]->getGoodsImage as $k=>$v) {
@@ -66,12 +67,17 @@ class GoodsInfoController extends Controller
             }
         };
 
-        $like = UsersGoods::where('users_id', session('user'))->get();
-        $goodsid = [];
-        foreach($like as $k=>$v) {
-            $goodsid[] = $v->goods_id;
+        if(session('user')) {
+
+            $like = UsersGoods::where('users_id', session('user')->id)->get();
+            $goodsid = [];
+            foreach($like as $k=>$v) {
+                $goodsid[] = $v->goods_id;
+            }
+        } else {
+            $goodsid = [];
         }
-        return view('home.goodsinfo.show', ['goods'=>$goods, 'goodsinfo'=>$goodsinfo, 'goodsimage'=>$goodsimage, 'goodsid'=>$goodsid]);
+        return view('home.goodsinfo.show', ['goods'=>$goods, 'goodsinfo'=>$goodsinfo, 'goodsimage'=>$goodsimage, 'goodsid'=>$goodsid, 'title'=>$goodsname]);
     }
 
     /**

@@ -10,4 +10,9 @@ class OperationLog extends Model
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $dateFormat = 'U';
+
+    public function admin()
+    {
+    	return $this->belongsTo('App\models\Admin', 'admins_id');
+    }
 }

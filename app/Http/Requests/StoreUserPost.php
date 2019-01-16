@@ -13,7 +13,7 @@ class StoreUserPost extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -29,7 +29,7 @@ class StoreUserPost extends FormRequest
             'repwd'     => 'same:pwd',
             'phone'     => 'required|digits:11',
             'email'     => 'required|email',
-            'face'      => 'present|file',
+            'face'      => 'file',
 
         ];
     }
@@ -37,8 +37,8 @@ class StoreUserPost extends FormRequest
     public function messages()
     {
         return [
-            'user.required'    => '账号不能为空',
-            'user.between'     => '请输入6-15位账号',
+            'name.required'     => '账号不能为空',
+            'name.between'      => '请输入6-15位账号',
             'pwd.required'      => '密码不能为空',
             'pwd.between'       => '请输入6-15位密码',
             'repwd.same'        => '两次密码不一致',

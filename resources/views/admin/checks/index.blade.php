@@ -11,42 +11,52 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="dataTables_length" id="dataTables-example_length">
+                                    <form action="/admin/returns" method="get">
                                     <label>
                                         <span style="vertical-align: inherit;">
-                                            <span style="vertical-align: inherit;">数据</span></span>
-                                        <select name="dataTables-example_length" aria-controls="dataTables-example" class="form-control input-sm">
-                                            <option value="10">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">10</span></span>
-                                            </option>
-                                            <option value="25">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">25</span></span>
-                                            </option>
-                                            <option value="50">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">50</span></span>
-                                            </option>
-                                            <option value="100">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">100</span></span>
-                                            </option>
-                                        </select>
+                                            <span style="vertical-align: inherit;">订单</span></span>
+                                        
+                                            <select name="paginate" aria-controls="dataTables-example" class="form-control input-sm">
+                                                <option value="10"  @if($num==10) selected @endif>
+                                                    <span style="vertical-align: inherit;">
+                                                        <span style="vertical-align: inherit;">10</span></span>
+                                                </option>
+                                                <option value="25" @if($num==25) selected @endif>
+                                                    <span style="vertical-align: inherit;">
+                                                        <span style="vertical-align: inherit;">25</span></span>
+                                                </option>
+                                                <option value="50" @if($num==50) selected @endif>
+                                                    <span style="vertical-align: inherit;">
+                                                        <span style="vertical-align: inherit;">50</span></span>
+                                                </option>
+                                                <option value="100" @if($num==100) selected @endif>
+                                                    <span style="vertical-align: inherit;">
+                                                        <span style="vertical-align: inherit;">100</span></span>
+                                                </option>
+                                            </select>
                                         <span style="vertical-align: inherit;">
                                             <span style="vertical-align: inherit;">条</span></span>
+                                            <input type="submit" name="" value="确定" class="btn btn-primary btn-sm">
                                     </label>
+                                    </form>
                                 </div>
                             </div>
+
                             <div class="col-sm-6">
                                 <div id="dataTables-example_filter" class="dataTables_filter">
-                                    <label>
-                                        <span style="vertical-align: inherit;">
-                                            <span style="vertical-align: inherit;">搜索：</span></span>
-                                        <input type="search" class="form-control input-sm" placeholder="" aria-controls="dataTables-example" name="">
-                                    </label>
+                                    <span style="vertical-align: inherit;">
+                                    <span style="vertical-align: inherit;">搜索</span></span>
+                                    <div class="form-group input-group">
+                                        <form action="/admin/returns" method="get">
+                                            <input type="search" name="keyword" class="form-control" placeholder="关键字" value="{{ $keyword }}" style="margin-left: 0px;">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default"><i class="fa fa-search"></i>
+                                                </button>
+                                            </span>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         <div class="row">
                             <div class="col-sm-12">
                                 <table width="100%" class="table table-striped table-bordered table-hover dataTable no-footer dtr-inline text-center" id="dataTables-example" role="grid" aria-describedby="dataTables-example_info" style="width: 100%;">
@@ -155,56 +165,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">上一个</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">1</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">2</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">3</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">4</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">5</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">6</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">下一个</span></span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                     {{ $data->appends(['paginate' => $num, 'keyword'=>$keyword])->links() }}
                                 </div>
                             </div>
                         </div>     

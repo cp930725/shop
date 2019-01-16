@@ -181,7 +181,7 @@
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">{{ $v->intro }}</font></font>
                         </td>
-                        <td class="sorting_1 text-center">
+                        <td class="sorting_1">
                             <font style="vertical-align: inherit;">
                                 <font style="vertical-align: inherit;">
                                     @if($v->status == 1)

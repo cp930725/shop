@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\models\OperationLog;
 
 class LogController extends Controller
 {
@@ -12,9 +13,15 @@ class LogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('admin.logs.index');
+        $paginate = $request->input('paginate', 10);
+        $key = $request->input('key', '');
+        $order = $request->input('order', 'id');
+        $data = $request->input('data', 'asc');
+
+        $logs = OperationLog::where('path', 'like', "%{$key}%")->orWhere('ip', 'like', "%{$key}%")->orderBy($order, $data)->paginate($paginate);
+        return view('admin.logs.index', ['title' => '日志列表', 'key'=>$key, 'paginate'=>$paginate, 'order'=>$order, 'data'=>$data, 'logs' => $logs]);
     }
 
     /**
@@ -46,7 +53,10 @@ class LogController extends Controller
      */
     public function show($id)
     {
-        //
+        $log = OperationLog::find($id);
+        $input = json_decode($log->input);
+
+        return view('admin.logs.show', ['input' => $input]);
     }
 
     /**

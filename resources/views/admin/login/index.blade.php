@@ -56,13 +56,13 @@
 								</div>
 								<div class="form-group clearfix">
 									<label class="fancy-checkbox element-left">
-										<input type="checkbox" name="remember" @if(session('adminRem')) checked @endif  value="1">
+										<input type="checkbox" name="remember" @if(\Cookie::get('remember_token')) checked @endif  value="1">
 										<span>记住账号</span>
 									</label>
 								</div>
 								<button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
 								<div class="bottom">
-									<span class="helper-text"><i class="fa fa-lock"></i> <a href="#">忘记密码</a></span>
+									<span class="helper-text"><i class="fa fa-lock"></i> <a href="/admin/pwd/email">忘记密码</a></span>
 								</div>
 							</form>
 						</div>

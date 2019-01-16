@@ -239,8 +239,8 @@
 														
 									<div class="price">
 										<span class="price-new">${{ $v->price }}</span> 
-										<span class="price-old">$122.00</span>		 
-										<span class="label label-percent">-40%</span> 
+												 
+										 
 										<div class="pull-right" style="margin-right:15px">
 											@if(in_array($v->id, $goodsid))
 												<span style="font-size: 10px; color:#999">已收藏&nbsp;:</span>
@@ -314,7 +314,7 @@
 										
 										var gid = $(this).attr('value');
 										$.get('/home/goods/like/'+gid, {}, function(msg){
-
+											msg = msg.trim();
 											if(msg == 'success') {
 												that.next().css('display', '');
 												that.css('display', 'none');
@@ -333,7 +333,7 @@
 										
 										var gid = $(this).attr('value');
 										$.get('/home/goods/dislike/'+gid, {}, function(msg){
-
+											msg = msg.trim();
 											if(msg == 'success') {
 												that.prev().css('display', '');
 												that.css('display', 'none');

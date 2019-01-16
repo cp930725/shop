@@ -103,13 +103,14 @@
 	<div class="item-list" style="border-top: 1px solid #f3f3f3">
 				<!--单品-->
 			<!-- 单品-->
+
 		@foreach( $carts as $k=>$v )	
 		<div class="item-single  item-item item-selected  " id="product_1832199" style="background: #f3f3f3;">
 		<div class="item-form">
 			<div class="cell p-checkbox">
 				<div class="cart-checkbox">
 					<!--单品-->
-						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
+						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" goods_info_id="{{ $v->goods_info_id }}" number="{{ $v->number }}" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
 										<label for="" class="checked">勾选商品</label>
 					<span class="line-circle"></span>
 				</div>
@@ -117,7 +118,7 @@
 			<div class="cell p-goods">
 				<div class="goods-item">
 					<div class="p-img">
-						<a href="/home/goodsinfo/{{$v->goodsinfo->goods->id}}" target="_blank" class="J_zyyhq_1832199"><img alt="{{ $v->goodsinfo->goods->name }}" clstag="clickcart|keycount|xincart|cart_sku_pic" src="/uploads/goods/{{ $v->goodsinfo->goods->pic }}" style="width:80px; height:80px;"></a>
+						<a href="/home/goodsinfo/{{$v->goodsinfo->goods->id}}" target="_blank" class="J_zyyhq_1832199"><img alt="{{ $v->goodsinfo->goods->name }}" clstag="clickcart|keycount|xincart|cart_sku_pic" src="/uploads/goods/{{ $v->goodsinfo->goods->pic }}" onerror="this.src='{{ $v->goodsinfo->goods->pic }}'" style="width:80px; height:80px;"></a>
 					</div>
 					<div class="item-msg">
 						<div class="p-name">
@@ -143,7 +144,7 @@
 					<div class="quantity-form">
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement" id="decrement_8888_1832199_1_1" onclick="minus(this)">-</a>
 						<input autocomplete="off" type="text" class="itxt" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
-						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)">+</a>
+						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)" stock="{{ $v->goodsinfo->stock }}">+</a>
 					</div>
 								<div class="ac ftx-03 quantity-txt" _stock="stock_1832199">有货</div>
 			</div>
@@ -202,11 +203,13 @@
 					<div class="normal">
 						<div class="comm-right">
 							<div class="btn-area">
-								<a href="javascript:void(0);" onclick="return false;" clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn" data-bind="1" style="background: #F4A137">
+								<a href="javascript:void(0);"  clstag="clickcart|keycount|xincart|cart_gotoOrder" class="submit-btn qujiesuan" data-bind="1" style="background: #F4A137">
 								去结算<b></b></a>
+
 								<!-- <a href="javascript:void(0);" class="submit-btn submit-btn-disabled">
 								去结算<b></b></a> -->
 							</div>
+
 							<div class="price-sum">
 								<div>
 									<span class="txt txt-new">总价：</span>
@@ -264,10 +267,30 @@
 </div>
 
 <script type="text/javascript">
+	$('.qujiesuan').click(function(){
+		var id = [];
+		var num = [];
+		$.each($('.goodsone:checked'),function(k, v){
+			id.push($(this).attr('goods_info_id'));
+			num.push($(this).attr('number'));
+		});
+		$.get('/home/orders/ordersdata',{'goods_info_id':id, 'cnt':num},function(msg){
+			msg = msg.trim();
+			if (msg == 'success') {
+				location.href = '/home/orders/create';
+			} else {
+				alert('订单提交失败');
+			}
+		},'html');	
+	});
  	
  	function add(obj) {
 
  		var n = $(obj).prev().val();
+ 		if(parseInt(n) >= parseInt($(obj).attr('stock'))) {
+ 			alert('库存不足!');
+ 			return false;
+ 		}
 		n++;
 		$(obj).prev().val(n);
 

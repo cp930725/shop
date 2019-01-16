@@ -15,9 +15,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        $carts = Cart::where('users_id', session('user'))->get();
+        $carts = Cart::where('users_id', session('user')->id)->get();
        
-        return view('home.cart.index', ['carts'=>$carts]);
+        return view('home.cart.index', ['carts'=>$carts, 'title'=>'我的购物车']);
     }
 
     /**

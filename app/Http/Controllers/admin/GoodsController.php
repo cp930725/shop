@@ -30,7 +30,7 @@ class GoodsController extends Controller
         $keyword = $req->input('keyword', '');
 
         $goods = DB::table('goods')->where('title', 'like', '%'.$keyword.'%')->paginate($num);
-        return view('admin.goods.index', ['goods'=>$goods, 'num'=>$num, 'keyword'=>$keyword]);
+        return view('admin.goods.index', ['goods'=>$goods, 'num'=>$num, 'keyword'=>$keyword, 'title'=>'商品管理']);
     }
 
     /**

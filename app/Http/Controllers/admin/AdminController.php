@@ -5,6 +5,8 @@ namespace App\Http\Controllers\admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminPost;
+use App\Http\Requests\StorePassPost;
+use App\Http\Requests\StoreAdminUpdatePost;
 use Illuminate\Support\Facades\Hash;
 use App\models\Admin;
 use App\models\AdminInfo;
@@ -18,10 +20,13 @@ class AdminController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
-    {
-        $data = $request->input('key', '');
-        $admins = Admin::where('admin', 'like', "%{$data}%")->orWhere('phone', 'like', "%{$data}%")->paginate(10);
-        return view('admin.admins.index', ['title'=>'管理员列表', 'admins'=>$admins]);
+    {   $paginate = $request->input('paginate', 10);
+        $key = $request->input('key', '');
+        $order = $request->input('order', 'id');
+        $data = $request->input('data', 'asc');
+
+        $admins = Admin::where('admin', 'like', "%{$key}%")->orWhere('phone', 'like', "%{$key}%")->orderBy($order, $data)->paginate($paginate);
+        return view('admin.admins.index', ['title'=>'管理员列表', 'key'=>$key, 'paginate'=>$paginate, 'order'=>$order, 'data'=>$data, 'admins'=>$admins]);
     }
 
     /**
@@ -111,7 +116,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAdminPost $request, $id)
+    public function update(StoreAdminUpdatePost $request, $id)
     {
         DB::beginTransaction();
         $data = $request->only(['admin', 'email', 'status', 'phone', 'auth']);
@@ -182,8 +187,36 @@ class AdminController extends Controller
         return view('admin.admins.info', ['title'=>'个人中心', 'admin'=>$admin]);
     }
 
+    /**
+     * 操作日志
+     */
     public function log()
     {
         return view('admin.admins.log');
+    }
+
+    /**
+     * 后台修改密码页面
+     */
+    public function getPwd($id)
+    {
+        $admin = Admin::find($id);
+        return view('admin.admins.pwd', ['admin' => $admin]);
+    }
+
+    /**
+     * 修改密码
+     */
+    public function postPwd(StorePassPost $request, $id)
+    {
+        $data = $request->input('pwd');
+        $admin = Admin::find($id);
+        $admin->pwd = $data;
+        $res = $admin->save();
+        if ($res) {
+            return redirect('/admin/admins')->with('success', '修改成功');
+        } else {
+            return back()->with('error', '修改失败');
+        }
     }
 }

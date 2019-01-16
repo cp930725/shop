@@ -4,11 +4,12 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\models\Goods;
-use App\models\Cate;
-use App\models\UsersGoods;
+use App\models\Order;
+use App\models\OrderInfo;
+use App\models\Check;
+use DB;
 
-class GoodsController extends Controller
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +18,10 @@ class GoodsController extends Controller
      */
     public function index()
     {
-        //
+        $data = Check::where('users_id', session('user')->id)->get();
+        
+        return view('home.checkout.index', ['title'=>'申请退换货','data'=>$data]);
+
     }
 
     /**
@@ -25,10 +29,17 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+
+
+        $data = OrderInfo::where('id',$id)->first();
+
+        $data2 = Order::where('id', $data->orders_id)->first();
+
+        return view('home.checkout.create', ['title'=>'申请退换货','data'=>$data, 'data2'=>$data2]);
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -38,7 +49,29 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::beginTransaction();
+        $data = new Check; 
+          $data->order_info_id = $request->input('order_info_id');
+          $data->goods_id = $request->input('goods_id');
+          $data->oid = $request->input('oid');
+          $data->cnt = $request->input('cnt');
+          $data->sum = $request->input('sum');
+          $data->type = $request->input('type');
+          $data->users_id = session('user')->id;
+        $res = $data->save();
+
+        $type = OrderInfo::where('id',$data->order_info_id)->first();
+        $type->type = $data->type;
+        $res2 = $type->save();
+        if ($res && $res2) {
+            DB::commit();
+            return redirect('/home/checkout')->with('success', '订单提交成功');
+        } else {
+            DB::rollBack();
+            return back()->with('error', '订单提交失败');
+        }
+
+        
     }
 
     /**
@@ -49,29 +82,7 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        
-        $arr_id = Cate::where('path', 'like', "%,$id,%")->get(['id']);
-        $arr = [];
-        
-        foreach($arr_id as $k=>$v) {
-            $arr[] = $v->id;
-        }
-        $arr[] = (int)$id;
-        
-
-
-        $like = UsersGoods::where('users_id', session('user')->id)->get();
-        $goodsid = [];
-        foreach($like as $k=>$v) {
-            $goodsid[] = $v->goods_id;
-        }
-
-        
-            
-        $goods = Goods::where('status', 1)->whereIn('cates_id', $arr)->paginate(9);
-        
-        return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
-        
+        //
     }
 
     /**
@@ -106,31 +117,5 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function like($id)
-    {
-        $usersgoods = new UsersGoods;
-        $usersgoods->users_id = session('user')->id;  
-        $usersgoods->goods_id = $id;
-        $res = $usersgoods->save();
-
-        if($res) {
-            echo 'success';
-        } else {
-            echo 'error';
-        }
-    }
-
-    public function dislike($id)
-    {
-        $usersgoods = UsersGoods::where('goods_id', $id)->where('users_id', session('user')->id)->first();
-        $res = $usersgoods->delete();
-
-        if($res) {
-            echo 'success';
-        } else {
-            echo 'error';
-        }        
     }
 }

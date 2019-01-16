@@ -35,6 +35,8 @@
     <link href="/home/js/owl-carousel/owl.carousel.css" rel="stylesheet">
 	<link href="/home/css/themecss/lib.css" rel="stylesheet">
 	<link href="/home/js/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+	<link href="/home/css/style.css" rel="stylesheet">
+	<link href="/home/css/shortcodes.css" rel="stylesheet">
 	
 	<!-- Theme CSS
 	============================================ -->
@@ -42,8 +44,32 @@
     <link href="/home/css/themecss/so-categories.css" rel="stylesheet">
 	<link href="/home/css/themecss/so-listing-tabs.css" rel="stylesheet">
 	<link id="color_scheme" href="/home/css/theme.css" rel="stylesheet">
-	<link href="/home/css/responsive.css" rel="stylesheet">
+	<link href="/home/css/responsive.css" rel="stylesheet">	
+
+
+	<!-- Include Libs & Plugins
+	============================================ -->
+	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="/home/js/jquery-2.2.4.min.js"></script>
+	<script type="text/javascript" src="/home/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/home/js/owl-carousel/owl.carousel.js"></script>
+	<script type="text/javascript" src="/home/js/themejs/libs.js"></script>
+	<script type="text/javascript" src="/home/js/unveil/jquery.unveil.js"></script>
+	<script type="text/javascript" src="/home/js/countdown/jquery.countdown.min.js"></script>
+	<script type="text/javascript" src="/home/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
+	<script type="text/javascript" src="/home/js/datetimepicker/moment.js"></script>
+	<script type="text/javascript" src="/home/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="/home/js/jquery-ui/jquery-ui.min.js"></script>
+
+
+	<!-- Theme files
+	============================================ -->
+	<script type="text/javascript" src="/home/js/themejs/application.js"></script>
+	<script type="text/javascript" src="/home/js/themejs/toppanel.js"></script>
+	<script type="text/javascript" src="/home/js/themejs/so_megamenu.js"></script>
+	<script type="text/javascript" src="/home/js/themejs/addtocart.js"></script>	
+	<script type="text/javascript" src="/home/js/themejs/cpanel.js"></script>
+	
 
 </head>
 
@@ -164,14 +190,13 @@
 	</div>
 </div>
 <!-- //Header Top -->
-
 <!-- Header center -->
 <div class="header-center left">
 	<div class="container">
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a href="index.html"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+				<a href="/"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
@@ -180,7 +205,14 @@
 			<div id="sosearchpro" class="col-sm-7 search-pro">
 				<form method="GET" action="/home/orders">
 					<div id="search0" class="search input-group">
-						
+						<div class="select_category filter_type icon-select">
+							All Categories
+						</div>
+
+						<input class="autosearch-input form-control" type="text" name="name" value="商品名称" size="50" autocomplete="off" placeholder="商品名称">
+						<span class="input-group-btn">
+						<button type="submit" class="button-search btn btn-primary"><i class="fa fa-search"></i></button>
+						</span>
 					</div>
 
 				</form>
@@ -333,19 +365,12 @@
 							
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="/home/index" class="clearfix">
+								<a href="/" class="clearfix">
 									<strong>首页</strong>
 									<span class="label"></span>
 								</a>
 							</li>
-							
-							<li class="hidden-md">
-								<p class="close-menu"></p>
-								<a href="/home/checkout" class="clearfix">
-									<strong>退换货</strong>
-								</a>
-							</li>
-
+						
 
 							<li class="with-sub-menu hover hidden">
 								<p class="close-menu"></p>
@@ -494,98 +519,182 @@
 	</header>
 
 
-     <!-- shop area end-->
-        <div class="shopping_cart">
-            <div class="container">
-                <div class="row">
-                    <div class="all_wis_frm">
-                        <div class="col-md-12">
-                            <div class="wishlist-content wishlist-content-2">
-                            
-                                <form action="#">
-                                @foreach($data as $k => $v)
-                                    <div class="wishlist-table wishlist-table-2 table-responsive">
-                                    	<div>
-											<span>订单编号:{{ $v->oid }}</span><span style="margin-left: 20px;">下单时间: {{ $v->created_at }} </span>
-                                    	</div>
-                                        <table class="table text-center table-striped table-bordered table-hover dataTable no-footer dtr-inline">
-                                            <thead>
-                                            
-                                                <tr>
-                                                    <th><span>商品图片</span></th>
-                                                    <th><span>商品名称</span></th>
-                                                    <th><span>商品单价</span></th>
-                                                    <th><span>商品个数</span></th>
-                                                    <th><span>商品总价</span></th>                                                  
-                                                    <th><span>操作</span></th>                                                   
-                                                </tr>
-                                            </thead>
-                                            @foreach($v->ordersInfo as $kk=>$vv)
-                                            <tbody>
-                                                <tr>
-                                                	<td >
-	                                                    <div style="height: 100px;">
-															<img src="/uploads/goods/{{ $vv->pic }}" alt="商品图片" style="height: 100px;">
-														</div>
-                                                    </td>
-                                                    <td>{{ $vv->name }}</td>
-                                                    <td>￥{{ $vv->price }}</td>
-                                                    <td>{{ $vv->cnt }}</td>
-                                                    <td>￥{{ $vv->price * $vv->cnt }}</td>
-                                                    <td>
-                                                    	@if($vv->status==0)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info">等待发货</a>
-														@elseif($vv->status==1)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info" onclick="orderstatus(this)">确认收货</a>
-														@elseif($vv->status==2)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info">收货完成</a>
-														@endif
+     
+	<section class="flat-checkout">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 cart-totals style2">
+						<div>
+							<h3>我的订单</h3>
+								<form action="/home/checkout" method="post" accept-charset="utf-8" name="order_create">
+									 {{ csrf_field() }}
 
-														<a href="/home/checkout/{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-warning">
-															@if($vv->type==0) 仅退款
-															@elseif($vv->type==1) 退货
-															@elseif($vv->type==2) 换货
-															@elseif($vv->type==3) 申请退/换货
-															@endif
-														
-														</a>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                            @endforeach
-                                        </table> 
-                                        <div class="coupon pull-right clearfix" style="margin-right: 100px;">
-                                            <label for="coupon_code"></label>
-                                            <span style="margin-right: 20px; font-size: 16px; padding: 3px 5px; color: orange;">小计:￥{{ $v->sum }}</span>
-                                            <a href="" style="margin-bottom: 5px;" class="btn btn-sm btn-primary">订单详情</a>				
-                                        </div>                                       
-                                    </div>
-                                @endforeach    
-                                </form>
-                                <script type="text/javascript">
-
-									function orderstatus(obj){
+									
+									<table class="product table">
+										<thead>
+											<tr>
+												<th class="text-left">商品</th>
+												<th class="text-left">单价</th>
+												<th class="text-left">个数</th>
+												<th>总价</th>
+											</tr>
+										</thead>
 										
-											var id = $(obj).attr('orders_info_id');
-											$.get('/home/orderstatus',{'id':id},function(msg){
-												if (msg == 'success') {
-													$(obj).text('收货完成');
-													$(obj).addClass('disabled');
-												} else {
-													alert('确认收货失败,请联系客服');
-												}
-											},'html');
+										<tbody>
+										
+											<tr>
+												<td>
+												
+													<img src="/uploads/goods/{{ $data->pic }}" alt="sdsd" style="height: 150px;">
+													
+													<span>
+														{{ $data->name }}
+													</span>
+												</td>
+												<td>
+													{{ $data->price }}
+												</td>
+												<td>
+													{{ $data->cnt }}
+												</td>
+												<td >
+													{{ $data->cnt * $data->price }}
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<span>
+														收货地址 :
+													</span>
+												</td>
+												<td>
+													{{ $data2->ordersUserAddr->name }}
+												</td>
+												<td>
+													{{ $data2->ordersUserAddr->phone }}
+												</td>
+												<td>
+													{{ $data2->ordersUserAddr->phone }}
+												</td>
+											</tr>										
+										</tbody>
+										
+									</table><!-- /.product -->
+									
+
+									<table>
+										<tbody>
+											<tr>
+												<td>订单</td>
+												<td class="subtotal" colspan="3">
+													<div class="pull-right">
+														{{ $data->oid }}
+													</div>
+												</td>
+												
+											</tr>
 											
-									}
+											<tr>
+												<td>总计</td>
+												<td class="price-total">
+
+													￥{{ $data->cnt * $data->price }}
+											
+												</td>
+											</tr>
+										</tbody>
+									</table>
+
+									<div class="pull-left" style="margin: 5px 0px; padding: 0px;">
+											<span style="font-size: 16px;">退换货 :</span>
+									</div>
+									<div class="pull-left col-md-8">
+											<input type="hidden" name="order_info_id" value="{{ $data->id }}">
+											<input type="hidden" name="goods_id" value="{{ $data->goods_info_id }}">
+											<input type="hidden" name="oid" value="{{ $data2->oid }}">
+											<input type="hidden" name="cnt" value="{{ $data2->cnt }}">
+											<input type="hidden" name="sum" value="{{ $data2->sum }}">
+											
+										
+											<select name="type"  style="border: 1px solid rgba(7,17,27,0.1); height: 25px; margin: 5px 0px; padding: 0px 5px;">
+												
+													<option value="0">
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">仅退款 </span>
+													</option>
+													<option value="1">
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">退货 </span>
+													</option>
+													<option value="2">
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">换货 </span>
+													</option>
+													
+												
+											</select>
+
+										</div>
+										
+									
+
+								</div><!-- /.checkbox --><br><br>
 
 								
-								</script>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+								<div class="pull-left" style="margin: 5px 0px; padding: 0px;">
+											<span style="font-size: 16px;">退换货 :</span>
+								</div>
+								<div class="pull-left col-md-8">
+								<select name="reason"  style="border: 1px solid rgba(7,17,27,0.1); height: 25px; margin: 5px 0px; padding: 0px 5px;">
+												
+									<option value="0">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">拍重 </span>
+									</option>
+									<option value="1">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">信息写错 </span>
+									</option>
+									<option value="2">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">与商品描述有偏差 </span>
+									</option>
+									<option value="3">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">不想买了 </span>
+									</option>
+									<option value="4">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">有质量问题 </span>
+									</option>
+									<option value="5">
+										<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">其他 </span>
+									</option>
+								
+								</select>
+									
+								</div>
+								
+
+								<div class="btn-order">	
+										<input type="submit" value="提交" style="width: 100%; background-color: red; color: #fff;"> 
+								</div><!-- /.btn-order -->
+							</form>
+						</div><!-- /.cart-totals style2 -->
+					</div><!-- /.col-md-5 -->
+				</div><!-- /.row -->
+			</div><!-- /.container -->
+		</section><!-- /.flat-checkout -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 			
 		</div>
 		
@@ -606,10 +715,133 @@
 	//-->
 </script>
 
+	<!-- Footer Container -->
+	<footer class="footer-container">
+		<!-- Footer Top Container -->
+		<section class="footer-top">
+			<div class="container content">
+				<div class="row">
+					<div class="col-sm-6 col-md-3 box-information">
+						<div class="module clearfix">
+							<h3 class="modtitle">Information</h3>
+							<div class="modcontent">
+								<ul class="menu">
+									<li><a href="#">About Us</a></li>
+									<li><a href="#">FAQ</a></li>
+									<li><a href="#">Order history</a></li>
+									<li><a href="#">Order information</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
 
+					<div class="col-sm-6 col-md-3 box-service">
+						<div class="module clearfix">
+							<h3 class="modtitle">Customer Service</h3>
+							<div class="modcontent">
+								<ul class="menu">
+									<li><a href="#">Contact Us</a></li>
+									<li><a href="#">Returns</a></li>
+									<li><a href="#">Site Map</a></li>
+									<li><a href="#">My Account</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-3 box-account">
+						<div class="module clearfix">
+							<h3 class="modtitle">My Account</h3>
+							<div class="modcontent">
+								<ul class="menu">
+									<li><a href="#">Brands</a></li>
+									<li><a href="#">Gift Vouchers</a></li>
+									<li><a href="#">Affiliates</a></li>
+									<li><a href="#">Specials</a></li>
+									<li><a href="#" target="_blank">Our Blog</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-6 col-md-3 collapsed-block ">
+						<div class="module clearfix">
+							<h3 class="modtitle">Contact Us	</h3>
+							<div class="modcontent">
+								<ul class="contact-address">
+									<li><span class="fa fa-map-marker"></span> My Company, 42 avenue des Champs Elysées 75000 Paris France</li>
+									<li><span class="fa fa-envelope-o"></span> Email: <a href="#"> sales@yourcompany.com</a></li>
+									<li><span class="fa fa-phone">&nbsp;</span> Phone 1: 0123456789 <br>Phone 2: (123) 4567890</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-12 collapsed-block footer-links">
+						<div class="module clearfix">
+							<div class="modcontent">
+								<hr class="footer-lines">
+								<div class="footer-directory-title">
+									<h4 class="label-link">Top Stores : Brand Directory | Store Directory</h4>
+									<ul class="footer-directory">
+										<li>
+											<h4>MOST SEARCHED KEYWORDS MARKET:</h4>
+											<a href="#">Xiaomi Mi3</a> | <a href="#">Digiflip Pro XT 712 Tablet</a> | <a href="#">Mi 3 Phones</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>MOBILES:</h4>
+											<a href="#">Moto E</a> | <a href="#">Samsung Mobile</a> | <a href="#">Micromax Mobile</a> | <a href="#">Nokia Mobile</a> | <a href="#">HTC Mobile</a> | <a href="#">Sony Mobile</a> | <a href="#">Apple Mobile</a> | <a href="#">LG Mobile</a> | <a href="#">Karbonn Mobile</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>CAMERA:</h4>
+											<a href="#">Nikon Camera</a> | <a href="#">Canon Camera</a> | <a href="#">Sony Camera</a> | <a href="#">Samsung Camera</a> | <a href="#">Point shoot camera</a> | <a href="#">Camera Lens</a> | <a href="#">Camera Tripod</a> | <a href="#">Camera Bag</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>LAPTOPS:</h4>
+											<a href="#">Apple Laptop</a> | <a href="#">Acer Laptop</a> | <a href="#">Sony Laptop</a> | <a href="#">Dell Laptop</a> | <a href="#">Asus Laptop</a> | <a href="#">Toshiba Laptop</a> | <a href="#">LG Laptop</a> | <a href="#">HP Laptop</a> | <a href="#">Notebook</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>TVS:</h4>
+											<a href="#">Sony TV</a> | <a href="#">Samsung TV</a> | <a href="#">LG TV</a> | <a href="#">Panasonic TV</a> | <a href="#">Onida TV</a> | <a href="#">Toshiba TV</a> | <a href="#">Philips TV</a> | <a href="#">Micromax TV</a> | <a href="#">LED TV</a> | <a href="#">LCD TV</a> | <a href="#">Plasma TV</a> | <a href="#">3D TV</a> | <a href="#">Smart TV</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>TABLETS:</h4>
+											<a href="#">Micromax Tablets</a> | <a href="#">HCL Tablets</a> | <a href="#">Samsung Tablets</a> | <a href="#">Lenovo Tablets</a> | <a href="#">Karbonn Tablets</a> | <a href="#">Asus Tablets</a> | <a href="#">Apple Tablets</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>WATCHES:</h4>
+											<a href="#">FCUK Watches</a> | <a href="#">Titan Watches</a> | <a href="#">Casio Watches</a> | <a href="#">Fastrack Watches</a> | <a href="#">Timex Watches</a> | <a href="#">Fossil Watches</a> | <a href="#">Diesel Watches</a> | <a href="#">Luxury Watches</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>CLOTHING:</h4>
+											<a href="#">Shirts</a> | <a href="#">Jeans</a> | <a href="#">T shirts</a> | <a href="#">Kurtis</a> | <a href="#">Sarees</a> | <a href="#">Levis Jeans</a> | <a href="#">Killer Jeans</a> | <a href="#">Pepe Jeans</a> | <a href="#">Arrow Shirts</a> | <a href="#">Ethnic Wear</a> | <a href="#">Formal Shirts</a> | <a href="#">Peter England Shirts</a> | <a href="#">View all</a></li>
+										<li>
+											<h4>FOOTWEAR:</h4>
+											<a href="#">Shoes</a> | <a href="#">Casual Shoes</a> | <a href="#">Adidas Shoes</a> | <a href="#">Gas Shoes</a> | <a href="#">Puma Shoes</a> | <a href="#">Reebok Shoes</a> | <a href="#">Woodland Shoes</a> | <a href="#">Red tape Shoes</a> | <a href="#">Nike Shoes</a> | <a href="#">View all</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- /Footer Top Container -->
+		
+		<!-- Footer Bottom Container -->
+		<div class="footer-bottom-block ">
+			<div class=" container">
+				<div class="row">
+					<div class="col-sm-5 copyright-text">Copyright &copy; 2017.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></div>
+					<div class="col-sm-7">
+						<div class="block-payment text-right"><img src="/home/image/demo/content/payment.png" alt="payment" title="payment" ></div>
+					</div>
+					<!--Back To Top-->
+					<div class="back-to-top"><i class="fa fa-angle-up"></i><span> Top </span></div>
+
+				</div>
+			</div>
+		</div>
+		<!-- /Footer Bottom Container -->
+		
+		
+	</footer>
+	<!-- //end Footer Container -->
 
     </div>
-    <div style="height: 50px; width: 100%;"></div>
 	<!-- Social widgets -->
 	<section class="social-widgets visible-lg">
 	<ul class="items">
@@ -668,30 +900,10 @@
 	<div class="loader-section section-left"></div>
 	<div class="loader-section section-right"></div>
  </div>
+
 <!-- End Preloading Screen -->
 	
-<!-- Include Libs & Plugins
-============================================ -->
-<!-- Placed at the end of the document so the pages load faster -->
-
-<script type="text/javascript" src="/home/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/home/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="/home/js/themejs/libs.js"></script>
-<script type="text/javascript" src="/home/js/unveil/jquery.unveil.js"></script>
-<script type="text/javascript" src="/home/js/countdown/jquery.countdown.min.js"></script>
-<script type="text/javascript" src="/home/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>
-<script type="text/javascript" src="/home/js/datetimepicker/moment.js"></script>
-<script type="text/javascript" src="/home/js/datetimepicker/bootstrap-datetimepicker.min.js"></script>
-<script type="text/javascript" src="/home/js/jquery-ui/jquery-ui.min.js"></script>
-
-
-<!-- Theme files
-============================================ -->
-<script type="text/javascript" src="/home/js/themejs/application.js"></script>
-<script type="text/javascript" src="/home/js/themejs/toppanel.js"></script>
-<script type="text/javascript" src="/home/js/themejs/so_megamenu.js"></script>
-<script type="text/javascript" src="/home/js/themejs/addtocart.js"></script>	
-<script type="text/javascript" src="/home/js/themejs/cpanel.js"></script>
+	
 </body>
 </html>
 

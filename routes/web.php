@@ -110,14 +110,14 @@ Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 Route::resource('admin/returns',     'admin\ReturnController');
 Route::resource('admin/checks',      'admin\CheckController');
 Route::resource('admin/barters',      'admin\BarterController');
-
+Route::get('admin/zhuangtai',     'admin\OrderInfoController@zhuangtai');
 
 
 
 
 
 // 后台 账单
-
+Route::resource('admin/waters',     'admin\WaterController');
 
 
 
@@ -147,7 +147,7 @@ Route::resource('admin/barters',      'admin\BarterController');
 
 
 // 后台 友情链接
-
+Route::resource('admin/links',      'admin\LinksController');
 
 
 
@@ -249,13 +249,13 @@ Route::resource('home/slids', 'home\SlidController');
 //前台订单
 Route::resource('home/orders',     'home\OrderController');
 Route::resource('home/orderinfo',  'home\OrderInfoController');
+//前台 ajax
 Route::get('home/createaddr',      'home\OrderController@createaddr');
 Route::get('home/ordersdata',      'home\OrderController@ordersdata');
-
-
-
-
-
+Route::get('home/orderstatus',     'home\OrderController@orderstatus');
+Route::get('home/checkout/{id}',   'home\CheckoutController@create');
+Route::resource('home/checkout',   'home\CheckoutController');
+Route::resource('home/links',      'home\LinksController');
 
 
 

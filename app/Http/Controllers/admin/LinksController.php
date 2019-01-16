@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\home;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\models\Goods;
-use App\models\Cate;
-use App\models\UsersGoods;
+use App\models\Link;
 
-class GoodsController extends Controller
+class LinksController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,8 @@ class GoodsController extends Controller
      */
     public function index()
     {
-        //
+        $links = Link::get();
+        return view('admin.links.index', ['links'=>$links]);
     }
 
     /**
@@ -27,7 +26,7 @@ class GoodsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.links.create');
     }
 
     /**
@@ -38,7 +37,16 @@ class GoodsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new Link;
+        $data->name = $request->input('name');
+        $data->href = $request->input('href');
+        $res = $data->save();
+        if ($res) {
+            return redirect('/admin/links')->with('success', '修改成功');
+        } else {
+            return back()->with('error', '修改失败');
+        }
+        
     }
 
     /**
@@ -49,29 +57,7 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
-        
-        $arr_id = Cate::where('path', 'like', "%,$id,%")->get(['id']);
-        $arr = [];
-        
-        foreach($arr_id as $k=>$v) {
-            $arr[] = $v->id;
-        }
-        $arr[] = (int)$id;
-        
-
-
-        $like = UsersGoods::where('users_id', session('user')->id)->get();
-        $goodsid = [];
-        foreach($like as $k=>$v) {
-            $goodsid[] = $v->goods_id;
-        }
-
-        
-            
-        $goods = Goods::where('status', 1)->whereIn('cates_id', $arr)->paginate(9);
-        
-        return view('home.goods.show', ['goods'=>$goods, 'goodsid'=>$goodsid]);
-        
+        //
     }
 
     /**
@@ -82,7 +68,8 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $links = Link::find($id);
+        return view('admin.links.edit', ['links'=>$links]);
     }
 
     /**
@@ -94,7 +81,15 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $links = Link::find($id);
+        $links->name = $request->input('name');
+        $links->href = $request->input('href');
+        $res = $links->save();
+        if ($res) {
+            return redirect('/admin/links')->with('success', '修改成功');
+        } else {
+            return back()->with('error', '修改失败');
+        }
     }
 
     /**
@@ -105,32 +100,14 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $links = Link::find($id);
+      
+        $res = $links->delete();
 
-    public function like($id)
-    {
-        $usersgoods = new UsersGoods;
-        $usersgoods->users_id = session('user')->id;  
-        $usersgoods->goods_id = $id;
-        $res = $usersgoods->save();
-
-        if($res) {
-            echo 'success';
+        if($res) { 
+            return back()->with('success', '删除成功!');
         } else {
-            echo 'error';
+            return back()->with('success', '删除失败!');
         }
-    }
-
-    public function dislike($id)
-    {
-        $usersgoods = UsersGoods::where('goods_id', $id)->where('users_id', session('user')->id)->first();
-        $res = $usersgoods->delete();
-
-        if($res) {
-            echo 'success';
-        } else {
-            echo 'error';
-        }        
     }
 }

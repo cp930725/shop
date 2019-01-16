@@ -2136,14 +2136,14 @@
 							<h3 class="modtitle">Information</h3>
 							<div class="modcontent">
 								<ul class="menu">
-									<li><a href="#">About Us</a></li>
-									<li><a href="#">FAQ</a></li>
-									<li><a href="#">Order history</a></li>
-									<li><a href="#">Order information</a></li>
+								@foreach($links as $k=>$v)
+									<li><a href="{{ $v->href }}">{{ $v->name }}</a></li>
+								@endforeach	
 								</ul>
 							</div>
 						</div>
 					</div>
+
 
 					<div class="col-sm-6 col-md-3 box-service">
 						<div class="module clearfix">

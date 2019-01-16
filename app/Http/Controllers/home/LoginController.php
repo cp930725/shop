@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\models\User;
+use App\models\UserLoginLog;
 
 class LoginController extends Controller
 {
@@ -34,6 +35,11 @@ class LoginController extends Controller
         if ($tel_code == session('tel_code')) {
             $user = User::where('phone', $phone)->first();
             if ($user) {
+                $userLoginLog = new UserLoginLog;
+                $userLoginLog->users_id = $user->id;
+                $userLoginLog->login_name = $user->name;
+                $userLoginLog->login_ip = $request->ip();
+                $test = $userLoginLog->save();
                 session(['user' => $user, 'userInfo' => $user->adminInfo, 'userFlag' => true]);
                 return 'success';            
             } else {
@@ -83,7 +89,11 @@ class LoginController extends Controller
                 }
 
                 session(['user' => $user, 'userInfo' => $user->adminInfo, 'userFlag' => true]);
-
+                $userLoginLog = new UserLoginLog;
+                $userLoginLog->users_id = $user->id;
+                $userLoginLog->login_name = $user->name;
+                $userLoginLog->login_ip = $request->ip();
+                $test = $userLoginLog->save();
                 return 'success';
             } else {
                 return 'error';

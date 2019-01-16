@@ -9,6 +9,7 @@ use App\Http\Requests\StoreUserUpdatePost;
 use Illuminate\Support\Facades\Hash;
 use App\models\User;
 use App\models\UserInfo;
+use App\models\UserLoginLog;
 use DB;
 
 class UserController extends Controller
@@ -173,5 +174,16 @@ class UserController extends Controller
             echo 'error';
             DB::rollBack();
         }
+    }
+
+    public function log(Request $request)
+    {
+        $paginate = $request->input('paginate', 10);
+        $key = $request->input('key', '');
+        $order = $request->input('order', 'id');
+        $data = $request->input('data', 'desc');
+
+        $logs = UserLoginLog::where('login_name', 'like', "%{$key}%")->orWhere('login_ip', 'like', "%{$key}%")->orderBy($order, $data)->paginate($paginate);
+        return view('admin.users.log', ['title' => '日志列表', 'key'=>$key, 'paginate'=>$paginate, 'order'=>$order, 'data'=>$data, 'logs' => $logs]);
     }
 }

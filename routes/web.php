@@ -20,10 +20,8 @@ Route::get('admin/index', function () {
 Route::resource('admin/admins', 'admin\AdminController')->middleware('admin');
 // 管理员操作日志
 Route::resource('admin/logs', 'admin\LogController');
-
 // 管理员个人信息
 Route::get('admin/admins/info/{id}', 'admin\AdminController@info')->middleware('admin');
-
 // 后台 登录
 Route::resource('admin/login', 'admin\LoginController');
 // 后台退出
@@ -36,6 +34,8 @@ Route::get('admin/admins/pwd/{id}', 'admin\AdminController@getPwd')->middleware(
 Route::post('admin/admins/pwd/{id}', 'admin\AdminController@postPwd')->middleware('admin');
 // 后台 用户	
 Route::resource('admin/users', 'admin\UserController')->middleware('admin');
+// 用户 登录日志
+Route::get('admin/user/log', 'admin\UserController@log');
 // 后台 类别
 Route::resource('admin/cates', 'admin\CateController');
 Route::get('/admin/getcates', 'admin\CateController@getcates');
@@ -157,7 +157,7 @@ Route::resource('admin/barters',      'admin\BarterController');
 
 
 // 后台 轮播图
-
+Route::resource('/admin/slids', 'admin\SlidController');
 
 
 
@@ -226,7 +226,7 @@ Route::post('pwd/reset', 'home\PwdController@postReset');
 // 前台 用户
 Route::resource('home/users', 'home\UserController');
 
-
+Route::resource('home/slids', 'home\SlidController');
 
 
 

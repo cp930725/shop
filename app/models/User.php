@@ -17,7 +17,12 @@ class User extends Model
     }
 
     public function usersGoods()
-	    {
-	        return $this->belongsToMany('App\models\Goods','users_goods','users_id','goods_id');
-	    }
+    {
+        return $this->belongsToMany('App\models\Goods','users_goods','users_id','goods_id');
+    }
+
+    public function order()
+    {
+        return $this->hasMany('App\models\Order', 'users_id');
+    }
 }

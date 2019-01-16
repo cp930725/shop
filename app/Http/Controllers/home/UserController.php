@@ -4,6 +4,8 @@ namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\models\User;
+use App\models\UserInfo;
 
 class UserController extends Controller
 {
@@ -13,8 +15,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
+    {   
+        $user = User::find(session('user')->id);
+        return view('home.users.index', ['user' => $user]);
     }
 
     /**
@@ -57,7 +60,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('home.users.edit', ['user' => $user]);
     }
 
     /**
@@ -69,7 +73,18 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $userInfo = UserInfo::where('users_id', $id)->first();
+
+        $userInfo->nickname = $request->input('nickname', '');
+        $userInfo->nickname = $request->input('sex', '');
+        $userInfo->nickname = $request->input('city', '');
+        $res = $userInfo->save();
+
+        if ($res) {
+            return 'success';
+        } else {
+            return 'error';
+        }
     }
 
     /**

@@ -58,9 +58,6 @@ class GoodsController extends Controller
         }
         $arr[] = (int)$id;
         
-        // 测试
-        session(['user'=>1]);
-
         $like = UsersGoods::where('users_id', session('user'))->get();
         $goodsid = [];
         foreach($like as $k=>$v) {

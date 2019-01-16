@@ -162,19 +162,19 @@
                                     <script type="text/javascript">
                                         function login(){
                                             $(this).val('登录中...');
-
+                                            var src = $('captcha').attr('src');
+                                            $('captcha').attr('src', src+Math.random());
                                             var name = $('input[name="name"]').val();
                                             var pwd = $('input[name="pwd"]').val();
                                             var captcha = $('input[name="captcha"]').val();
+                                            var remember = $('input[name="remember"]').val();
                                             var _token = $('input[name="_token"]').val();
-                                        
                                             $.ajax({
                                                 url:'/login',
                                                 type:'post',
-                                                data:{'name':name, 'pwd':pwd, 'captcha':captcha, '_token':_token},
+                                                data:{'name':name, 'pwd':pwd, 'captcha':captcha, 'remember':remember, '_token':_token},
                                                 dataType:'html',
                                                 success:function(data){
-                                                    alert(data);
                                                     if (data == 'error') {
                                                         $('#name').removeClass('has-success');
                                                         $('#name').addClass('has-error');
@@ -187,7 +187,6 @@
                                                 error:function(msg){
                                                     $('#form-login input[type="submit"]').val('登录');
                                                     var json=JSON.parse(msg.responseText);
-                                                    console.log(json);
                                                     if (json.errors.captcha) {
                                                         $('#captcha').removeClass('has-success');
                                                         $('#captcha').addClass('has-error');

@@ -814,16 +814,11 @@
 						</div>
 						<div id="so-slideshow" class="col-lg-8 col-md-8 col-sm-12 col-xs-12 two-block">
 							<div class="module slideshow no-margin">
+								@foreach($slids as $k => $v)
 								<div class="item">
-									<a href="#"><img src="/home/image/demo/slider/slider-1.png" alt="slider1" class="img-responsive"></a>
+									<a href="{{ $v->url }}"><img src="/uploads/{{ $v->image }}" alt="slider1" class="img-responsive"></a>
 								</div>
-								<div class="item">
-									<a href="#"><img src="/home/image/demo/slider/slider-2.png" alt="slider2" class="img-responsive"></a>
-								</div>
-								<div class="item">
-									<a href="#"><img src="/home/image/demo/slider/slider-3.png" alt="slider3" class="img-responsive"></a>
-								</div>
-								
+								@endforeach
 							</div>
 							<div class="loadeding"></div>
 						</div>
@@ -2330,4 +2325,5 @@
 <script type="text/javascript" src="/home/js/themejs/cpanel.js"></script>
 </body>
 </html>
+
 

@@ -201,7 +201,7 @@
 				        	<div class="left_n">管理中心</div>
 				        	<div class="left_m">
 				                <ul>
-				                	<li ><a href="/home/users/{{ $user->id }}/edit"><span></span>修改信息</a></li>
+				                	<li><a   style="color:orange;" href="/home/users/{{ $user->id }}/edit">修改信息</a></li>
 				                    <li><a href="/pwd/reset">修改密码</a></li>
 				                </ul>
 				            </div>
@@ -224,57 +224,86 @@
 							
                     </div><!-- /.col-md-6 -->
                     <div class="col-md-10 pull-right">
-				        <div class="m_right" style="margin-left: 50px;">
-				        	<div class="m_des table-responsive">
-				            	<table class="col-md-8 table table-striped">
-				                  <tbody><tr valign="top">
-				                    <td width="115"><img src="/uploads/{{ $user->face or 'images/bBE860xPs7XvUnFPLrsvQEroSmkU8ll45I9EgmvZ.gif' }}" width="90" height="90"></td>
-				                    <td>
-				                    	<div class="m_user"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $user->userInfo->nickname }}</font></font></div>
-				                        <p>
-				                            <br>
-				                            <br>
-				                            <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">上一次登录时间：2015-09-28 18:19:47</font></font><br>
-				                        </p>
-				                        
-				                    <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户中心公告！</font></font></td>
-				                  </tr>
-				                </tbody></table>	
-				            </div>
-				            <div class="table-responsive">
-				            	
-				            </div>
-				            <div class="mem_t">账号信息</div>
-				            <table border="0" class="acc_tab table" style="width:750px;" cellspacing="0" cellpadding="0">
-				              <tbody><tr>
-				                <td class="td_l"> <font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户ID：</font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $user->name }}</font></font></td>
-				              </tr>
-				              <tr>
-				                <td class="td_l b_none"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电  话：</font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $user->phone }}</font></font></td>
-				              </tr>
-				              <tr>
-				                <td class="td_l"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">邮   箱： </font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $user->email }}</font></font></td>
-				              </tr>
-				              <tr>
-				                <td class="td_l b_none"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">注册时间：</font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ $user->created_at }}</font></font></td>
-				              </tr>
-				              <tr>
-				                <td class="td_l"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">完成订单：</font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"><?php count($user->order) ?></font></font></td>
-				              </tr>
-				              
-				              <tr>
-				                <td class="td_l"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">登录次数：</font></font></td>
-				                <td><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ '1' }}</font></font></td>
-				              </tr>
-				            </tbody></table>
-				               
-				            
-				        </div>
+                    	<div class="m_right">
+            <p></p><form action="/home/users" method="post" enctype="multipart/form-data">
+           		<div class="table-responsive">
+           			<table class="table" border="0" style="width:750px; margin-top:20px;" cellspacing="0" cellpadding="0">
+              <tbody><tr height="45">
+               <div class="form-group">
+            <div class="mem_tit">我的留言</div>
+                <td style="width: 80px;" align="right">用户名</td>
+                {{ csrf_field() }}
+                <input type="hidden" name="id" value="{{ $user->id }}">
+                <td>                            
+	                <input type="password" name="name" readonly class="form-control" placeholder="{{ $user->name }}">
+                </td>
+               </div>
+              </tr>
+              <tr height="45">
+                <td align="right">昵称&nbsp; &nbsp;</td>
+                <td>
+                        <input type="text" name="nickname" class="form-control" value="{{ $user->userInfo->nickname }}">
+                </td>
+              </tr>
+              <tr height="45">
+                <td align="right">性别 &nbsp; &nbsp;</td>
+                <td style="padding-top:5px;">
+                	<div class="form-group">
+                		<div class="input-group">
+	                        <input type="radio" @if($user->userInfo->sex == 0) checked @endif name="sex" value="0">男
+	                        <input type="radio" @if($user->userInfo->sex == 1) checked @endif name="sex" value="1">女
+	                        <input type="radio" @if($user->userInfo->sex == 2) checked @endif name="sex" value="2">保密
+                		</div>
+                </div>
+                </td>
+              </tr>
+              <tr height="45">
+                <td align="right">住址&nbsp; &nbsp;</td>
+                <td><div class="form-group">
+                        <input type="text" name="city" class="form-control" value="{{ $user->userInfo->city }}">
+                </div></td>
+              </tr>
+              <tr height="50" valign="bottom">
+                <td>&nbsp;</td>
+                <td><input type="submit" value="提交" class="btn btn-danger"></td>
+              </tr>
+            </tbody></table>
+           		</div>
+            
+            </form>
+
+            <script type="text/javascript">
+            	function update() {
+            		var id = $('input[name="id"]').val();
+                    var nickname = $('input[name="nickname"]').val();
+                    var sex = $('input[name="sex"]:checked').val();
+                    var city = $('input[name="city"]').val();
+                    var _token = $('input[name="_token"]').val();
+
+                    $.post('/home/users/'+id, {"nickname":nickname, "sex":sex, "city":city, "_token":_token, "_method":'PUT'}, function(data){
+                        if (data == 'success') {
+                            alert('修改成功');
+                            location.href = '/home/users';
+                        } else {
+                            alert('修改失败');
+                        }
+                    }, 'html');
+                }
+
+                $('input[type="submit"]').click(function(){
+                    update();
+                    return false;
+                });
+                $(document).keypress(function(e) {  
+
+                    if((e.keyCode || e.which)==13) {  
+                        update();
+                        return false;
+                    }  
+
+                });
+            </script>
+        </div>
                     </div>
                 </div><!-- /.row -->
             </div><!-- /.container -->

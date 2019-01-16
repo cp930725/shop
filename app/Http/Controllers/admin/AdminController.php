@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreAdminPost;
 use App\Http\Requests\StorePassPost;
-use App\Http\Requests\StoreAdminUpdatePost;
 use Illuminate\Support\Facades\Hash;
 use App\models\Admin;
 use App\models\AdminInfo;
@@ -116,7 +115,7 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreAdminUpdatePost $request, $id)
+    public function update(Request $request, $id)
     {
         DB::beginTransaction();
         $data = $request->only(['admin', 'email', 'status', 'phone', 'auth']);

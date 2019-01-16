@@ -1,27 +1,23 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\models\OperationLog;
+use App\models\Slid;
 
-class LogController extends Controller
+class SlidController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $paginate = $request->input('paginate', 10);
-        $key = $request->input('key', '');
-        $order = $request->input('order', 'id');
-        $data = $request->input('data', 'desc');
-
-        $logs = OperationLog::where('path', 'like', "%{$key}%")->orWhere('ip', 'like', "%{$key}%")->orderBy($order, $data)->paginate($paginate);
-        return view('admin.logs.index', ['title' => '日志列表', 'key'=>$key, 'paginate'=>$paginate, 'order'=>$order, 'data'=>$data, 'logs' => $logs]);
+        $slids = Slid::where('status', '0')->get();
+        
+        return view('home.index', ['slids' => $slids]);
     }
 
     /**
@@ -53,10 +49,7 @@ class LogController extends Controller
      */
     public function show($id)
     {
-        $log = OperationLog::find($id);
-        $input = json_decode($log->input);
-
-        return view('admin.logs.show', ['input' => $input]);
+        //
     }
 
     /**

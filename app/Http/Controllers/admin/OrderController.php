@@ -25,6 +25,29 @@ class OrderController extends Controller
         $keyword = $req->input('keyword', '');
 
         $order = Order::where('oid', 'like', '%'.$keyword.'%')->orderBy('oid','desc')->paginate($num);
+
+        $data = OrderInfo::get();
+
+        foreach ($data as $key => $value) {
+
+            $orders_id = $value->orders_id;
+
+            $data2 = OrderInfo::where('orders_id',$value->orders_id)->get();
+
+            $n = 0;
+            foreach ($data2 as $key => $value) {
+                if ($value->status==2) {
+                    $n++;
+                }
+            }
+            if ($n == count($data2)) {
+                $data3 = Order::where('id', $orders_id)->first();
+                $data3->status = 1;
+                $res2 = $data3->save();
+            }
+            
+        }
+
         
         return view('admin.orders.index', ['order'=>$order, 'title'=>'订单列表', 'num'=>$num, 'keyword'=>$keyword]);
     }

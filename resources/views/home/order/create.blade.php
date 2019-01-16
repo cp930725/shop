@@ -551,12 +551,13 @@
 												<th>总价</th>
 											</tr>
 										</thead>
-										@foreach($goods_info as $k=>$v)
+										
 										<tbody>
+										@foreach($goods_info as $k=>$v)
 											<tr>
 												<td>
 												
-													<img src="/uploads/goods/{{ $v->goods->pic }}" alt="sdsd" style="height: : 200px;">
+													<img src="/uploads/goods/{{ $v->goods->pic }}" alt="sdsd" style="height: 150px;">
 													
 													<span>
 														{{ $v->goods->name }}
@@ -573,36 +574,36 @@
 												</td>
 											</tr>										
 										</tbody>
+										@endforeach
 									</table><!-- /.product -->
-									@endforeach
+									
 
 									<table>
 										<tbody>
 											<tr>
 												<td>总价</td>
-												<td class="subtotal">{{ $datasum }}</td>
+												<td class="subtotal" colspan="3">
+													<div class="pull-right">
+														￥{{ $datasum }}
+													</div>
+												</td>
 												<input type="hidden" name="sum" value="{{ $datasum }}">
 											</tr>
 											<tr>
 												<td>运费</td>
 												<td>
-												 
-														<div class="pull-right">
-															<span style="font-size:18px;color: #8c8c8c;">免运费</span>
-														</div>
-												
-
+													<div class="pull-right">
+														<span style="font-size:18px;color: #8c8c8c;">免运费</span>
+													</div>
 													
 												</td><!-- /.btn-radio -->
 											</tr>
 											<tr>
 												<td>总计</td>
 												<td class="price-total">
-													@if($datasum < 99) 
-													{{ $datasum+=10 }}
-													@else 
-													{{ $datasum }}
-													@endif
+
+													￥{{ $datasum }}
+											
 												</td>
 											</tr>
 										</tbody>
@@ -614,13 +615,13 @@
 									<div class="pull-left col-md-8">
 										
 											<select name="user_addr_id" id="addr_id" style="border: 1px solid rgba(7,17,27,0.1); height: 25px; margin: 5px 0px; padding: 0px 5px;">
-												
+												@foreach($useraddr as $kk=>$vv  )
 													<option value="{{ $v->id }}">
-														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">trdsdsfgg  </span>
-														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">sdf </span>
-														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">sdf </span>
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->name }}  </span>
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->phone }} </span>
+														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->addr }} </span>
 													</option>
-												
+												@endforeach
 											</select>
 
 										</div>

@@ -101,7 +101,7 @@
                                             
                                             <td class="center">
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">{{ $v->cnt }}</span></span>
+                                                    <span style="vertical-align: inherit;" class="shopcnt">{{ $v->cnt }}</span></span>
                                             </td>
                                             <td>
                                                 <span style="vertical-align: inherit;">
@@ -133,8 +133,8 @@
                                                             var id = $(obj).attr('oid');
 
                                                                $.get('/admin/zhuangtai',{'id':id},function(msg){
-                                                                    var data = msg.trim();
-                                                                    if (data == 'success') {
+                                                                   
+                                                                    if (msg == 'success') {
                                                                         $(obj).text('已发货');  
                                                                     }
                                                                 },'html'); 
@@ -144,13 +144,15 @@
                                             </td>
                                         </tr>
                                         @endforeach
+
+
                                         <tr class="gradeA odd" role="row">
                                             <td class="sorting_1" colspan="8">
                                             <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;"> <strong>总数量&nbsp;:&nbsp;{{ $sum->cnt }}个商品&nbsp;&nbsp;</strong></span></span>
+                                                    <span style="vertical-align: inherit;"></span></span>
                                                  
                                                 <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;"><strong>总金额&nbsp;:￥&nbsp;{{ $sum->sum }}元&nbsp;&nbsp;</strong></span></span>
+                                                    <span style="vertical-align: inherit;"></span></span>
                                             </td>     
                                         </tr>   
                                      
@@ -161,56 +163,7 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="dataTables_paginate paging_simple_numbers" id="dataTables-example_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button previous disabled" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_previous">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">上一个</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button active" aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">1</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">2</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">3</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">4</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">5</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button " aria-controls="dataTables-example" tabindex="0">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">6</span></span>
-                                            </a>
-                                        </li>
-                                        <li class="paginate_button next" aria-controls="dataTables-example" tabindex="0" id="dataTables-example_next">
-                                            <a href="#">
-                                                <span style="vertical-align: inherit;">
-                                                    <span style="vertical-align: inherit;">下一个</span></span>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    
                                 </div>
                             </div>
                         </div>     

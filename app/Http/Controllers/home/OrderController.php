@@ -22,7 +22,7 @@ class OrderController extends Controller
     {
 
 
-        $data = Order::where('users_id', '1')->orderBy('id','desc')->paginate(100);
+        $data = Order::where('users_id', session('user')->id)->orderBy('id','desc')->paginate(100);
 
     
         return view('home.order.index', ['data'=>$data, 'title'=>'订单表']);
@@ -36,11 +36,13 @@ class OrderController extends Controller
     public function create()
     {
         foreach (session('cnt') as $key => $value) {
-            foreach (session('id') as $value) {
-                $arr[$key]['id'] = $value;
-                $arr[$key]['cnt'] = $value;
-            }
+                $arr[$key]['cnt'] = $value;   
         }
+        foreach (session('id') as $k => $v) {
+                $arr[$k]['id'] = $v;
+                
+        }
+        
         foreach ($arr as $key => $value) {
             
                 $goods_info[$key] = GoodsInfo::find($value['id']);
@@ -50,17 +52,17 @@ class OrderController extends Controller
         foreach ($goods_info as $k => $v) {
             $datasum += $v->price * $v->cnt;
         }
+        $useraddr = UserAddr::where('users_id',session('user')->id)->get();
         
-        return view('home.order.create', ['title'=>'订单表','goods_info'=>$goods_info,'datasum'=>$datasum]);
+        return view('home.order.create', ['title'=>'订单表','goods_info'=>$goods_info,'datasum'=>$datasum,'useraddr'=>$useraddr]);
     }
 
     public function ordersdata(Request $req)
     {
-
         $arr = $req->input('goods_info_id');
         $arr2 = $req->input('cnt');
         session(['id'=>$arr,'cnt'=>$arr2]);
-        if ( empty(session('id'))) {
+        if ( empty(session('id')||session('cnt'))) {
             echo 'error';
         } else {
             echo 'success';
@@ -80,7 +82,7 @@ class OrderController extends Controller
         DB::beginTransaction();
 
         $data = new Order;
-        $data->users_id = '1';///////////////////////////////////////
+        $data->users_id = session('user')->id;
         $data->oid = date('YmdHis').mt_rand(1000,9999);
         $data->sum = $request->input("sum");
         $data->user_addr_id = $request->input("user_addr_id");
@@ -93,10 +95,11 @@ class OrderController extends Controller
         $res = $data->save();
 
         foreach (session('cnt') as $key => $value) {
-            foreach (session('id') as $value) {
-                $arr[$key]['id'] = $value;
-                $arr[$key]['cnt'] = $value;
-            }
+                $arr[$key]['cnt'] = $value;   
+        }
+        foreach (session('id') as $k => $v) {
+                $arr[$k]['id'] = $v;
+                
         }
         $n = 0;
         foreach ($arr as $key => $value) {
@@ -119,11 +122,13 @@ class OrderController extends Controller
           }        
             if ($res && $n == count($arr)) {
                 DB::commit();
+                session(['id'=>'','cnt'=>'']);
                 return redirect('/home/orders')->with('success', '订单提交成功');
             } else {
                 DB::rollBack();
                 return back()->with('error', '订单提交失败');
             }
+            
        
     
     }
@@ -192,5 +197,23 @@ class OrderController extends Controller
             echo json_encode($msg);
             exit;
         } 
+    }
+
+    public function orderstatus(Request $request)
+    {
+
+        $id = $request->input('id');
+        $data = OrderInfo::where('id', $id)->first();
+        if ($data->status == '1') {
+            $data->status = '2';
+            $res = $data->save();
+            if ($res) {
+                echo 'success'; 
+                exit;
+            } else {
+                echo 'error';
+                exit;
+            }
+        }
     }
 }

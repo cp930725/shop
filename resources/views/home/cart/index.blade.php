@@ -110,7 +110,7 @@
 			<div class="cell p-checkbox">
 				<div class="cart-checkbox">
 					<!--单品-->
-						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" goods_info_id="{{ $v->goods_info_id }}" number="{{ $v->number }}" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
+						<input p-type="1832199_1" type="checkbox" name="checkItem" value="1832199_1"  data-bind="cbid" class="jdcheckbox goodsche goodsone" goods_info_id="{{ $v->goods_info_id }}" clstag="clickcart|keycount|xincart|cart_checkOn_sku" cid="{{ $v->id }}">
 										<label for="" class="checked">勾选商品</label>
 					<span class="line-circle"></span>
 				</div>
@@ -143,7 +143,7 @@
 				<!--单品-->
 					<div class="quantity-form">
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement" id="decrement_8888_1832199_1_1" onclick="minus(this)">-</a>
-						<input autocomplete="off" type="text" class="itxt" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
+						<input autocomplete="off" type="text" class="itxt number-num" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)">+</a>
 					</div>
 								<div class="ac ftx-03 quantity-txt" _stock="stock_1832199">有货</div>
@@ -268,14 +268,16 @@
 
 <script type="text/javascript">
 	$('.qujiesuan').click(function(){
+		var n = 0;
 		var id = [];
 		var num = [];
 		$.each($('.goodsone:checked'),function(k, v){
 			id.push($(this).attr('goods_info_id'));
-			num.push($(this).attr('number'));
+			num.push($('.number-num').eq(n++).val());
 		});
-		$.get('/home/orders/ordersdata',{'goods_info_id':id, 'cnt':num},function(msg){
-			msg = msg.trim();
+		
+		$.get('/home/ordersdata',{'goods_info_id':id, 'cnt':num},function(msg){
+			
 			if (msg == 'success') {
 				location.href = '/home/orders/create';
 			} else {

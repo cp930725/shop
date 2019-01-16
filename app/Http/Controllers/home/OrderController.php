@@ -52,8 +52,8 @@ class OrderController extends Controller
         foreach ($goods_info as $k => $v) {
             $datasum += $v->price * $v->cnt;
         }
-        $useraddr = UserAddr::where('users_id',session('user')->id)->get();
-        
+        $id = session('user')->id;
+        $useraddr = UserAddr::where('users_id',$id)->get();        
         return view('home.order.create', ['title'=>'订单表','goods_info'=>$goods_info,'datasum'=>$datasum,'useraddr'=>$useraddr]);
     }
 
@@ -185,7 +185,7 @@ class OrderController extends Controller
         $data->name = $request->input('name');
         $data->phone = $request->input('phone');
         $data->addr = $request->input('addr');
-        $data->users_id = '1';
+        $data->users_id = session('user')->id;
         $res = $data->save();
         $id = $data->id;
         if ($res) {
@@ -216,4 +216,5 @@ class OrderController extends Controller
             }
         }
     }
+    
 }

@@ -99,32 +99,32 @@
 						</ul>
 					</form>
 				</div>
-				@if(session('HomeLogin'))
+				@if(session('userFlag'))
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/userinfo" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-							<span class="icon icon-credit "></span> {{ session('UserName') }} <span class="fa fa-angle-down"></span>
+						<a href="/home/users" class="btn btn-xs">
+							<span class="icon icon-credit "></span> <span>{{ session('user')->nickname or session('user')->name }}</span>
 						</a>
 					</form>
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/logout" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
-							<span class="icon icon-credit "></span>退出
+						<a href="/logout" class="btn btn-xs">
+							<span class="icon icon-credit "></span><span>退出</span>
 						</a>
 					</form>
 				</div>
 				@else
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/register" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/login" class="btn btn-xs">
 							<span class="icon icon-credit "></span>请登录
 						</a>
 					</form>
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/register" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/register" class="btn btn-xs">
 							<span class="icon icon-credit "></span>去注册
 						</a>
 					</form>
@@ -134,7 +134,7 @@
 			<div class="header-top-right form-inline text-right collapsed-block col-sm-6 col-xs-12 compact-hidden">
 				<div class="form-group currencies-block">
 					<form>
-						<a href="/home/orders" class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a href="/home/orders" class="btn btn-xs">
 							<span class=""></span> 我的订单 
 						</a>
 						
@@ -148,14 +148,14 @@
 						<ul class="dropdown-menu btn-xs">
 							<li> <a href="/home/orders"><span class="fa fa-check-square"></span>待处理订单</a></li>
 							<li> <a href="/home/returns"><span class="fa fa-facebook"></span>返修退换货</a></li>
-							<li> <a href="/home/concerns"><span class="fa fa-heart"></span>我的关注</a></li>
+							<li> <a href="/home/usersgoods"><span class="fa fa-heart"></span>我的收藏</a></li>
 							<li> <a href="/home/concerns"><span class="fa fa-bell"></span>消息</a></li>
 						</ul>
 					</form>
 				</div>
 				<div class="form-group currencies-block">
 					<form>
-						<a class="btn btn-xs dropdown-toggle" data-toggle="dropdown">
+						<a class="btn btn-xs">
 							<span class="icon icon-credit "></span> 商城会员
 						</a>
 					</form>
@@ -538,10 +538,7 @@
 								<form action="/home/orders" method="post" accept-charset="utf-8" name="order_create">
 									 {{ csrf_field() }}
 
-									<input type="hidden" name="goods_info_id" value="goods_info_id">
-									<input type="hidden" name="cnt" value="cnt">
-									<input type="hidden" name="scnt" value="scnt">
-									<input type="hidden" name="sum" value="sum">
+									
 									<table class="product table">
 										<thead>
 											<tr>
@@ -616,7 +613,7 @@
 										
 											<select name="user_addr_id" id="addr_id" style="border: 1px solid rgba(7,17,27,0.1); height: 25px; margin: 5px 0px; padding: 0px 5px;">
 												@foreach($useraddr as $kk=>$vv  )
-													<option value="{{ $v->id }}">
+													<option value="{{ $vv->id }}">
 														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->name }}  </span>
 														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->phone }} </span>
 														<span style="font-size: 12px; margin-left: 20px; margin:0px; padding: 0px;">{{ $vv->addr }} </span>

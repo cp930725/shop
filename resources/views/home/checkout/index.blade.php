@@ -171,7 +171,7 @@
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a href="index.html"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+				<a href="/"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
@@ -191,13 +191,7 @@
 			<div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
 				<!--cart-->
 				<div id="cart" class=" btn-group btn-shopping-cart">
-					<a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
-						<div class="shopcart">
-							<span class="handle pull-left"></span>
-							<span class="title">My cart</span>
-							<p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
-						</div>
-					</a>
+					
 
 					<ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
 						
@@ -333,20 +327,19 @@
 							
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="/home/index" class="clearfix">
+								<a href="/" class="clearfix">
 									<strong>首页</strong>
 									<span class="label"></span>
 								</a>
 							</li>
-							
-							<li class="hidden-md">
+							<li class="">
 								<p class="close-menu"></p>
-								<a href="/home/checkout" class="clearfix">
-									<strong>退换货</strong>
+								<a href="/home/orders" class="clearfix">
+									<strong>我的订单</strong>
+									<span class="label"></span>
 								</a>
 							</li>
-
-
+				
 							<li class="with-sub-menu hover hidden">
 								<p class="close-menu"></p>
 								<a href="#" class="clearfix">
@@ -503,64 +496,47 @@
                             <div class="wishlist-content wishlist-content-2">
                             
                                 <form action="#">
-                                @foreach($data as $k => $v)
+                                
                                     <div class="wishlist-table wishlist-table-2 table-responsive">
-                                    	<div>
-											<span>订单编号:{{ $v->oid }}</span><span style="margin-left: 20px;">下单时间: {{ $v->created_at }} </span>
-                                    	</div>
                                         <table class="table text-center table-striped table-bordered table-hover dataTable no-footer dtr-inline">
                                             <thead>
                                             
                                                 <tr>
                                                     <th><span>商品图片</span></th>
+                                                    <th><span>订单编号</span></th>
                                                     <th><span>商品名称</span></th>
                                                     <th><span>商品单价</span></th>
                                                     <th><span>商品个数</span></th>
                                                     <th><span>商品总价</span></th>                                                  
-                                                    <th><span>操作</span></th>                                                   
+                                                    <th><span>收货人</span></th>                                                   
+                                                    <th><span>收货人电话</span></th>                                                   
+                                                    <th><span>收货人地址</span></th>                                                   
                                                 </tr>
                                             </thead>
-                                            @foreach($v->ordersInfo as $kk=>$vv)
+                                        @foreach($data as $k => $v)
+                                            
                                             <tbody>
                                                 <tr>
                                                 	<td >
 	                                                    <div style="height: 100px;">
-															<img src="/uploads/goods/{{ $vv->pic }}" alt="商品图片" style="height: 100px;">
+															<img src="/uploads/goods/{{ $v->orderInfo->pic }}" alt="商品图片" style="height: 100px;">
 														</div>
                                                     </td>
-                                                    <td>{{ $vv->name }}</td>
-                                                    <td>￥{{ $vv->price }}</td>
-                                                    <td>{{ $vv->cnt }}</td>
-                                                    <td>￥{{ $vv->price * $vv->cnt }}</td>
-                                                    <td>
-                                                    	@if($vv->status==0)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info">等待发货</a>
-														@elseif($vv->status==1)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info" onclick="orderstatus(this)">确认收货</a>
-														@elseif($vv->status==2)
-														<a href="javascript:;" orders_info_id="{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-info">收货完成</a>
-														@endif
-
-														<a href="/home/checkout/{{ $vv->id }}" style="margin-bottom: 5px;" class="btn btn-xs btn-warning">
-															@if($vv->type==0) 仅退款
-															@elseif($vv->type==1) 退货
-															@elseif($vv->type==2) 换货
-															@elseif($vv->type==3) 申请退/换货
-															@endif
-														
-														</a>
-                                                    </td>
+                                                    <td>{{ $v->oid }}</td>
+                                                    <td>{{ $v->orderInfo->name }}</td>
+                                                    <td>￥{{ $v->orderInfo->price }}</td>
+                                                    <td>{{ $v->cnt }}</td>
+                                                    <td>￥{{ $v->sum }}</td>
+                                                    <td>{{ $v->orderInfo->order->ordersUserAddr->name }}</td>
+                                                    <td>{{ $v->orderInfo->order->ordersUserAddr->phone }}</td>
+                                                    <td>{{ $v->orderInfo->order->ordersUserAddr->addr }}</td>
                                                 </tr>
                                             </tbody>
-                                            @endforeach
-                                        </table> 
-                                        <div class="coupon pull-right clearfix" style="margin-right: 100px;">
-                                            <label for="coupon_code"></label>
-                                            <span style="margin-right: 20px; font-size: 16px; padding: 3px 5px; color: orange;">小计:￥{{ $v->sum }}</span>
-                                            <a href="" style="margin-bottom: 5px;" class="btn btn-sm btn-primary">订单详情</a>				
-                                        </div>                                       
+                                            
+                                        @endforeach
+                                        </table>                                     
                                     </div>
-                                @endforeach    
+                                    
                                 </form>
                                 <script type="text/javascript">
 

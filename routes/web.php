@@ -147,7 +147,7 @@ Route::resource('admin/waters',     'admin\WaterController');
 
 
 // 后台 友情链接
-
+Route::resource('admin/links',      'admin\LinksController');
 
 
 
@@ -253,9 +253,9 @@ Route::resource('home/orderinfo',  'home\OrderInfoController');
 Route::get('home/createaddr',      'home\OrderController@createaddr');
 Route::get('home/ordersdata',      'home\OrderController@ordersdata');
 Route::get('home/orderstatus',     'home\OrderController@orderstatus');
-
-
-
+Route::get('home/checkout/{id}',   'home\CheckoutController@create');
+Route::resource('home/checkout',   'home\CheckoutController');
+Route::resource('home/links',      'home\LinksController');
 
 
 

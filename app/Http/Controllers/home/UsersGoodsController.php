@@ -13,6 +13,7 @@ class UsersGoodsController extends Controller
     {	
     	$like = UsersGoods::where('users_id', session('user')->id)->get();
         $goodsid = [];
+        
         foreach($like as $k=>$v) {
             $goodsid[] = $v->goods_id;
         }

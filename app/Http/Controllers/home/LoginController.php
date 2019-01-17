@@ -16,9 +16,12 @@ class LoginController extends Controller
     public function index()
     {
         if (\Cookie::get('user_token')) {
-            $user = user::where('user_token', \Cookie::get('user_token'))->first();
-            $code = $user->code;
-            session(['userName' => $user->$code]);
+            $user = User::where('user_token', \Cookie::get('user_token'))->first();
+            if($user) {
+                $code = $user->code;
+                session(['userName' => $user->$code]);
+            }
+           
         }
         return view('home.login.index');
     }
@@ -34,13 +37,14 @@ class LoginController extends Controller
 
         if ($tel_code == session('tel_code')) {
             $user = User::where('phone', $phone)->first();
+
             if ($user) {
                 $userLoginLog = new UserLoginLog;
                 $userLoginLog->users_id = $user->id;
                 $userLoginLog->login_name = $user->name;
                 $userLoginLog->login_ip = $request->ip();
                 $test = $userLoginLog->save();
-                session(['user' => $user, 'userInfo' => $user->adminInfo, 'userFlag' => true]);
+                session(['user' => $user, 'userInfo' => $user->userInfo, 'userFlag' => true]);
                 return 'success';            
             } else {
                 return 'error';
@@ -88,7 +92,7 @@ class LoginController extends Controller
                     \Cookie::queue('user_token', null);
                 }
 
-                session(['user' => $user, 'userInfo' => $user->adminInfo, 'userFlag' => true]);
+                session(['user' => $user, 'userInfo' => $user->userInfo, 'userFlag' => true]);
                 $userLoginLog = new UserLoginLog;
                 $userLoginLog->users_id = $user->id;
                 $userLoginLog->login_name = $user->name;

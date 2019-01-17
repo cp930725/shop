@@ -19,7 +19,10 @@ class LoginController extends Controller
     {
         if (\Cookie::get('remember_token')) {
             $admin = Admin::where('remember_token', \Cookie::get('remember_token'))->first();
-            session(['adminName' => $admin->admin]);
+            if($admin) {
+                session(['adminName' => $admin->admin]);
+            }
+            
         }
         return view('admin.login.index');
     }

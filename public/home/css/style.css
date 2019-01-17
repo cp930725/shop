@@ -3355,3 +3355,66 @@ ol.comment-list li.comment .comment-text .comment-content p {
 	}
 
 }
+.social_design {
+  position: fixed;
+  right: 0;
+  top: 150px;
+  width: 45px;
+  z-index: 999999;
+}
+.social_design ul {
+  padding: 0;
+} 
+.social_design ul li {
+  display: block;
+}
+.social_design ul li a {
+  float: right;
+  margin-bottom: 2px;
+}
+.social_design ul li a.facebook {
+  background: #3b5998 none repeat scroll 0 0;
+}
+.social_design ul li a > span {
+  color: #fff;
+  float: left;
+  font-size: 11px;
+  height: 43px;
+  line-height: 43px;
+  overflow: hidden;
+  transition: all 0.5s ease 0s;
+  white-space: nowrap;
+  width: 43px;
+}
+.social_design ul li a:hover > span {
+  width: 160px;
+}
+.social_design ul li a > span i.fa {
+  float: left;
+  font-size: 20px;
+  height: 43px;
+  line-height: 43px;
+  text-align: center;
+  width: 43px;
+}
+.social_design ul li a > span span.social-text {
+  float: left;
+  height: 43px;
+  line-height: 43px;
+  width: 0;
+}
+.social_design ul li a.twitter {
+  background: #62bdb2 none repeat scroll 0 0;
+}
+.social_design ul li a.google-plus {
+  background: #db4a39 none repeat scroll 0 0;
+}
+.social_design ul li a.youtube {
+  background: #c4302b none repeat scroll 0 0;
+}
+.social_design ul li a.pinterest {
+  background: #db4a39 none repeat scroll 0 0;
+}
+.social_design ul li a.mail-to {
+  background: #2a056f none repeat scroll 0 0;
+}

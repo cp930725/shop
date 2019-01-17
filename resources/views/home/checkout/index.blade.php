@@ -77,7 +77,7 @@
 				<div class="form-group currencies-block">
 					<form>
 						<a href="/home/users" class="btn btn-xs">
-							<span class="icon icon-credit "></span> <span>{{ session('user')->nickname or session('user')->name }}</span>
+							<span class="icon icon-credit "></span> <span>{{ session('user')->name }}</span>
 						</a>
 					</form>
 				</div>
@@ -507,7 +507,8 @@
                                                     <th><span>商品名称</span></th>
                                                     <th><span>商品单价</span></th>
                                                     <th><span>商品个数</span></th>
-                                                    <th><span>商品总价</span></th>                                                  
+                                                    <th><span>商品总价</span></th>                             	                     
+                                                    <th><span>商品状态</span></th>                             	                     
                                                     <th><span>收货人</span></th>                                                   
                                                     <th><span>收货人电话</span></th>                                                   
                                                     <th><span>收货人地址</span></th>                                                   
@@ -527,6 +528,13 @@
                                                     <td>￥{{ $v->orderInfo->price }}</td>
                                                     <td>{{ $v->cnt }}</td>
                                                     <td>￥{{ $v->sum }}</td>
+                                                    <td>
+                                                    	@if($v->status  == 0)待审中
+                                                    	@elseif($v->status  == 1)取消审核
+                                                    	@elseif($v->status  == 2)审核通过
+                                                    	@elseif($v->status  == 3)审核失败
+                                                    	@endif
+                                                    </td>
                                                     <td>{{ $v->orderInfo->order->ordersUserAddr->name }}</td>
                                                     <td>{{ $v->orderInfo->order->ordersUserAddr->phone }}</td>
                                                     <td>{{ $v->orderInfo->order->ordersUserAddr->addr }}</td>
@@ -587,63 +595,10 @@
     </div>
     <div style="height: 50px; width: 100%;"></div>
 	<!-- Social widgets -->
-	<section class="social-widgets visible-lg">
-	<ul class="items">
-		<li class="item item-01 facebook"> <a href="" class="tab-icon"><span class="fa fa-user"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>个人中心</h5>
-				</div>
-				<div class="loading">
-					<img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
-				</div>
-			</div>
-		</li>
-		<li class="item item-02 twitter"> <a href="" class="tab-icon"><span class="fa fa-cart-plus"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>购物车</h5> 
-				</div>
-				<div class="loading">
-					<img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
-				</div>
-			</div>
-		</li>
-		<li class="item item-03 youtube"> <a href="#" class="tab-icon"><span class="fa fa-heart"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>我的关注</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-		<li class="item item-04 twitter"> <a href="#" class="tab-icon"><span class="fa fa-bell"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>我的消息</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-		<li class="item item-05 youtube"> <a href="#" class="tab-icon"><span class="fa fa-pencil"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>反馈</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-	</ul>
-</section>	<!-- End Social widgets -->
-
+	
 <link rel='stylesheet' property='stylesheet'  href='/home/css/themecss/cpanel.css' type='text/css' media='all' />
 	
 <!-- Preloading Screen -->
-<div id="loader-wrapper">
-	<div id="loader"></div>
-	<div class="loader-section section-left"></div>
-	<div class="loader-section section-right"></div>
- </div>
 <!-- End Preloading Screen -->
 	
 <!-- Include Libs & Plugins

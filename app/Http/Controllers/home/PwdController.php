@@ -51,9 +51,9 @@ class PwdController extends Controller
     /**
      * 忘记密码
      */
-    public function postPhone()
+    public function postPhone(Request $request)
     {
-    	if ($tel_code == session('tel_code')) {
+    	if (session('tel_code') == $request->input('tel_code')) {
     		$phone = $request->input('phone');
 	        $res = User::where('phone', $phone)->first();
 	        

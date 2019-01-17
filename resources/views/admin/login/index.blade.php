@@ -30,7 +30,7 @@
 			<div class="vertical-align-middle">
 				<div class="auth-box ">
 					<div class="left">
-						<div class="content">
+						<div class="pull-left content" style="margin-top:60px">
 							<div class="header">
 								<div class="logo text-center"><img src="assets/img/logo-dark.png" alt="Klorofil Logo"></div>
 								<p class="lead">登录到您的账户</p>
@@ -70,8 +70,7 @@
 					<div class="right">
 						<div class="overlay"></div>
 						<div class="content text">
-							<h1 class="heading">待地</h1>
-							<p>待定</p>
+							
 						</div>
 					</div>
 					<div class="clearfix"></div>

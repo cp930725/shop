@@ -5,18 +5,7 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">
-                     <a href="/admin/admins/create" class="btn btn-primary">
-                        <span style="vertical-align: inherit;">
-                            <span style="vertical-align: inherit;"><span class="lnr lnr-user"></span>添加管理员</span>
-                        </span>
-                    </a>
-                    <a href="/admin/logs" class="btn btn-primary">
-                        <span style="vertical-align: inherit;">
-                            <span style="vertical-align: inherit;"><span class="lnr lnr-bookmark"></span>操作日志</span>
-                        </span>
-                    </a>
-                </div>
+               
 
                 <!-- /.panel-heading -->
                 <div class="panel-body">
@@ -64,7 +53,7 @@
                                     <span style="vertical-align: inherit;">搜索</span></span>
                                     <div role="form" class="input-group custom-search-form">
                                         <form action="/admin/logs" method="get">
-                                            <input type="search" name="key" class="form-control" placeholder="关键字">
+                                            <input type="search" name="key" value="{{ $key }}" class="form-control" placeholder="关键字">
                                             <span class="input-group-btn">
                                                 <button class="btn btn-default"><i class="fa fa-search"></i>
                                                 </button>

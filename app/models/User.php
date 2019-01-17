@@ -25,4 +25,9 @@ class User extends Model
     {
         return $this->hasMany('App\models\Order', 'users_id');
     }
+
+    public function userLoginLog()
+    {
+        return $this->hasMany('App\models\UserLoginLog', 'users_id');
+    }
 }

@@ -77,7 +77,7 @@
 				<div class="form-group currencies-block">
 					<form>
 						<a href="/home/users" class="btn btn-xs">
-							<span class="icon icon-credit "></span> <span>{{ session('user')->nickname or session('user')->name }}</span>
+							<span class="icon icon-credit "></span> <span>{{ session('user')->name }}</span>
 						</a>
 					</form>
 				</div>
@@ -171,101 +171,12 @@
 		<div class="row">
 			<!-- Logo -->
 			<div class="navbar-logo col-md-3 col-sm-12 col-xs-12">
-				<a href="index.html"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
+				<a href="/"><img src="/home/image/demo/logos/theme_logo.png" title="Your Store" alt="Your Store" /></a>
 			</div>
 			<!-- //end Logo -->
 
 
-			<!-- Search -->
-			<div id="sosearchpro" class="col-sm-7 search-pro">
-				<form method="GET" action="/home/orders">
-					<div id="search0" class="search input-group">
-						
-					</div>
-
-				</form>
-			</div>
-			<!-- //end Search -->
-
-			<!-- Secondary menu -->
-			<div class="col-md-2 col-sm-5 col-xs-12 shopping_cart pull-right">
-				<!--cart-->
-				<div id="cart" class=" btn-group btn-shopping-cart">
-					<a data-loading-text="Loading..." class="top_cart dropdown-toggle" data-toggle="dropdown">
-						<div class="shopcart">
-							<span class="handle pull-left"></span>
-							<span class="title">My cart</span>
-							<p class="text-shopping-cart cart-total-full">2 item(s) - $1,262.00 </p>
-						</div>
-					</a>
-
-					<ul class="tab-content content dropdown-menu pull-right shoppingcart-box" role="menu">
-						
-						<li>
-							<table class="table table-striped">
-								<tbody>
-									<tr>
-										<td class="text-center" style="width:70px">
-											<a href="product.html"> <img src="/home/image/demo/shop/product/35.jpg" style="width:70px" alt="Filet Mign" title="Filet Mign" class="preview"> </a>
-										</td>
-										<td class="text-left"> <a class="cart_product_name" href="product.html">Filet Mign</a> </td>
-										<td class="text-center"> x1 </td>
-										<td class="text-center"> $1,202.00 </td>
-										<td class="text-right">
-											<a href="product.html" class="fa fa-edit"></a>
-										</td>
-										<td class="text-right">
-											<a onclick="cart.remove('2');" class="fa fa-times fa-delete"></a>
-										</td>
-									</tr>
-									<tr>
-										<td class="text-center" style="width:70px">
-											<a href="product.html"> <img src="/home/image/demo/shop/product/141.jpg" style="width:70px" alt="Canon EOS 5D" title="Canon EOS 5D" class="preview"> </a>
-										</td>
-										<td class="text-left"> <a class="cart_product_name" href="product.html">Canon EOS 5D</a> </td>
-										<td class="text-center"> x1 </td>
-										<td class="text-center"> $60.00 </td>
-										<td class="text-right">
-											<a href="product.html" class="fa fa-edit"></a>
-										</td>
-										<td class="text-right">
-											<a onclick="cart.remove('1');" class="fa fa-times fa-delete"></a>
-										</td>
-									</tr>
-								</tbody>
-							</table>
-						</li>
-						<li>
-							<div>
-								<table class="table table-bordered">
-									<tbody>
-										<tr>
-											<td class="text-left"><strong>Sub-Total</strong>
-											</td>
-											<td class="text-right">$1,060.00</td>
-										</tr>
-										<tr>
-											<td class="text-left"><strong>Eco Tax (-2.00)</strong>
-											</td>
-											<td class="text-right">$2.00</td>
-										</tr>
-										<tr>
-											<td class="text-left"><strong>VAT (20%)</strong>
-											</td>
-											<td class="text-right">$200.00</td>
-										</tr>
-										<tr>
-											<td class="text-left"><strong>Total</strong>
-											</td>
-											<td class="text-right">$1,262.00</td>
-										</tr>
-									</tbody>
-								</table>
-								<p class="text-right"> <a class="btn view-cart" href="#"><i class="fa fa-shopping-cart"></i>View Cart</a>&nbsp;&nbsp;&nbsp; <a class="btn btn-mega checkout-cart" href="#"><i class="fa fa-share"></i>Checkout</a> </p>
-							</div>
-						</li>
-					</ul>
-				</div>
+			
 				<!--//cart-->
 			</div>
 		</div>
@@ -333,7 +244,7 @@
 							
 							<li class="">
 								<p class="close-menu"></p>
-								<a href="/home/index" class="clearfix">
+								<a href="/" class="clearfix">
 									<strong>首页</strong>
 									<span class="label"></span>
 								</a>
@@ -611,63 +522,11 @@
     </div>
     <div style="height: 50px; width: 100%;"></div>
 	<!-- Social widgets -->
-	<section class="social-widgets visible-lg">
-	<ul class="items">
-		<li class="item item-01 facebook"> <a href="" class="tab-icon"><span class="fa fa-user"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>个人中心</h5>
-				</div>
-				<div class="loading">
-					<img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
-				</div>
-			</div>
-		</li>
-		<li class="item item-02 twitter"> <a href="" class="tab-icon"><span class="fa fa-cart-plus"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>购物车</h5> 
-				</div>
-				<div class="loading">
-					<img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader">
-				</div>
-			</div>
-		</li>
-		<li class="item item-03 youtube"> <a href="#" class="tab-icon"><span class="fa fa-heart"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>我的关注</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-		<li class="item item-04 twitter"> <a href="#" class="tab-icon"><span class="fa fa-bell"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>我的消息</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-		<li class="item item-05 youtube"> <a href="#" class="tab-icon"><span class="fa fa-pencil"></span></a>
-			<div class="tab-content">
-				<div class="title">
-					<h5>反馈</h5>
-				</div>
-				<div class="loading"> <img src="/home/image/theme/lazy-loader.gif" class="ajaxloader" alt="loader"></div>
-			</div>
-		</li>
-	</ul>
-</section>	<!-- End Social widgets -->
+	
 
 <link rel='stylesheet' property='stylesheet'  href='/home/css/themecss/cpanel.css' type='text/css' media='all' />
 	
 <!-- Preloading Screen -->
-<div id="loader-wrapper">
-	<div id="loader"></div>
-	<div class="loader-section section-left"></div>
-	<div class="loader-section section-right"></div>
- </div>
 <!-- End Preloading Screen -->
 	
 <!-- Include Libs & Plugins
@@ -676,7 +535,6 @@
 
 <script type="text/javascript" src="/home/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/home/js/owl-carousel/owl.carousel.js"></script>
-<script type="text/javascript" src="/home/js/themejs/libs.js"></script>
 <script type="text/javascript" src="/home/js/unveil/jquery.unveil.js"></script>
 <script type="text/javascript" src="/home/js/countdown/jquery.countdown.min.js"></script>
 <script type="text/javascript" src="/home/js/dcjqaccordion/jquery.dcjqaccordion.2.8.min.js"></script>

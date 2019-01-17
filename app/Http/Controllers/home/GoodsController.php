@@ -41,30 +41,6 @@ class GoodsController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        
-        $arr_id = Cate::where('path', 'like', "%,$id,%")->get(['id']);
-        $arr = [];
-        
-        foreach($arr_id as $k=>$v) {
-            $arr[] = $v->id;
-        }
-        $arr[] = (int)$id;
-        
-
-
-        $like = UsersGoods::where('users_id', session('user')->id)->get();
-        $goodsid = [];
-        foreach($like as $k=>$v) {
-            $goodsid[] = $v->goods_id;
-        }
     public function show(Request $request, $id)
     {   
 
@@ -170,10 +146,6 @@ class GoodsController extends Controller
     public function dislike($id)
     {
         $usersgoods = UsersGoods::where('goods_id', $id)->where('users_id', session('user')->id)->first();
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/mabuyang
         $res = $usersgoods->delete();
 
         if($res) {

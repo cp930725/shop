@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\models\Sale;
 use App\models\UsersGoods;
+use App\models\Slid;
 
 class IndexController extends Controller
 {
@@ -16,6 +17,7 @@ class IndexController extends Controller
      */
     public function index()
     {   
+        $slids = Slid::where('status', '0')->get();
         if(session('user')) {
 
             $like = UsersGoods::where('users_id', session('user')->id)->get();
@@ -28,7 +30,7 @@ class IndexController extends Controller
         }
         
         $sales = Sale::all();
-        return view('home.index.index', ['sales'=>$sales, 'goodsid'=>$goodsid]);
+        return view('home.index.index', ['sales'=>$sales, 'slids' => $slids, 'goodsid'=>$goodsid]);
     }
 
     /**

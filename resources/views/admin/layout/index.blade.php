@@ -69,7 +69,7 @@
 								<li><a href="panels.html" class=""><i class="lnr lnr-cog"></i> <span>面板</span></a></li>
 								<li><a href="notifications.html" class=""><i class="lnr lnr-alarm"></i> <span>通知</span></a></li>
 								<li>
-									<a href="#subPages" data-toggle="collapse" class="collapsed"><i class="lnr lnr-file-empty"></i> <span>页面</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
+									<a href="#subPages" data-toggle="collapse" class="collapsed" id="orderclick"><i class="lnr lnr-file-empty"></i> <span>页面</span> <i class="icon-submenu lnr lnr-chevron-left"></i></a>
 									<div id="subPages" class="collapse ">
 										<ul class="nav">
 											<li><a href="page-profile.html" class="">轮廓</a></li>
@@ -83,6 +83,7 @@
 								<li><a href="icons.html" class=""><i class="lnr lnr-linearicons"></i> <span>图标</span></a></li>
 							</ul>
 						</li>
+
 						<li class="dropdown">
 							<a href="/admin/adminInfo" class="dropdown-toggle" data-toggle="dropdown"><img src="/uploads/{{ session('adminInfo')->face }}" class="img-circle" alt="Avatar"> <span>{{ session('admin')->admin }}</span> <i class="icon-submenu lnr lnr-chevron-down"></i></a>
 
@@ -106,23 +107,22 @@
 				<nav>
 					<ul class="nav">
 						<li><a href="/admin/admins" 		class=""><i class="lnr lnr-user"></i> <span>管理员</span></a></li>
+						<li><a href="/admin/logs" 	class=""><i class="lnr lnr-magic-wand"></i> <span>管理员操作日志</span></a></li>
 						<li><a href="/admin/users" 		class=""><i class="lnr lnr-users"></i> <span>用户管理</span></a></li>
+						<li><a href="/admin/user/log" 	class=""><i class="lnr lnr-bubble"></i> <span>用户登录日志</span></a></li>
 						<li><a href="/admin/cates" 		class=""><i class="lnr lnr-text-align-left"></i> <span>类别管理</span></a></li>
 						<li><a href="/admin/goods" 		class=""><i class="lnr lnr-cart"></i> <span>商品管理</span></a></li>
 						<li><a href="/admin/concerns" 	class=""><i class="lnr lnr-heart"></i> <span>关注管理</span></a></li>
 						<li><a href="/admin/sales" 	class=""><i class="lnr lnr-hourglass"></i> <span>活动管理</span></a></li>
-						<li><a href="/admin/discounts" 	class=""><i class="lnr lnr-magic-wand"></i> <span>优惠券管理</span></a></li>
 						<li><a href="/admin/orders" 	class=""><i class="lnr lnr-chart-bars"></i> <span>订单管理</span></a></li>
-
-						<li><a href="/admin/comments" 	class=""><i class="lnr lnr-bubble"></i> <span>评论管理</span></a></li>
-						<li><a href="/admin/returns" 	class=""><i class="lnr lnr-database"></i> <span>售后管理</span></a></li>
+						
+						<li><a href="/admin/returns" 	class=""><i class="lnr lnr-database"></i> <span>退货管理</span></a></li>
+						<li><a href="/admin/barters" 	class=""><i class="lnr lnr-database"></i> <span>换货管理</span></a></li>
+						<li><a href="/admin/checks" 	class=""><i class="lnr lnr-database"></i> <span>审核管理</span></a></li>
+						
 						<li><a href="/admin/waters" 	class=""><i class="lnr lnr-layers"></i> <span>账单管理管理</span></a></li>
-						<li><a href="/admin/advers" 	class=""><i class="lnr lnr-star"></i> <span>广告管理</span></a></li>
-						<li><a href="/admin/ytnotics" 	class=""><i class="lnr lnr-bullhorn"></i> <span>公告管理</span></a></li>
 						<li><a href="/admin/links" 		class=""><i class="lnr lnr-link"></i> <span>友情链接管理</span></a></li>
 						<li><a href="/admin/slids" 		class=""><i class="lnr lnr-camera"></i> <span>轮播图管理</span></a></li>
-						<li><a href="/admin/deletes" 	class=""><i class="lnr lnr-trash"></i> <span>回收站</span></a></li>
-						<li><a href="/admin/webs" 		class=""><i class="lnr lnr-cog"></i> <span>网站配置</span></a></li>
 					</ul>
 				</nav>
 			</div>
@@ -150,6 +150,8 @@
     <!-- Custom Theme JavaScript -->
     <script src="/admin/table/dist/js/sb-admin-2.js"></script>
 	<script>
+
+
 	$(function() {
 		var data, options;
 
@@ -274,7 +276,7 @@
         <div class="container-fluid">
             <h3 class="page-title text-center">
                 <span style="vertical-align: inherit;">
-                    <span style="vertical-align: inherit;"></span></span>
+                    <span style="vertical-align: inherit;">{{ $title or '' }}</span></span>
             </h3>
             @section('main')
 

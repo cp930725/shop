@@ -16,9 +16,9 @@ class HomeUser
     public function handle($request, Closure $next)
     {
         if (session('userFlag')) {
-            return redirect('/login')->with('error', '请登录');
-        } else {
             return $next($request);
+        } else {
+            return redirect('/login')->with('error', '请登录');
         }
     }
 }

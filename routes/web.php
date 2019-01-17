@@ -19,7 +19,7 @@ Route::get('admin/index', function () {
 // 后台 管理员
 Route::resource('admin/admins', 'admin\AdminController')->middleware('admin');
 // 管理员操作日志
-Route::resource('admin/logs', 'admin\LogController');
+Route::resource('admin/logs', 'admin\LogController')->middleware('admin');
 // 管理员个人信息
 Route::get('admin/admins/info/{id}', 'admin\AdminController@info')->middleware('admin');
 // 后台 登录
@@ -35,25 +35,25 @@ Route::post('admin/admins/pwd/{id}', 'admin\AdminController@postPwd')->middlewar
 // 后台 用户	
 Route::resource('admin/users', 'admin\UserController')->middleware('admin');
 // 用户 登录日志
-Route::get('admin/user/log', 'admin\UserController@log');
+Route::get('admin/user/log', 'admin\UserController@log')->middleware('admin');
 // 后台 类别
-Route::resource('admin/cates', 'admin\CateController');
-Route::get('/admin/getcates', 'admin\CateController@getcates');
-Route::get('/admin/createcates/{id}', 'admin\CateController@createcates');
-Route::post('/admin/cates/insert', 'admin\CateController@insert');
+Route::resource('admin/cates', 'admin\CateController')->middleware('admin');
+Route::get('/admin/getcates', 'admin\CateController@getcates')->middleware('admin');
+Route::get('/admin/createcates/{id}', 'admin\CateController@createcates')->middleware('admin');
+Route::post('/admin/cates/insert', 'admin\CateController@insert')->middleware('admin');
 
 
 
 
 
 // 后台 商品
-Route::resource('admin/goods', 'admin\GoodsController');
-Route::get('/home/goodsshift', 'admin\GoodsController@shift');
-Route::resource('admin/goodsinfo', 'admin\GoodsInfoController');
-Route::resource('admin/goodsimage', 'admin\GoodsImageController');
-Route::get('/admin/goodsinfo/create/{id}', 'admin\GoodsInfoController@create');
-Route::get('/admin/goodsimage/delete/{id}', 'admin\GoodsImageController@destroy');
-Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert');
+Route::resource('admin/goods', 'admin\GoodsController')->middleware('admin');
+Route::get('/home/goodsshift', 'admin\GoodsController@shift')->middleware('admin');
+Route::resource('admin/goodsinfo', 'admin\GoodsInfoController')->middleware('admin');
+Route::resource('admin/goodsimage', 'admin\GoodsImageController')->middleware('admin');
+Route::get('/admin/goodsinfo/create/{id}', 'admin\GoodsInfoController@create')->middleware('admin');
+Route::get('/admin/goodsimage/delete/{id}', 'admin\GoodsImageController@destroy')->middleware('admin');
+Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert')->middleware('admin');
 
 
 // 后台 关注
@@ -67,7 +67,7 @@ Route::post('/admin/goodsimage/insert/{id}', 'admin\GoodsImageController@insert'
 
 
 // 后台 活动
-Route::resource('/admin/sales', 'admin\SaleController');
+Route::resource('/admin/sales', 'admin\SaleController')->middleware('admin');
 
 
 
@@ -87,8 +87,8 @@ Route::resource('/admin/sales', 'admin\SaleController');
 
 
 // 后台 订单
-Route::resource('admin/orders',     'admin\OrderController');
-Route::resource('admin/orderinfo',  'admin\OrderInfoController');
+Route::resource('admin/orders',     'admin\OrderController')->middleware('admin');
+Route::resource('admin/orderinfo',  'admin\OrderInfoController')->middleware('admin');
 
 
 
@@ -107,17 +107,17 @@ Route::resource('admin/orderinfo',  'admin\OrderInfoController');
 
 
 // 后台 售后
-Route::resource('admin/returns',     'admin\ReturnController');
-Route::resource('admin/checks',      'admin\CheckController');
-Route::resource('admin/barters',      'admin\BarterController');
-Route::get('admin/zhuangtai',     'admin\OrderInfoController@zhuangtai');
+Route::resource('admin/returns',     'admin\ReturnController')->middleware('admin');
+Route::resource('admin/checks',      'admin\CheckController')->middleware('admin');
+Route::resource('admin/barters',      'admin\BarterController')->middleware('admin');
+Route::get('admin/zhuangtai',     'admin\OrderInfoController@zhuangtai')->middleware('admin');
 
 
 
 
 
 // 后台 账单
-Route::resource('admin/waters',     'admin\WaterController');
+Route::resource('admin/waters',     'admin\WaterController')->middleware('admin');
 
 
 
@@ -147,7 +147,7 @@ Route::resource('admin/waters',     'admin\WaterController');
 
 
 // 后台 友情链接
-Route::resource('admin/links',      'admin\LinksController');
+Route::resource('admin/links',      'admin\LinksController')->middleware('admin');
 
 
 
@@ -157,7 +157,7 @@ Route::resource('admin/links',      'admin\LinksController');
 
 
 // 后台 轮播图
-Route::resource('/admin/slids', 'admin\SlidController');
+Route::resource('/admin/slids', 'admin\SlidController')->middleware('admin');
 
 
 
@@ -218,13 +218,13 @@ Route::post('pwd/phone', 'home\PwdController@postPhone');
 Route::get('pwd/phone/{phone}', 'home\PwdController@phone');
 
 // 修改密码
-Route::get('pwd/reset', 'home\PwdController@getReset');
-Route::post('pwd/reset', 'home\PwdController@postReset');
+Route::get('pwd/reset', 'home\PwdController@getReset')->middleware('home');
+Route::post('pwd/reset', 'home\PwdController@postReset')->middleware('home');
 
 // 前台 用户
-Route::resource('home/users', 'home\UserController');
+Route::resource('home/users', 'home\UserController')->middleware('home');
 
-Route::resource('home/slids', 'home\SlidController');
+Route::resource('home/slids', 'home\SlidController')->middleware('home');
 
 
 
@@ -245,15 +245,15 @@ Route::resource('home/slids', 'home\SlidController');
 
 
 //前台订单
-Route::resource('home/orders',     'home\OrderController');
-Route::resource('home/orderinfo',  'home\OrderInfoController');
+Route::resource('home/orders',     'home\OrderController')->middleware('home');
+Route::resource('home/orderinfo',  'home\OrderInfoController')->middleware('home');
 //前台 ajax
-Route::get('home/createaddr',      'home\OrderController@createaddr');
-Route::get('home/ordersdata',      'home\OrderController@ordersdata');
-Route::get('home/orderstatus',     'home\OrderController@orderstatus');
-Route::get('home/checkout/{id}',   'home\CheckoutController@create');
-Route::resource('home/checkout',   'home\CheckoutController');
-Route::resource('home/links',      'home\LinksController');
+Route::get('home/createaddr',      'home\OrderController@createaddr')->middleware('home');
+Route::get('home/ordersdata',      'home\OrderController@ordersdata')->middleware('home');
+Route::get('home/orderstatus',     'home\OrderController@orderstatus')->middleware('home');
+Route::get('home/checkout/{id}',   'home\CheckoutController@create')->middleware('home');
+Route::resource('home/checkout',   'home\CheckoutController')->middleware('home');
+Route::resource('home/links',      'home\LinksController')->middleware('home');
 
 
 
@@ -274,13 +274,13 @@ Route::resource('home/goodsinfo', 'home\GoodsInfoController');
 Route::get('/home/getgoodsinfo', 'home\GoodsInfoController@getGoodsInfo');
 
 // 前台 关注
-Route::get('/home/usersgoods', 'home\UsersGoodsController@index');
+Route::get('/home/usersgoods', 'home\UsersGoodsController@index')->middleware('home');
 
 // 前台 购物车
-Route::resource('/home/carts', 'home\CartController');
-Route::get('/home/cart/insert', 'home\CartController@insert');
-Route::get('/home/delcarts', 'home\CartController@delete');
-Route::get('/asdasd', 'home\CartController@index');
+Route::resource('/home/carts', 'home\CartController')->middleware('home');
+Route::get('/home/cart/insert', 'home\CartController@insert')->middleware('home');
+Route::get('/home/delcarts', 'home\CartController@delete')->middleware('home');
+Route::get('/asdasd', 'home\CartController@index')->middleware('home');
 
 
 

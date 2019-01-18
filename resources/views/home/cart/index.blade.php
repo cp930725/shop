@@ -145,8 +145,6 @@
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_down" class="decrement" id="decrement_8888_1832199_1_1" onclick="minus(this)">-</a>
 						<input autocomplete="off" type="text" class="itxt number-num" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
 						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)">+</a>
-						<input autocomplete="off" type="text" class="itxt" value="{{ $v->number }}" id="changeQuantity_8888_1832199_1_1_0" readonly>
-						<a href="javascript:void(0);" clstag="clickcart|keycount|xincart|cart_num_up" class="increment" id="increment_8888_1832199_1_1_0" onclick="add(this)" stock="{{ $v->goodsinfo->stock }}">+</a>
 					</div>
 								<div class="ac ftx-03 quantity-txt" _stock="stock_1832199">有货</div>
 			</div>

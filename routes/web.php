@@ -224,7 +224,7 @@ Route::post('pwd/reset', 'home\PwdController@postReset')->middleware('home');
 // 前台 用户
 Route::resource('home/users', 'home\UserController')->middleware('home');
 
-Route::resource('home/slids', 'home\SlidController')->middleware('home');
+Route::resource('home/slids', 'home\SlidController');
 
 
 

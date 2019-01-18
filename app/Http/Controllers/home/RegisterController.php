@@ -62,7 +62,7 @@ class RegisterController extends Controller
         $tel_code = rand(1000,9999);
         session(['tel_code'=>$tel_code]);
         $target = "http://106.ihuyi.com/webservice/sms.php?method=Submit";
-        $target .= "&account=C73141292&password=4b452906407b10fb8b8d499729461aab&mobile=".$tel."&content=您的验证码是：".rawurlencode($tel_code)."。请不要把验证码泄露给其他人。";
+        $target .= "&account=C72210058&password=a8c451d3e57a471c49dcab37d4267430&mobile=".$tel."&content=您的验证码是：".rawurlencode($tel_code)."。请不要把验证码泄露给其他人。";
         //使用curl(百度)
 
         //初使化init方法
